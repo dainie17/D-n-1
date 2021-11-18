@@ -19,7 +19,8 @@ import com.example.test_du_an_mau.UserAcivity;
 
 public class fragment_them extends Fragment {
 
-    TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_DangNhap, txt_DangKy;
+    TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_DangNhap, txt_DangKy,
+            txt_dangxuat;
 
     @Nullable
     @Override
@@ -30,13 +31,24 @@ public class fragment_them extends Fragment {
         txt_Them_trangCaNhan = view.findViewById(R.id.txt_Them_trangcanhan);
         txt_DangNhap = view.findViewById(R.id.txt_DangNhap);
         txt_DangKy = view.findViewById(R.id.txt_DangKy);
+        txt_dangxuat = view.findViewById(R.id.txt_dangxuat);
 
         OnclickQuanLySanPham();
         OnclickTrangCaNhan();
         OnclickDangNhap();
         OnclickDangKy();
+        OnclickDangXuat();
 
         return view;
+    }
+
+    private void OnclickDangXuat() {
+        txt_dangxuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     private void OnclickDangKy() {
