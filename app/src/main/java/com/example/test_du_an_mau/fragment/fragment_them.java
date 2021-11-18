@@ -16,6 +16,8 @@ import com.example.test_du_an_mau.DangNhapActivity;
 import com.example.test_du_an_mau.QuanLySanPhamActivity;
 import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.UserAcivity;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class fragment_them extends Fragment {
 
@@ -46,6 +48,8 @@ public class fragment_them extends Fragment {
         txt_dangxuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
             }
         });
