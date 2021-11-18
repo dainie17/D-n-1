@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/fragment_home"
+        android:icon="@drawable/home"
+        android:title="Trang chủ" />
+    <item android:id="@+id/fragment_like"
+        android:title="Yêu thích"
+        android:icon="@drawable/ic_baseline_favorite_border_24"/>
+
+    <item
+        android:id="@+id/dangbai"
+        android:title="Đăng bài" />
+
+    <item android:id="@+id/fragment_admin"
+        android:title="Thông báo"
+        android:icon="@drawable/thongbao"/>
+    <item android:id="@+id/fragment_sanpham"
+        android:title="Thêm chức năng"
+        android:icon="@drawable/ic_baseline_toc_24"/>
+</menu>
