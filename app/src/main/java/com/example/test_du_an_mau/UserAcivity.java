@@ -1,6 +1,5 @@
 package com.example.test_du_an_mau;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,24 +32,15 @@ public class UserAcivity extends AppCompatActivity {
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         id = mAuth.getUid();
 
-        if (id == null){
-            Intent intent = new Intent(UserAcivity.this, DangNhapActivity.class);
-            startActivities(intent);
-        } else {
-            DocumentReference documentReference = fStore.collection("user").document(id);
-            documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                    tv_name.setText(value.getString("hoten"));
-                    tv_email.setText(value.getString("email"));
-                }
-            });
-        }
+        DocumentReference documentReference = fStore.collection("user").document(id);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                tv_name.setText(value.getString("hoten"));
+                tv_email.setText(value.getString("email"));
+            }
+        });
 
-    }
-
-    private void startActivities(Intent intent) {
-        startActivity(intent);
     }
 
 }
