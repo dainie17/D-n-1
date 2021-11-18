@@ -49,8 +49,7 @@ public class fragment_them extends Fragment {
             @Override
             public void onClick(View v) {
                 FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-
+                mAuth.signOut();
             }
         });
     }
