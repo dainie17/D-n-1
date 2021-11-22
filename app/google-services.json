@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "192043652582",
+    "firebase_url": "https://duanmot-1d402-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "duanmot-1d402",
+    "storage_bucket": "duanmot-1d402.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192043652582:android:2a837deff7df2e004f3227",
+        "android_client_info": {
+          "package_name": "com.example.test_du_an_mau"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192043652582-t1obgmdd8id2g4u7p41bjns0pk3cvhjp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYRA3L86tD7M6iTbL9RHH3lPGiVbcwTYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "192043652582-t1obgmdd8id2g4u7p41bjns0pk3cvhjp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
