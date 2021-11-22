@@ -3,13 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.test_du_an_mau">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logoduan1"
         android:label="Developed Land"
         android:roundIcon="@drawable/logoduan1"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Test_Du_An_Mau">
+        android:theme="@style/Theme.Test_Du_An_Mau"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".loginggActivity"
+            android:exported="true" />
         <activity
             android:name=".QuanLySanPhamActivity"
             android:exported="true" />
@@ -18,13 +24,13 @@
             android:exported="true" />
         <activity
             android:name=".UserAcivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".DangNhapActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".DangKyActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
