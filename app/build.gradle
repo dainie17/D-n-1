@@ -4,14 +4,6 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        config_cua_toi {
-            storeFile file('C:\\Users\\HOME\\Documents\\thu_keystore.jks')
-            storePassword '123456'
-            keyAlias 'ydainie'
-            keyPassword '123456'
-        }
-    }
     compileSdk 31
 
     defaultConfig {
@@ -28,16 +20,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.debug
         }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    buildFeatures{
-        viewBinding true
     }
 
 }
