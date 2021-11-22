@@ -14,9 +14,6 @@
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".loginggActivity"
-            android:exported="true" />
-        <activity
             android:name=".QuanLySanPhamActivity"
             android:exported="true" />
         <activity

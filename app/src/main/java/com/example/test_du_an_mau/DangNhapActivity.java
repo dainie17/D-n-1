@@ -83,8 +83,7 @@ public class DangNhapActivity extends AppCompatActivity {
         btn_loginGG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DangNhapActivity.this, loginggActivity.class);
-                startActivity(intent);
+
             }
         });
 
