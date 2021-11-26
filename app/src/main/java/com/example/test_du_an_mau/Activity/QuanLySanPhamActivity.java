@@ -1,10 +1,12 @@
-package com.example.test_du_an_mau;
+package com.example.test_du_an_mau.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.test_du_an_mau.R;
 
 public class QuanLySanPhamActivity extends AppCompatActivity {
 

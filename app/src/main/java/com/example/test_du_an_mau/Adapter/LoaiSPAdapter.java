@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test_du_an_mau.Domian.LoaiSPDomian;
-import com.example.test_du_an_mau.MainActivity;
+import com.example.test_du_an_mau.Activity.MainActivity;
 import com.example.test_du_an_mau.R;
 
 import java.util.List;

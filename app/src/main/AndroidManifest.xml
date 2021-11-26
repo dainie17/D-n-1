@@ -4,6 +4,13 @@
     package="com.example.test_du_an_mau">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -14,22 +21,37 @@
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".QuanLySanPhamActivity"
+            android:name=".Activity.NhapDuLieuSanPhamActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.ChonHinhAnhActivity"
             android:exported="true" />
         <activity
-            android:name=".UserAcivity"
+            android:name=".Activity.LoaiChiTietCaPheActivity"
             android:exported="true" />
         <activity
-            android:name=".DangNhapActivity"
+            android:name=".Activity.LoaiSPCBActivity"
             android:exported="true" />
         <activity
-            android:name=".DangKyActivity"
+            android:name=".Activity.ChonLoaiHinhSanPhamActivity"
             android:exported="true" />
         <activity
-            android:name=".SplashScreen"
+            android:name=".Activity.QuanLySanPhamActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.UserAcivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.DangNhapActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.DangKyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

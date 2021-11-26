@@ -1,4 +1,4 @@
-package com.example.test_du_an_mau;
+package com.example.test_du_an_mau.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.test_du_an_mau.R;
 
 public class SplashScreen extends AppCompatActivity {
 

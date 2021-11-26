@@ -1,21 +1,20 @@
-package com.example.test_du_an_mau;
+package com.example.test_du_an_mau.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.test_du_an_mau.Activity.DangNhapActivity;
+import com.example.test_du_an_mau.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-
-import java.util.Objects;
 
 public class UserAcivity extends AppCompatActivity {
     private TextView tv_name, tv_email, tv_sdt;

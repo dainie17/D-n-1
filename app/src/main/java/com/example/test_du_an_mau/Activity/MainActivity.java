@@ -1,4 +1,4 @@
-package com.example.test_du_an_mau;
+package com.example.test_du_an_mau.Activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,14 +6,20 @@ import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.fragment.fragment_favorite;
 import com.example.test_du_an_mau.fragment.fragment_home;
 import com.example.test_du_an_mau.fragment.fragment_them;
 import com.example.test_du_an_mau.fragment.fragment_user;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_THEM = 3;
 
     private int mCurrentFragment = FRAGMENT_TRANG_CHINH;
+    Button btn_themSanPham;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,25 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(navigationItemReselectedListener);
         replaceFragment(new fragment_home());
         bottomNavigationView.getMenu().findItem(R.id.fragment_home).setChecked(true);
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        id = mAuth.getUid();
+
+        btn_themSanPham = this.findViewById(R.id.btn_dangbai);
+
+        btn_themSanPham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (id != null){
+                    startActivity(new Intent(MainActivity.this, ChonLoaiHinhSanPhamActivity.class));
+                } else {
+                    startActivity(new Intent(MainActivity.this, DangNhapActivity.class));
+                }
+
+            }
+        });
 
     }
 
