@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.test_du_an_mau.Adapter.HinhAnhAdapter;
@@ -35,7 +36,7 @@ import java.util.List;
 public class ChonHinhAnhActivity extends AppCompatActivity {
 
     Button btn_TiepTucThemHA, btn_ChonHinhAnh;
-
+    ImageView back;
     RecyclerView rscv_HienHinhAnh;
 
     private static final int IMAGE_CODE = 1;
@@ -53,6 +54,8 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chon_hinh_anh);
 
+
+        back = findViewById(R.id.button_back_ChonHinh);
         btn_TiepTucThemHA = this.findViewById(R.id.btn_TiepTucThemHA);
         btn_ChonHinhAnh = this.findViewById(R.id.btn_ChonHinh);
         rscv_HienHinhAnh = this.findViewById(R.id.rscv_HienAnh);
@@ -103,6 +106,14 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        //        Quay Lại
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
@@ -186,6 +197,9 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
             }
         }
         return result;
+
     }
+
+
 
 }

@@ -1,4 +1,4 @@
-package com.example.test_du_an_mau.Activity;
+package com.example.test_du_an_mau.Activity.LoaiChiTietCB;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.test_du_an_mau.Activity.ChonHinhAnhActivity;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
 

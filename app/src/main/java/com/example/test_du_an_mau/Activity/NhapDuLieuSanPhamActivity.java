@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
     Spinner spn_ChonDonVi;
 
     Button btn_DangSanPham;
+    ImageView back;
 
     TextInputLayout edt_SoLuong, edt_HanSuDung, edt_NoiSanXuat, edt_GioiHanViTri, edt_MoTaSanPham;
 
@@ -38,6 +40,7 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nhap_du_lieu_san_pham);
 
+        back = findViewById(R.id.button_back_Them);
         spn_ChonDonVi = this.findViewById(R.id.spn_ChonDonVi);
         btn_DangSanPham = this.findViewById(R.id.btn_DangSanPham);
         edt_SoLuong = this.findViewById(R.id.edt_SoLuong);
@@ -109,5 +112,12 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
             }
         });
 
+        //        Quay Lại
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

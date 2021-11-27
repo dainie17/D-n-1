@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.LoaiChiTietCB.LoaiChiTietCaPheActivity">
+    tools:context=".Activity.LoaiChiTietPS.LoaiChiTietPSTieuActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout8"
@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:id="@+id/button_back_CaPhe"
+            android:id="@+id/button_back_PSTieu"
             android:layout_marginTop="5dp"
             android:src="@drawable/quay_lai"
             app:tint="@color/white" />
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Chọn loại chi tiết cà phê"
+            android:text="Chọn loại Tiêu"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietCP"
+        android:id="@+id/LoaiChiTietPSTieu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/macca"
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ROBUSTA"
+                android:text="Tiêu sấy khô"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -80,7 +80,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietCP1"
+        android:id="@+id/LoaiChiTietPSTieu1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/macca"
@@ -92,7 +92,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietCP">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSTieu">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,7 +106,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ARABICA"
+                android:text="Tiêu say"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -124,7 +124,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietCP2"
+        android:id="@+id/LoaiChiTietPSTieu2"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/macca"
@@ -136,7 +136,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietCP1">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSTieu1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,7 +150,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CHERRY"
+                android:text="Không Xác Định"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -167,136 +167,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/LoaiChiTietCP3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/macca"
-        android:baselineAligned="false"
-        android:elevation="3dp"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietCP2">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CULI"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_baseline_send_24"
-            app:tint="@color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LoaiChiTietCP4"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/macca"
-        android:baselineAligned="false"
-        android:elevation="3dp"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietCP3">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="MOKA"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_baseline_send_24"
-            app:tint="@color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LoaiChiTietCP5"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@drawable/macca"
-        android:baselineAligned="false"
-        android:elevation="3dp"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietCP4">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Không xác định"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_baseline_send_24"
-            app:tint="@color/white" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

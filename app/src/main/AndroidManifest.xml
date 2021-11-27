@@ -21,16 +21,25 @@
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activity.LoaiChiTietMCActivity"
+            android:name=".Activity.LoaiChiTietPS.LoaiChiTietPSTieuActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoaiChiTietCaCaoActivity"
+            android:name=".Activity.LoaiChiTietPS.LoaiChiTietThitActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoaiChiTietDieuActivity"
+            android:name=".Activity.LoaiChiTietPS.LoaiSPPSActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoaiChiTietTieuActivity"
+            android:name=".Activity.LoaiChiTietCB.LoaiChiTietMCActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoaiChiTietCB.LoaiChiTietCaCaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoaiChiTietCB.LoaiChiTietDieuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoaiChiTietCB.LoaiChiTietTieuActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.NhapDuLieuSanPhamActivity"
@@ -39,10 +48,10 @@
             android:name=".Activity.ChonHinhAnhActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.LoaiChiTietCaPheActivity"
+            android:name=".Activity.LoaiChiTietCB.LoaiChiTietCaPheActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.LoaiSPCBActivity"
+            android:name=".Activity.LoaiChiTietCB.LoaiSPCBActivity"
             android:exported="true" />
         <activity
             android:name=".Activity.ChonLoaiHinhSanPhamActivity"

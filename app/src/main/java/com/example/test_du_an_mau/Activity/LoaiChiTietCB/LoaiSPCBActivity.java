@@ -1,4 +1,4 @@
-package com.example.test_du_an_mau.Activity;
+package com.example.test_du_an_mau.Activity.LoaiChiTietCB;
 
 import androidx.appcompat.app.AppCompatActivity;
 

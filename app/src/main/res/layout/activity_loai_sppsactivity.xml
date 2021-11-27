@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.LoaiSPCBActivity">
+    tools:context=".Activity.LoaiChiTietCB.LoaiSPCBActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout8"
@@ -17,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/button_back_LoaiPS"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/quay_lai"
@@ -34,7 +35,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiSP_CaPhe"
+        android:id="@+id/LoaiSPPS_Thit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:baselineAligned="false"
@@ -78,7 +79,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiSP_Tieu"
+        android:id="@+id/LoaiSPPS_Tieu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/tieu"
@@ -90,7 +91,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_CaPhe">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiSPPS_Thit">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -122,7 +123,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiSP_Dieu"
+        android:id="@+id/LoaiSPPS_Dieu"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/dieu"
@@ -134,7 +135,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_Tieu">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiSPPS_Tieu">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -166,7 +167,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiSP_CaCao"
+        android:id="@+id/LoaiSPPS_CaCao"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/cacao"
@@ -178,7 +179,7 @@
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_Dieu">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiSPPS_Dieu">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -210,7 +211,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiSP_MacCa"
+        android:id="@+id/LoaiSPPS_MacCa"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/macca"
@@ -222,7 +223,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_CaCao">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiSPPS_CaCao">
 
         <LinearLayout
             android:layout_width="match_parent"

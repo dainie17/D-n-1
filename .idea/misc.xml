@@ -3,10 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_chon_hinh_anh.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_chon_loai_hinh_san_pham.xml" value="0.2708333333333333" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_ca_cao.xml" value="0.2708333333333333" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_ca_phe.xml" value="0.13171225937183384" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_dieu.xml" value="0.27447916666666666" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_mcactivity.xml" value="0.27447916666666666" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_pstieu.xml" value="0.27447916666666666" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_thit.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_spcbactivity.xml" value="0.2708333333333333" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_sppsactivity.xml" value="0.27447916666666666" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_nhap_du_lieu_san_pham.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/D-n-1/app/src/main/res/layout/activity_dang_ky.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/D-n-1/app/src/main/res/layout/activity_dang_nhap.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/D-n-1/app/src/main/res/layout/activity_fragment_them.xml" value="0.27447916666666666" />

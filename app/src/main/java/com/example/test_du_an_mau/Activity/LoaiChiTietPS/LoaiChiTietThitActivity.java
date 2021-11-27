@@ -1,4 +1,6 @@
-package com.example.test_du_an_mau.Activity;
+package com.example.test_du_an_mau.Activity.LoaiChiTietPS;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,42 +8,41 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import com.example.test_du_an_mau.Activity.ChonHinhAnhActivity;
+import com.example.test_du_an_mau.Activity.LoaiChiTietCB.LoaiChiTietMCActivity;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
 
-public class LoaiChiTietMCActivity extends AppCompatActivity {
+public class LoaiChiTietThitActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 10;
-    LinearLayout LoaiChiTietMC, LoaiChiTietMC1, LoaiChiTietMC2, LoaiChiTietMC3, LoaiChiTietMC4;
+    LinearLayout LoaiChiTietThit, LoaiChiTietThit1, LoaiChiTietThit2, LoaiChiTietThit3, LoaiChiTietThit4,LoaiChiTietThit5;
     ImageView back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loai_chi_tiet_mcactivity);
+        setContentView(R.layout.activity_loai_chi_tiet_thit);
 
+        back = findViewById(R.id.button_back_thit);
+        LoaiChiTietThit = this.findViewById(R.id.LoaiChiTietThit);
+        LoaiChiTietThit1 = this.findViewById(R.id.LoaiChiTietThit1);
+        LoaiChiTietThit2 = this.findViewById(R.id.LoaiChiTietThit2);
+        LoaiChiTietThit3 = this.findViewById(R.id.LoaiChiTietThit3);
+        LoaiChiTietThit4 = this.findViewById(R.id.LoaiChiTietThit4);
 
-        back = findViewById(R.id.button_back_MacCa);
-        LoaiChiTietMC = this.findViewById(R.id.LoaiChiTietMC);
-        LoaiChiTietMC1 = this.findViewById(R.id.LoaiChiTietMC1);
-        LoaiChiTietMC2 = this.findViewById(R.id.LoaiChiTietMC2);
-        LoaiChiTietMC3 = this.findViewById(R.id.LoaiChiTietMC3);
-        LoaiChiTietMC4 = this.findViewById(R.id.LoaiChiTietMC4);
-
-
-        LoaiChiTietMC.setOnClickListener(new View.OnClickListener() {
+        LoaiChiTietThit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (getIntent().getExtras() != null){
 
-                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamMacCa");
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSThit");
 
-                    Intent intent = new Intent(LoaiChiTietMCActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietThitActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("MacCao Úc");
+                    sanPhamDomian.setLoaiChiTietSP("Thịt Heo");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -54,17 +55,17 @@ public class LoaiChiTietMCActivity extends AppCompatActivity {
 
             }
         });
-        LoaiChiTietMC1.setOnClickListener(new View.OnClickListener() {
+        LoaiChiTietThit1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (getIntent().getExtras() != null){
 
-                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamMacCa");
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSThit");
 
-                    Intent intent = new Intent(LoaiChiTietMCActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietThitActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("MacCao Trung Quốc");
+                    sanPhamDomian.setLoaiChiTietSP("Thịt Bò");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -77,17 +78,17 @@ public class LoaiChiTietMCActivity extends AppCompatActivity {
 
             }
         });
-        LoaiChiTietMC2.setOnClickListener(new View.OnClickListener() {
+        LoaiChiTietThit2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (getIntent().getExtras() != null){
 
-                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamMacCa");
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSThit");
 
-                    Intent intent = new Intent(LoaiChiTietMCActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietThitActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("MacCao Nam Phi");
+                    sanPhamDomian.setLoaiChiTietSP("Thit Cá");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -100,17 +101,17 @@ public class LoaiChiTietMCActivity extends AppCompatActivity {
 
             }
         });
-        LoaiChiTietMC3.setOnClickListener(new View.OnClickListener() {
+        LoaiChiTietThit3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (getIntent().getExtras() != null){
 
-                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamMacCa");
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSThit");
 
-                    Intent intent = new Intent(LoaiChiTietMCActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietThitActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("MacCao Việt Nam");
+                    sanPhamDomian.setLoaiChiTietSP("Thịt Gà");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -123,15 +124,15 @@ public class LoaiChiTietMCActivity extends AppCompatActivity {
 
             }
         });
-        LoaiChiTietMC4.setOnClickListener(new View.OnClickListener() {
+        LoaiChiTietThit4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (getIntent().getExtras() != null){
 
-                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamMacCa");
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSThit");
 
-                    Intent intent = new Intent(LoaiChiTietMCActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietThitActivity.this, ChonHinhAnhActivity.class);
 
                     sanPhamDomian.setLoaiChiTietSP("Không Xác Định");
 
@@ -146,7 +147,6 @@ public class LoaiChiTietMCActivity extends AppCompatActivity {
 
             }
         });
-
 
         //        Quay Lại
         back.setOnClickListener(new View.OnClickListener() {
