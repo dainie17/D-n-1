@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
@@ -16,6 +17,7 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 10;
     LinearLayout LoaiHinhSP_NNCB;
+    ImageView back;
 
     SanPhamDomian sanPhamDomian;
 
@@ -27,6 +29,7 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chon_loai_hinh_san_pham);
 
         LoaiHinhSP_NNCB = this.findViewById(R.id.LoaiHinhSP_NNCB);
+        back = this.findViewById(R.id.button_back);
 
         sanPhamDomian = new SanPhamDomian();
 
@@ -51,5 +54,13 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
             }
         });
 
+
+//        Quay Lại
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

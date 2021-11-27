@@ -21,6 +21,18 @@
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.LoaiChiTietMCActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoaiChiTietCaCaoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoaiChiTietDieuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoaiChiTietTieuActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.NhapDuLieuSanPhamActivity"
             android:exported="true" />
         <activity

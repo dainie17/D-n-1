@@ -10,7 +10,7 @@
         android:elevation="3dp"
         android:id="@+id/LoaiHinhSP_NNCB"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:baselineAligned="false"
         android:gravity="right"
         android:orientation="horizontal"
@@ -23,12 +23,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:gravity="left"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -43,7 +43,8 @@
                 android:layout_height="wrap_content"
                 android:text="Ví dụ như: Cà phê, tiêu, điều,..."
                 android:textColor="@color/white"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textStyle="italic"/>
 
         </LinearLayout>
 
@@ -61,7 +62,7 @@
         android:id="@+id/LoaiHinhSP_CSPPS"
         android:elevation="3dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:gravity="right"
         android:orientation="horizontal"
         android:weightSum="10"
@@ -73,12 +74,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:gravity="left"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -93,7 +94,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:text="Ví dụ như: Bánh mì, bơ, dầu, các loại thịt,..."
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textStyle="italic"/>
 
         </LinearLayout>
 
@@ -111,7 +113,7 @@
         android:id="@+id/LoaiHinhSP_CSPDCB"
         android:elevation="3dp"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:gravity="right"
         android:orientation="horizontal"
         android:weightSum="10"
@@ -123,12 +125,12 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:gravity="left"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -143,7 +145,8 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:text="Ví dụ như: Bánh kẹp, xúc xích, nước ngọt, rượu,..."
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:textStyle="italic"/>
 
         </LinearLayout>
 
@@ -160,8 +163,8 @@
     <LinearLayout
         android:id="@+id/Tollba_top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#3AB54A"
+        android:layout_height="50dp"
+        android:background="#336666"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -169,7 +172,9 @@
 
         <ImageView
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
+            android:id="@+id/button_back"
+            android:layout_marginTop="5dp"
             android:src="@drawable/quay_lai"
             app:tint="@color/white" />
 

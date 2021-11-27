@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.LoaiSPCBActivity">
+    tools:context=".Activity.LoaiChiTietTieuActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout8"
@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:id="@+id/button_back_SPCB"
+            android:id="@+id/button_back_Tieu"
             android:layout_marginTop="5dp"
             android:src="@drawable/quay_lai"
             app:tint="@color/white" />
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Chọn loại sản phẩm"
+            android:text="Chọn loại chi tiết Tiêu"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -36,31 +36,33 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiSP_CaPhe"
+        android:id="@+id/LoaiChiTietTieu"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
+        android:background="@drawable/macca"
         android:baselineAligned="false"
+        android:elevation="3dp"
         android:gravity="right"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:weightSum="10"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/ca_phe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
+            android:paddingTop="10dp"
             android:paddingBottom="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cà phê"
+                android:text="Tiêu Đen"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -78,153 +80,33 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiSP_Tieu"
+        android:id="@+id/LoaiChiTietTieu1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/tieu"
-        android:baselineAligned="false"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_CaPhe">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tiêu"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_baseline_send_24"
-            app:tint="@color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LoaiSP_Dieu"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/dieu"
-        android:baselineAligned="false"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_Tieu">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Điều"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_baseline_send_24"
-            app:tint="@color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LoaiSP_CaCao"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/cacao"
-        android:baselineAligned="false"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_Dieu">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ca cao"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_baseline_send_24"
-            app:tint="@color/white" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LoaiSP_MacCa"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="50dp"
         android:background="@drawable/macca"
         android:baselineAligned="false"
+        android:elevation="3dp"
         android:gravity="right"
         android:orientation="horizontal"
         android:weightSum="10"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSP_CaCao">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietTieu">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Macca"
+                android:text="Tiêu Xọ"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -240,5 +122,95 @@
             app:tint="@color/white" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LoaiChiTietTieu2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/macca"
+        android:baselineAligned="false"
+        android:elevation="3dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietTieu1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiêu Đỏ"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:paddingRight="5dp"
+            android:src="@drawable/ic_baseline_send_24"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LoaiChiTietTieu3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/macca"
+        android:baselineAligned="false"
+        android:elevation="3dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietTieu2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiêu lép"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:paddingRight="5dp"
+            android:src="@drawable/ic_baseline_send_24"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

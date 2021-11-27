@@ -84,7 +84,7 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
 
                 if (getIntent().getExtras() != null){
 
-                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiChiTietCaPhe");
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiChiTiet");
 
                     Intent inten = new Intent(ChonHinhAnhActivity.this, NhapDuLieuSanPhamActivity.class);
 
