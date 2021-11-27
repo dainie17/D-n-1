@@ -10,6 +10,7 @@ public class SanPhamDomian implements Serializable {
     GioiHanViTri, NoiSanXuat, MoTaChiTiet, HanSuDung;
     private int SoLuong;
     private List<String> AlbumAnh;
+    private Date NgayThem = new Date();
 
     public SanPhamDomian() {
 
@@ -18,7 +19,7 @@ public class SanPhamDomian implements Serializable {
     public SanPhamDomian(String maSP, String maNguoiDung, String loaiHinhSP,
                          String loaiSP, String loaiChiTietSP, String donVi,
                          String gioiHanViTri, String noiSanXuat, String moTaChiTiet,
-                         int soLuong, String hanSuDung, List<String> albumAnh) {
+                         int soLuong, String hanSuDung, List<String> albumAnh, Date ngayThem) {
 
         MaSP = maSP;
         MaNguoiDung = maNguoiDung;
@@ -32,7 +33,7 @@ public class SanPhamDomian implements Serializable {
         SoLuong = soLuong;
         HanSuDung = hanSuDung;
         AlbumAnh = albumAnh;
-
+        NgayThem = ngayThem;
     }
 
     public String getMaSP() {
@@ -129,5 +130,13 @@ public class SanPhamDomian implements Serializable {
 
     public void setAlbumAnh(List<String> albumAnh) {
         AlbumAnh = albumAnh;
+    }
+
+    public Date getNgayThem() {
+        return NgayThem;
+    }
+
+    public void setNgayThem(Date ngayThem) {
+        NgayThem = ngayThem;
     }
 }
