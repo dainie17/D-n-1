@@ -8,11 +8,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
 import com.example.test_du_an_mau.Adapter.LoaiSPAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.LoaiSPDomian;
@@ -37,6 +39,7 @@ public class fragment_home extends Fragment {
     private SanPhamMoiAdapter sanPhamAdapter;
     private FirebaseDatabase database;
     private View view;
+    private static final int MY_REQUEST_CODE = 10;
 
     @Nullable
     @Override
@@ -54,6 +57,15 @@ public class fragment_home extends Fragment {
         sanPhamAdapter.setData(list_SanPhamMoi, new SanPhamMoiAdapter.SanPhamOnClick() {
             @Override
             public void SpOnclick(SanPhamDomian sanPhamDomian) {
+
+                Intent intent = new Intent(getActivity(), ChiTietSanPhamActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("DuLieuSanPham",sanPhamDomian);
+
+                intent.putExtras(bundle);
+
+                startActivityForResult(intent, MY_REQUEST_CODE);
 
             }
         });

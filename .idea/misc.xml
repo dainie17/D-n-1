@@ -19,11 +19,15 @@
         <entry key="..\:/androidnangcao/D-n-1/app/src/main/res/layout/activity_fragment_them.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/D-n-1/app/src/main/res/layout/activity_login_with_fbactivity.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/D-n-1/app/src/main/res/layout/activity_logingg.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/bacground_them_vao_tim.xml" value="0.28615384615384615" />
+        <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/background_button_prev_next.xml" value="0.28615384615384615" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/background_chonlhsp.xml" value="0.290625" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/background_gia_ban_dau.xml" value="0.28615384615384615" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/background_img.xml" value="0.28615384615384615" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/background_item_spmoi.xml" value="0.28615384615384615" />
+        <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/backgruond_chitietdlnd.xml" value="0.28615384615384615" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/ic_baseline_send_24.xml" value="0.290625" />
+        <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/activity_chi_tiet_san_pham.xml" value="0.2604166666666667" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/activity_chon_hinh_anh.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/activity_chon_loai_hinh_san_pham.xml" value="0.2604166666666667" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/activity_fragment_home.xml" value="0.2713541666666667" />
@@ -35,6 +39,7 @@
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/activity_user_acivity.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/item_hinh_anh.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/item_san_pham_moi.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/list_item_slide.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/layout/loai_sp_item.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/test_Du_An_Mau/app/src/main/res/drawable-v24/backgroud_thongtin.xml" value="0.290625" />
         <entry key="..\:/androidnangcao/test_Du_An_Mau/app/src/main/res/drawable-v24/custom_fragment_home.xml" value="0.290625" />
@@ -68,7 +73,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
