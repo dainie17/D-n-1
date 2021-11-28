@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Du An/Duan/app/src/main/res/drawable/backgruond_chitietdlnd.xml" value="0.290625" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_chi_tiet_san_pham.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_chon_hinh_anh.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_chon_loai_hinh_san_pham.xml" value="0.2708333333333333" />
