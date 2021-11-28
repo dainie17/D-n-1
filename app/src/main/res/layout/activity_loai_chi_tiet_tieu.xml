@@ -38,7 +38,7 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietTieu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="@drawable/macca"
         android:baselineAligned="false"
         android:elevation="3dp"
@@ -82,7 +82,7 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietTieu1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="@drawable/macca"
         android:baselineAligned="false"
         android:elevation="3dp"
@@ -126,7 +126,7 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietTieu2"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="@drawable/macca"
         android:baselineAligned="false"
         android:elevation="3dp"
@@ -170,7 +170,7 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietTieu3"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="70dp"
         android:background="@drawable/macca"
         android:baselineAligned="false"
         android:elevation="3dp"

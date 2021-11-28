@@ -35,8 +35,8 @@ import java.util.List;
 
 public class ChonHinhAnhActivity extends AppCompatActivity {
 
-    Button btn_TiepTucThemHA, btn_ChonHinhAnh;
-    ImageView back;
+    Button btn_TiepTucThemHA;
+    ImageView back,btn_ChonHinhAnh;
     RecyclerView rscv_HienHinhAnh;
 
     private static final int IMAGE_CODE = 1;

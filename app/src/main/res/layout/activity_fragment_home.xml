@@ -24,7 +24,7 @@
             android:layout_gravity="right"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/ic_baseline_image_24" />
+            android:src="@drawable/user" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,15 +52,16 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/ic_baseline_image_24" />
+                    android:src="@drawable/timkiem" />
 
             </LinearLayout>
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:padding="5dp"
                 android:layout_weight="8"
-                android:src="@drawable/ic_baseline_image_24" />
+                android:src="@drawable/conversation" />
 
         </LinearLayout>
 

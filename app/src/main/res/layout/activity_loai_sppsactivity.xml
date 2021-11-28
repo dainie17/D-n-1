@@ -10,7 +10,7 @@
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#3AB54A"
+        android:background="#336666"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Chọn loại sản phẩm"
+            android:text="Loại Sản Phẩm Phát Sinh"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -37,7 +37,7 @@
     <LinearLayout
         android:id="@+id/LoaiSPPS_Thit"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:baselineAligned="false"
         android:gravity="right"
         android:orientation="horizontal"
@@ -51,7 +51,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -81,7 +81,7 @@
     <LinearLayout
         android:id="@+id/LoaiSPPS_Tieu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:background="@drawable/tieu"
         android:baselineAligned="false"
         android:gravity="right"
@@ -95,7 +95,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -125,7 +125,7 @@
     <LinearLayout
         android:id="@+id/LoaiSPPS_Dieu"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:background="@drawable/dieu"
         android:baselineAligned="false"
         android:gravity="right"
@@ -139,7 +139,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -169,7 +169,7 @@
     <LinearLayout
         android:id="@+id/LoaiSPPS_CaCao"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:background="@drawable/cacao"
         android:baselineAligned="false"
         android:gravity="right"
@@ -183,7 +183,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -213,7 +213,7 @@
     <LinearLayout
         android:id="@+id/LoaiSPPS_MacCa"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="100dp"
         android:background="@drawable/macca"
         android:baselineAligned="false"
         android:gravity="right"
@@ -227,7 +227,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
