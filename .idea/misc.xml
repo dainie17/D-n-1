@@ -14,6 +14,7 @@
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_ca_phe.xml" value="0.4" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_dieu.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_mcactivity.xml" value="0.27447916666666666" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_psdieu.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_pstieu.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_thit.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_tieu.xml" value="0.27447916666666666" />
@@ -75,7 +76,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

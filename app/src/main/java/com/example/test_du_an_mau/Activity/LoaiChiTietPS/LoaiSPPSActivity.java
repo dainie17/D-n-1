@@ -83,6 +83,30 @@ public class LoaiSPPSActivity extends AppCompatActivity {
             }
         });
 
+        LoaiSPPS_Dieu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (getIntent().getExtras() != null){
+
+                    SanPhamDomian sanPham = (SanPhamDomian) getIntent().getExtras().get("LoaiHinhSP");
+
+                    Intent intent = new Intent(LoaiSPPSActivity.this, LoaiChiTietPSDieuActivity.class);
+
+                    sanPham.setLoaiSP("Phát sinh điều");
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("LoaiSanPhamPSDieu", sanPham);
+
+                    intent.putExtras(bundle);
+
+                    startActivityForResult(intent, MY_REQUEST_CODE);
+
+                }
+
+            }
+        });
+
 
 
 
