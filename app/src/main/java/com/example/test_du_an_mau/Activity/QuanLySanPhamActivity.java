@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,6 +41,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuanLySanPhamActivity extends AppCompatActivity {
+
+    Button Them_Sp;
 
     String id;
 
@@ -92,6 +96,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         rscv_QuanLySanPham.setAdapter(sanPhamCaNhanAdapter);
 
         TenNguoiDung();
+
 
     }
 
@@ -211,4 +216,6 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

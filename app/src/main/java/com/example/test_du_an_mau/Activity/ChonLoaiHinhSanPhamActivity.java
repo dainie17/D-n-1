@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.test_du_an_mau.Activity.LoaiChiTietCB.LoaiSPCBActivity;
+import com.example.test_du_an_mau.Activity.LoaiChiTietCheBien.LoaiSPDCBActivity;
 import com.example.test_du_an_mau.Activity.LoaiChiTietPS.LoaiSPPSActivity;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 10;
-    LinearLayout LoaiHinhSP_NNCB, LoaiHinhSP_CSPPS;
+    LinearLayout LoaiHinhSP_NNCB, LoaiHinhSP_CSPPS, LoaiHinhSP_CSPDCB;
     ImageView back;
 
     SanPhamDomian sanPhamDomian;
@@ -31,6 +32,7 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
 
         LoaiHinhSP_NNCB = this.findViewById(R.id.LoaiHinhSP_NNCB);
         LoaiHinhSP_CSPPS = this.findViewById(R.id.LoaiHinhSP_CSPPS);
+        LoaiHinhSP_CSPDCB = this.findViewById(R.id.LoaiHinhSP_CSPDCB);
         back = this.findViewById(R.id.button_back);
 
         sanPhamDomian = new SanPhamDomian();
@@ -63,6 +65,23 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
                 sanPhamDomian.setMaNguoiDung(id);
 
                 Intent inlh = new Intent(ChonLoaiHinhSanPhamActivity.this, LoaiSPPSActivity.class);
+
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("LoaiHinhSP", sanPhamDomian);
+
+                inlh.putExtras(bundle);
+
+                startActivityForResult(inlh, MY_REQUEST_CODE);
+            }
+        });
+        LoaiHinhSP_CSPDCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sanPhamDomian.setLoaiHinhSP("Các Sản Phẩm Đã Chê Biến");
+                sanPhamDomian.setMaNguoiDung(id);
+
+                Intent inlh = new Intent(ChonLoaiHinhSanPhamActivity.this, LoaiSPDCBActivity.class);
 
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("LoaiHinhSP", sanPhamDomian);
