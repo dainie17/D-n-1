@@ -89,6 +89,8 @@
         <activity
             android:name=".Activity.DangKyActivity"
             android:exported="true" />
+        <activity android:name=".Activity.TimKiemActivity"
+            android:exported="true"/>
         <activity
             android:name=".Activity.SplashScreen"
             android:exported="true">

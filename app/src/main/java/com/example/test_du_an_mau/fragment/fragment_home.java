@@ -13,8 +13,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
+import com.example.test_du_an_mau.Activity.TimKiemActivity;
 import com.example.test_du_an_mau.Adapter.LoaiSPAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.LoaiSPDomian;
@@ -35,6 +37,7 @@ public class fragment_home extends Fragment {
     private RecyclerView lspList, rscv_SanPhamMoiNhat;
     private LoaiSPAdapter loaiSPAdapter;
     DatabaseReference ref;
+    LinearLayout lnl_TimKiem;
     List<SanPhamDomian> list_SanPhamMoi;
     private SanPhamMoiAdapter sanPhamAdapter;
     private FirebaseDatabase database;
@@ -77,6 +80,17 @@ public class fragment_home extends Fragment {
 
         loaiSPAdapter.setData(getListLSP());
         lspList.setAdapter(loaiSPAdapter);
+
+        lnl_TimKiem = view.findViewById(R.id.lnl_TimKiem);
+
+        //Bấm vào ô tìm kiếm
+
+        lnl_TimKiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), TimKiemActivity.class));
+            }
+        });
 
         return view;
     }
