@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.QuanLySanPhamActivity"
-    android:background="@color/teal_200">
+    android:background="#eff5f6">
 
     <LinearLayout
         android:id="@+id/linearLayout5"
@@ -72,6 +72,7 @@
                 android:src="@drawable/user" />
 
             <TextView
+                android:id="@+id/ten_nguoi_dung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

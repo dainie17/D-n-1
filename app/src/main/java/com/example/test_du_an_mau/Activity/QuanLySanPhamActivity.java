@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.test_du_an_mau.Adapter.SanPhamCaNhanAdapter;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
@@ -28,11 +29,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuanLySanPhamActivity extends AppCompatActivity {
+
+    String id;
+
+    TextView ten_nguoi_dung;
 
     ImageView img_Quaylai;
 
@@ -51,6 +61,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan_ly_san_pham);
 
+        ten_nguoi_dung = findViewById(R.id.ten_nguoi_dung);
         img_Quaylai = this.findViewById(R.id.img_QuayLai);
         rscv_QuanLySanPham = this.findViewById(R.id.rscv_QuanLySanPham);
 
@@ -79,6 +90,8 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         });
 
         rscv_QuanLySanPham.setAdapter(sanPhamCaNhanAdapter);
+
+        TenNguoiDung();
 
     }
 
@@ -180,6 +193,21 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
+
+    private void TenNguoiDung(){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        id = mAuth.getUid();
+
+
+        DocumentReference documentReference = fStore.collection("user").document(id);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                ten_nguoi_dung.setText(value.getString("hoten"));
             }
         });
     }

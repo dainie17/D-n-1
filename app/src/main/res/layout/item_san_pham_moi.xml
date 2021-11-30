@@ -29,8 +29,8 @@
 
     <ImageView
         android:id="@+id/img_AnhSanPham1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="135dp"
+        android:layout_height="135dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_baseline_image_24"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,10 +39,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout7"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_AnhSanPham1">
 
@@ -54,15 +55,6 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="-"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txt_LoaiChiTiet"

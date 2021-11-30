@@ -18,11 +18,19 @@ import com.example.test_du_an_mau.Activity.QuanLySanPhamActivity;
 import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.Activity.UserAcivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+
+import java.util.concurrent.Executor;
 
 public class fragment_them extends Fragment {
 
     TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_DangNhap, txt_DangKy,
-            txt_dangxuat;
+            txt_dangxuat, txt_Them_Ten, txt_emai;
+    String id;
 
     @Nullable
     @Override
@@ -34,12 +42,17 @@ public class fragment_them extends Fragment {
         txt_DangNhap = view.findViewById(R.id.txt_DangNhap);
         txt_DangKy = view.findViewById(R.id.txt_DangKy);
         txt_dangxuat = view.findViewById(R.id.txt_dangxuat);
+        txt_Them_Ten = view.findViewById(R.id.txt_Them_Ten);
 
         OnclickQuanLySanPham();
         OnclickTrangCaNhan();
         OnclickDangNhap();
         OnclickDangKy();
         OnclickDangXuat();
+        TenNguoiDung();
+
+
+
 
         return view;
     }
@@ -94,6 +107,20 @@ public class fragment_them extends Fragment {
             }
         });
     }
+    private void TenNguoiDung(){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        id = mAuth.getUid();
 
 
-}
+        DocumentReference documentReference = fStore.collection("user").document(id);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                txt_Them_Ten.setText(value.getString("hoten"));
+            }
+        });
+    }
+
+    }
+
