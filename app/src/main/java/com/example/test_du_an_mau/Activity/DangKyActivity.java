@@ -2,6 +2,7 @@ package com.example.test_du_an_mau.Activity;
 
 import static android.content.ContentValues.TAG;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -15,12 +16,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -31,17 +36,17 @@ public class DangKyActivity extends AppCompatActivity {
     private EditText tv_emai, tv_matkhau, tv_nhaplai, tv_hoten;
     private TextView tv_dangnhapapp, tv_dangnhap;
     private Button btn_dangky;
-    private FirebaseAuth mAuth;
-    private FirebaseFirestore fStore;
-    String id;
+    FirebaseAuth auth;
+    DatabaseReference reference;
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
 
-        mAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
+
         tv_dangnhapapp = findViewById(R.id.tv_dangnhapapp);
         tv_dangnhap = findViewById(R.id.tv_dangnhap);
         tv_emai = findViewById(R.id.tv_email);
@@ -67,6 +72,7 @@ public class DangKyActivity extends AppCompatActivity {
                 }
                 if (!email.matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
                     tv_emai.setError("Email không hợp lệ");
+                    return;
                 }
 
                 if (TextUtils.isEmpty(pass)){
@@ -74,32 +80,57 @@ public class DangKyActivity extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                register(hoten, email, pass);
+
+            }
+        });
+    }
+
+    private void register(String hoten, String email, String pass) {
+
+        dialog = Utils.showLoader(DangKyActivity.this);
+
+        auth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(DangKyActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-                            id = mAuth.getCurrentUser().getUid();
-                            DocumentReference documentReference = fStore.collection("user").document(id);
-                            Map<String, Object> user = new HashMap<>();
-                            user.put("hoten", hoten);
-                            user.put("email",email);
-                            user.put("matkhau", pass);
-                            documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            FirebaseUser firebaseUser = auth.getCurrentUser();
+                            assert firebaseUser != null;
+                            String userid = firebaseUser.getUid();
+
+                            reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+
+                            HashMap<String, String> hashMap = new HashMap<>();
+                            hashMap.put("id", userid);
+                            hashMap.put("username", hoten);
+                            hashMap.put("imageURL", "default");
+                            hashMap.put("status", "offline");
+                            hashMap.put("bio", "");
+                            hashMap.put("search", hoten.toLowerCase());
+                            if(dialog!=null){
+                                dialog.dismiss();
+                            }
+                            reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "onSuccess: bao"+id);
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Intent intent = new Intent(DangKyActivity.this, MainActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    }
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(), DangNhapActivity.class));
-                        }else {
-                            Toast.makeText(DangKyActivity.this, "Đăng ký thất bại" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
+                        } else {
+                            Toast.makeText(DangKyActivity.this, "You can't register woth this email or password", Toast.LENGTH_SHORT).show();
+                            if(dialog!=null){
+                                dialog.dismiss();
+                            }
                         }
                     }
                 });
-            }
-        });
+
     }
 
     private View.OnClickListener dangnhap() {

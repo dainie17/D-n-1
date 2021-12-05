@@ -14,23 +14,31 @@ import androidx.fragment.app.Fragment;
 
 import com.example.test_du_an_mau.Activity.DangKyActivity;
 import com.example.test_du_an_mau.Activity.DangNhapActivity;
+import com.example.test_du_an_mau.Activity.NhanTinActivity;
 import com.example.test_du_an_mau.Activity.QuanLySanPhamActivity;
+import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.Activity.UserAcivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.util.concurrent.Executor;
-
 public class fragment_them extends Fragment {
 
     TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_DangNhap, txt_DangKy,
-            txt_dangxuat, txt_Them_Ten, txt_emai;
+            txt_dangxuat, txt_Them_Ten, txt_TinNhan;
     String id;
+    DatabaseReference ref;
+    private FirebaseDatabase database;
 
     @Nullable
     @Override
@@ -43,6 +51,7 @@ public class fragment_them extends Fragment {
         txt_DangKy = view.findViewById(R.id.txt_DangKy);
         txt_dangxuat = view.findViewById(R.id.txt_dangxuat);
         txt_Them_Ten = view.findViewById(R.id.txt_Them_Ten);
+        txt_TinNhan = view.findViewById(R.id.txt_TinNhan);
 
         OnclickQuanLySanPham();
         OnclickTrangCaNhan();
@@ -50,11 +59,22 @@ public class fragment_them extends Fragment {
         OnclickDangKy();
         OnclickDangXuat();
         TenNguoiDung();
-
+        OnclickTinNhan();
 
 
 
         return view;
+    }
+
+    private void OnclickTinNhan() {
+
+        txt_TinNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), NhanTinActivity.class));
+            }
+        });
+
     }
 
     private void OnclickDangXuat() {
@@ -109,17 +129,45 @@ public class fragment_them extends Fragment {
     }
     private void TenNguoiDung(){
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         id = mAuth.getUid();
 
+        if (id == null){
+            return;
+        }
 
-        DocumentReference documentReference = fStore.collection("user").document(id);
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        ref = database.getReference("Users");
+        Query query = ref.orderByChild("id");
+        query.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                txt_Them_Ten.setText(value.getString("hoten"));
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                User user = snapshot.getValue(User.class);
+                if (user != null){
+                    txt_Them_Ten.setText(user.getUsername());
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
+
     }
 
     }

@@ -19,7 +19,12 @@ import com.example.test_du_an_mau.fragment.fragment_them;
 import com.example.test_du_an_mau.fragment.fragment_user;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     Button btn_themSanPham;
     String id;
 
+    FirebaseUser firebaseUser;
+    DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +50,15 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new fragment_home());
         bottomNavigationView.getMenu().findItem(R.id.fragment_home).setChecked(true);
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         id = mAuth.getUid();
+
+        if (id != null){
+            reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        }
 
         btn_themSanPham = this.findViewById(R.id.btn_dangbai);
 
@@ -63,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Tạo onClick cho item của BottomNavigationView
     private BottomNavigationView.OnNavigationItemSelectedListener navigationItemReselectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -93,10 +108,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
+    //gắn các fragment vào MainActivity
     private void replaceFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fl_fragment_container, fragment);
         transaction.commit();
+    }
+
+    //trạng thái của người dùng
+    private void status(String status){
+
+        if (id == null){
+            return;
+        }
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("status", status);
+
+        reference.updateChildren(hashMap);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        status("online");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        status("offline");
     }
 
 }

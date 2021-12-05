@@ -65,6 +65,7 @@ public class TimKiemActivity extends AppCompatActivity {
         edt_TimKiem = this.findViewById(R.id.edt_TimKiem);
         rscv_TimKiem = this.findViewById(R.id.rscv_TimKiem);
 
+        //Lấy dữ liệu
         ValueEventListener eventListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -77,8 +78,10 @@ public class TimKiemActivity extends AppCompatActivity {
             }
         };
 
+        //Lấy dữ liệu từ firebase
         ref.addListenerForSingleValueEvent(eventListener);
 
+        //onClick cho nút tìm kiếm
         img_Search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +121,7 @@ public class TimKiemActivity extends AppCompatActivity {
     }
 
     private void timTheoLoaiChiTiet(String timKiem) {
-        Query loaiChiTiet = ref.orderByChild("loaiChiTietSP").equalTo(timKiem);
+        Query loaiChiTiet = ref.orderByChild("loaiChiTietSP").startAt(timKiem).endAt(timKiem+"\uf8ff");
         loaiChiTiet.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -141,7 +144,7 @@ public class TimKiemActivity extends AppCompatActivity {
     }
 
     private void timTheoLoai(String timKiem) {
-        Query query = ref.orderByChild("loaiSP").equalTo(timKiem);
+        Query query = ref.orderByChild("loaiSP").startAt(timKiem).endAt(timKiem+"\uf8ff");
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -164,7 +167,7 @@ public class TimKiemActivity extends AppCompatActivity {
     }
 
     private void timTheoLoaiHinh(String timKiem) {
-        Query loaiHinhSP = ref.orderByChild("loaiHinhSP").equalTo(timKiem);
+        Query loaiHinhSP = ref.orderByChild("loaiHinhSP").startAt(timKiem).endAt(timKiem+"\uf8ff");
         loaiHinhSP.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -186,6 +189,7 @@ public class TimKiemActivity extends AppCompatActivity {
         });
     }
 
+    //Các dữ liệu lấy về để hiển thị mẫu
     private void populateTimKiem(DataSnapshot snapshot) {
         ArrayList<String> tudien = new ArrayList<>();
 

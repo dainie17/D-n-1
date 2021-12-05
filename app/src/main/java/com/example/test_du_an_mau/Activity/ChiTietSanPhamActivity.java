@@ -43,7 +43,8 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
     ImageView img_prev, img_next, img_BackCT;
 
     TextView txt_LoaiHinhSPCT, txt_LoaiSanPhamCT, txt_LoaiCTCTSP, txt_SoLuongCT, txt_DonViCT,
-            txt_HanSuDungCT, txt_NoiSanXuatCT, txt_GioiHanCT, txt_MoTaCT, txt_TenNguoiDungCT;
+            txt_HanSuDungCT, txt_NoiSanXuatCT, txt_GioiHanCT, txt_MoTaCT, txt_TenNguoiDungCT,
+            txt_NhanTinVNB;
 
     RecyclerView rscv_CacSanPhamKhac;
 
@@ -79,6 +80,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         txt_GioiHanCT = this.findViewById(R.id.txt_GioiHanCT);
         txt_MoTaCT = this.findViewById(R.id.txt_MoTaCT);
         txt_TenNguoiDungCT = this.findViewById(R.id.txt_TenNguoiDungCT);
+        txt_NhanTinVNB = this.findViewById(R.id.txt_NhanTinVNB);
         rscv_CacSanPhamKhac = this.findViewById(R.id.rscv_CacSanPhamKhac);
 
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -188,6 +190,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
             vp_SildeHinhAnh.setAdapter(slideShowAdapter);
 
+
             vp_SildeHinhAnh.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
                 @Override
                 public void onPageSelected(int position) {
@@ -211,6 +214,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
             currentImage = 0;
 
+            //tiến ảnh
             img_next.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -219,11 +223,21 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                 }
             });
 
+            //lùi ảnh
             img_prev.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     currentImage--;
                     vp_SildeHinhAnh.setCurrentItem(currentImage);
+                }
+            });
+
+            txt_NhanTinVNB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ChiTietSanPhamActivity.this, MessageActivity.class);
+                    intent.putExtra("userid", sanPhamDomian.getMaNguoiDung());
+                    startActivity(intent);
                 }
             });
 
