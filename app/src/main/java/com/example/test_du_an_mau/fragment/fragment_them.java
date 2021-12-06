@@ -71,7 +71,16 @@ public class fragment_them extends Fragment {
         txt_TinNhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), NhanTinActivity.class));
+
+                Intent intent = new Intent(getActivity(), NhanTinActivity.class);
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                id = mAuth.getUid();
+                if (id==null){
+                    startActivity(new Intent(getActivity(), DangNhapActivity.class));
+                }
+                intent.putExtra("id", id);
+                startActivity(intent);
+
             }
         });
 

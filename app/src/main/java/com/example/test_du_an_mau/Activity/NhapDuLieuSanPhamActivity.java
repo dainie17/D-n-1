@@ -30,7 +30,8 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
     Button btn_DangSanPham;
     ImageView back;
 
-    TextInputLayout edt_SoLuong, edt_HanSuDung, edt_NoiSanXuat, edt_GioiHanViTri, edt_MoTaSanPham;
+    TextInputLayout edt_SoLuong, edt_HanSuDung, edt_NoiSanXuat, edt_GioiHanViTri, edt_MoTaSanPham,
+    edt_Gia;
 
     private FirebaseDatabase database;
     DatabaseReference ref;
@@ -48,12 +49,11 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
         edt_NoiSanXuat = this.findViewById(R.id.edt_NoiSanXuat);
         edt_GioiHanViTri = this.findViewById(R.id.edt_GioiHanViTri);
         edt_MoTaSanPham = this.findViewById(R.id.edt_MoTaSanPham);
+        edt_Gia = this.findViewById(R.id.edt_Gia);
 
         String[] soluong = new String[]{"kg", "tấn", "tạ", "bao", "con", "cây"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplication(), R.layout.support_simple_spinner_dropdown_item, soluong);
         spn_ChonDonVi.setAdapter(arrayAdapter);
-
-        SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("ChonHinhAnh");
 
         List<String> listLinkAnh = (List<String>) getIntent().getExtras().get("LinkHinhAnh");
 
@@ -64,18 +64,23 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
                 database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 ref = database.getReference("SanPham");
 
+                SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("ChonHinhAnh");
+
                 if (sanPhamDomian != null && listLinkAnh != null) {
 
                     String maNguoiDang = sanPhamDomian.getMaNguoiDung();
                     String loaiHinhSanPham = sanPhamDomian.getLoaiHinhSP();
                     String loaiSanPham = sanPhamDomian.getLoaiSP();
                     String loaiChiTietSanPham = sanPhamDomian.getLoaiChiTietSP();
+                    String soDienThoai = sanPhamDomian.getSoDienThoai();
+                    int quyen = sanPhamDomian.getQuyen();
                     int soLuong = Integer.parseInt(edt_SoLuong.getEditText().getText().toString().trim());
                     String donVi = spn_ChonDonVi.getSelectedItem().toString().trim();
                     String hanSuDung = edt_HanSuDung.getEditText().getText().toString().trim();
                     String noiSanXuat = edt_NoiSanXuat.getEditText().getText().toString().trim();
                     String gioiHanViTri = edt_GioiHanViTri.getEditText().getText().toString().trim();
                     String moTaSanPham = edt_MoTaSanPham.getEditText().getText().toString().trim();
+                    String gia = edt_Gia.getEditText().getText().toString().trim();
                     String idSanPham = ref.push().getKey();
 
                     SanPhamDomian sanPhamGuiLen = new SanPhamDomian();
@@ -92,6 +97,9 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
                     sanPhamGuiLen.setSoLuong(soLuong);
                     sanPhamGuiLen.setHanSuDung(hanSuDung);
                     sanPhamGuiLen.setMoTaChiTiet(moTaSanPham);
+                    sanPhamGuiLen.setSoDienThoai(soDienThoai);
+                    sanPhamGuiLen.setGiaBan(gia);
+                    sanPhamGuiLen.setQuyen(quyen);
 
                     ref.child(sanPhamGuiLen.getMaSP()).setValue(sanPhamGuiLen).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override

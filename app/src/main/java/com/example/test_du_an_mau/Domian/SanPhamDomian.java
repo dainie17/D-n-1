@@ -7,8 +7,8 @@ import java.util.List;
 public class SanPhamDomian implements Serializable {
 
     private String MaSP, MaNguoiDung, LoaiHinhSP, LoaiSP, LoaiChiTietSP, DonVi,
-    GioiHanViTri, NoiSanXuat, MoTaChiTiet, HanSuDung;
-    private int SoLuong;
+    GioiHanViTri, NoiSanXuat, MoTaChiTiet, HanSuDung, GiaBan, SoDienThoai;
+    private int SoLuong, Quyen;
     private List<String> AlbumAnh;
     private Date NgayThem = new Date();
 
@@ -16,11 +16,10 @@ public class SanPhamDomian implements Serializable {
 
     }
 
-    public SanPhamDomian(String maSP, String maNguoiDung, String loaiHinhSP,
-                         String loaiSP, String loaiChiTietSP, String donVi,
-                         String gioiHanViTri, String noiSanXuat, String moTaChiTiet,
-                         int soLuong, String hanSuDung, List<String> albumAnh, Date ngayThem) {
-
+    public SanPhamDomian(String maSP, String maNguoiDung, String loaiHinhSP, String loaiSP,
+                         String loaiChiTietSP, String donVi, String gioiHanViTri, String noiSanXuat,
+                         String moTaChiTiet, String hanSuDung, String giaBan, String soDienThoai,
+                         int soLuong, int quyen, List<String> albumAnh, Date ngayThem) {
         MaSP = maSP;
         MaNguoiDung = maNguoiDung;
         LoaiHinhSP = loaiHinhSP;
@@ -30,8 +29,11 @@ public class SanPhamDomian implements Serializable {
         GioiHanViTri = gioiHanViTri;
         NoiSanXuat = noiSanXuat;
         MoTaChiTiet = moTaChiTiet;
-        SoLuong = soLuong;
         HanSuDung = hanSuDung;
+        GiaBan = giaBan;
+        SoDienThoai = soDienThoai;
+        SoLuong = soLuong;
+        Quyen = quyen;
         AlbumAnh = albumAnh;
         NgayThem = ngayThem;
     }
@@ -108,6 +110,30 @@ public class SanPhamDomian implements Serializable {
         MoTaChiTiet = moTaChiTiet;
     }
 
+    public String getHanSuDung() {
+        return HanSuDung;
+    }
+
+    public void setHanSuDung(String hanSuDung) {
+        HanSuDung = hanSuDung;
+    }
+
+    public String getGiaBan() {
+        return GiaBan;
+    }
+
+    public void setGiaBan(String giaBan) {
+        GiaBan = giaBan;
+    }
+
+    public String getSoDienThoai() {
+        return SoDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        SoDienThoai = soDienThoai;
+    }
+
     public int getSoLuong() {
         return SoLuong;
     }
@@ -116,12 +142,12 @@ public class SanPhamDomian implements Serializable {
         SoLuong = soLuong;
     }
 
-    public String getHanSuDung() {
-        return HanSuDung;
+    public int getQuyen() {
+        return Quyen;
     }
 
-    public void setHanSuDung(String hanSuDung) {
-        HanSuDung = hanSuDung;
+    public void setQuyen(int quyen) {
+        Quyen = quyen;
     }
 
     public List<String> getAlbumAnh() {

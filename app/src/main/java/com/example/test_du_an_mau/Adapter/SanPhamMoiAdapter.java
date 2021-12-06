@@ -14,6 +14,7 @@ import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.SanPhamViewHolder> {
@@ -52,7 +53,9 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
         String soLuong = String.valueOf(sanPhamDomian.getSoLuong());
         holder.txt_SoLuong.setText(soLuong);
         holder.txt_DonVi.setText(sanPhamDomian.getDonVi());
-
+        DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
+        double giaban = Double.parseDouble(sanPhamDomian.getGiaBan());
+        holder.txt_GiaBanDau.setText(decimalFormat.format(giaban)+" Đ");
         String linkAnh = sanPhamDomian.getAlbumAnh().get(0);
         Picasso.get().load(linkAnh).placeholder(R.drawable.ic_baseline_image_24).into(holder.img_AnhSanPham1);
 

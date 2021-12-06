@@ -18,6 +18,7 @@ import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Adapter.SlideShowAdapter;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,7 +45,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
     TextView txt_LoaiHinhSPCT, txt_LoaiSanPhamCT, txt_LoaiCTCTSP, txt_SoLuongCT, txt_DonViCT,
             txt_HanSuDungCT, txt_NoiSanXuatCT, txt_GioiHanCT, txt_MoTaCT, txt_TenNguoiDungCT,
-            txt_NhanTinVNB;
+            txt_NhanTinVNB, txt_Goi;
 
     RecyclerView rscv_CacSanPhamKhac;
 
@@ -81,6 +82,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         txt_MoTaCT = this.findViewById(R.id.txt_MoTaCT);
         txt_TenNguoiDungCT = this.findViewById(R.id.txt_TenNguoiDungCT);
         txt_NhanTinVNB = this.findViewById(R.id.txt_NhanTinVNB);
+        txt_Goi = this.findViewById(R.id.txt_Goi);
         rscv_CacSanPhamKhac = this.findViewById(R.id.rscv_CacSanPhamKhac);
 
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -235,9 +237,21 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             txt_NhanTinVNB.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    FirebaseAuth auth = FirebaseAuth.getInstance();
+                    String idUser = auth.getUid();
+                    if (idUser == null){
+                        startActivity(new Intent(ChiTietSanPhamActivity.this, DangNhapActivity.class));
+                    }
                     Intent intent = new Intent(ChiTietSanPhamActivity.this, MessageActivity.class);
                     intent.putExtra("userid", sanPhamDomian.getMaNguoiDung());
                     startActivity(intent);
+                }
+            });
+
+            txt_Goi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
                 }
             });
 

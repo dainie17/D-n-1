@@ -7,28 +7,23 @@ public class User {
     private String imageURL;
     private String status;
     private String search;
-    private String bio;
+    private String Phone;
+    private String DiaChi;
+    private int loai;
 
+    public User() {
+    }
 
-    public User(String id, String username, String imageURL, String status, String search, String bio) {
+    public User(String id, String username, String imageURL, String status,
+                String search, String phone, String diaChi, int loai) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
         this.status = status;
         this.search = search;
-        this.bio = bio;
-    }
-
-    public User() {
-
-    }
-
-    public String getBio() {
-        return bio;
-    }
-
-    public void setBio(String bio) {
-        this.bio = bio;
+        Phone = phone;
+        DiaChi = diaChi;
+        this.loai = loai;
     }
 
     public String getId() {
@@ -69,5 +64,29 @@ public class User {
 
     public void setSearch(String search) {
         this.search = search;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
+
+    public String getDiaChi() {
+        return DiaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        DiaChi = diaChi;
+    }
+
+    public int getLoai() {
+        return loai;
+    }
+
+    public void setLoai(int loai) {
+        this.loai = loai;
     }
 }

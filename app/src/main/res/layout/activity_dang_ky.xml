@@ -43,27 +43,32 @@
             android:hint="Họ và tên"
             android:drawableRight="@drawable/message"
             android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:layout_height="50dp"/>
 
         <EditText
             android:id="@+id/tv_email"
             android:hint="Emai"
             android:drawableRight="@drawable/message"
             android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:layout_height="50dp"/>
         <EditText
             android:id="@+id/tv_matkhau"
             android:hint="Mật khẩu"
             android:drawableRight="@drawable/key"
             android:layout_width="match_parent"
-            android:layout_height="60dp"/>
+            android:layout_height="50dp"/>
         <EditText
             android:id="@+id/tv_nhaplai"
             android:hint="Nhập lại mật khẩu .."
             android:drawableRight="@drawable/key"
             android:layout_width="match_parent"
-            android:layout_height="60dp"/>
-
+            android:layout_height="50dp"/>
+        <EditText
+            android:id="@+id/edt_Phone"
+            android:hint="Số điện thoại .."
+            android:drawableRight="@drawable/key"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
 
     </LinearLayout>
 

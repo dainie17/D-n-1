@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,7 +34,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DangKyActivity extends AppCompatActivity {
-    private EditText tv_emai, tv_matkhau, tv_nhaplai, tv_hoten;
+    private EditText tv_emai, tv_matkhau, tv_nhaplai, tv_hoten, edt_Phone;
     private TextView tv_dangnhapapp, tv_dangnhap;
     private Button btn_dangky;
     FirebaseAuth auth;
@@ -56,6 +57,7 @@ public class DangKyActivity extends AppCompatActivity {
         btn_dangky = findViewById(R.id.btn_dangky);
         tv_dangnhapapp.setOnClickListener(dangnhap());
         tv_dangnhap.setOnClickListener(dangnhap());
+        edt_Phone = findViewById(R.id.edt_Phone);
 
 
         btn_dangky.setOnClickListener(new View.OnClickListener() {
@@ -101,17 +103,23 @@ public class DangKyActivity extends AppCompatActivity {
 
                             reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
-                            HashMap<String, String> hashMap = new HashMap<>();
-                            hashMap.put("id", userid);
-                            hashMap.put("username", hoten);
-                            hashMap.put("imageURL", "default");
-                            hashMap.put("status", "offline");
-                            hashMap.put("bio", "");
-                            hashMap.put("search", hoten.toLowerCase());
+                            User user = new User();
+
+                            String phone = edt_Phone.getText().toString();
+
+                            user.setId(userid);
+                            user.setUsername(hoten);
+                            user.setLoai(1);
+                            user.setSearch(hoten.toLowerCase());
+                            user.setPhone(phone);
+                            user.setImageURL("default");
+                            user.setStatus("offline");
+                            user.setDiaChi("default");
+
                             if(dialog!=null){
                                 dialog.dismiss();
                             }
-                            reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            reference.setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){

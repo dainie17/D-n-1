@@ -42,7 +42,7 @@ public class NhanTinActivity extends AppCompatActivity {
     TextView username;
     ProgressDialog dialog;
 
-    FirebaseUser firebaseUser;
+    String id;
     DatabaseReference reference;
     OnItemClick onItemClick;
 
@@ -64,8 +64,8 @@ public class NhanTinActivity extends AppCompatActivity {
 
         username = findViewById(R.id.txt_TenNguoiDungTN);
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+        id = getIntent().getStringExtra("id");
+        reference = FirebaseDatabase.getInstance().getReference("Users").child(id);
 
         //Lấy dữ liệu người dùng
 
@@ -98,7 +98,7 @@ public class NhanTinActivity extends AppCompatActivity {
                 int unread = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
-                    if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()){
+                    if (chat.getReceiver().equals(id) && !chat.isIsseen()){
                         unread++;
                     }
                 }

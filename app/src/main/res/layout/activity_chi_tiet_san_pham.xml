@@ -9,6 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -125,15 +126,17 @@
                     android:id="@+id/img_AnhNguoiDang"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginLeft="20dp"
                     android:layout_gravity="left|center"
+                    android:layout_marginLeft="20dp"
                     android:src="@drawable/ic_baseline_image_24" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
                     android:elevation="8dp"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/txt_TenNguoiDungCT"
                         android:layout_width="wrap_content"
@@ -149,9 +152,9 @@
                         android:id="@+id/txt_TrangCaNhanCT"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
                         android:background="@drawable/bacground_them_vao_tim"
                         android:padding="8dp"
-                        android:layout_marginLeft="5dp"
                         android:text="Xem Trang cá nhân"
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -365,7 +368,7 @@
                 android:id="@+id/rscv_CacSanPhamKhac"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp"/>
+                android:layout_marginBottom="100dp" />
 
         </LinearLayout>
     </ScrollView>
@@ -383,15 +386,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
+        android:elevation="8dp"
         android:background="@drawable/backgruond_chitietdlnd"
         android:drawableLeft="@drawable/conversation"
         android:drawablePadding="10dp"
         android:padding="20dp"
-        android:text="Nhắn tin với người bán"
+        android:text="Nhắn tin"
+        android:layout_marginLeft="45dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_Goi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_baseline_call_24"
+        android:drawableTint="@color/black"
+        android:drawablePadding="10dp"
+        android:padding="20dp"
+        android:text="Gọi"
+        android:background="@drawable/backgruond_chitietdlnd"
+        android:elevation="8dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_NhanTinVNB" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
