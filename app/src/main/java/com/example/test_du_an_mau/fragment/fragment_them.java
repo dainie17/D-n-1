@@ -16,6 +16,7 @@ import com.example.test_du_an_mau.Activity.DangKyActivity;
 import com.example.test_du_an_mau.Activity.DangNhapActivity;
 import com.example.test_du_an_mau.Activity.NhanTinActivity;
 import com.example.test_du_an_mau.Activity.QuanLySanPhamActivity;
+import com.example.test_du_an_mau.Activity.ThietLapActivity;
 import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.Activity.UserAcivity;
@@ -34,8 +35,8 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class fragment_them extends Fragment {
 
-    TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_DangNhap, txt_DangKy,
-            txt_dangxuat, txt_Them_Ten, txt_TinNhan;
+    TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_ThietLap, txt_DangKy,
+             txt_Them_Ten, txt_TinNhan;
     String id;
     DatabaseReference ref;
     private FirebaseDatabase database;
@@ -47,25 +48,27 @@ public class fragment_them extends Fragment {
 
         txt_SanPhamCuaToi = view.findViewById(R.id.txt_SanPhamCuaToi);
         txt_Them_trangCaNhan = view.findViewById(R.id.txt_Them_trangcanhan);
-        txt_DangNhap = view.findViewById(R.id.txt_DangNhap);
-        txt_DangKy = view.findViewById(R.id.txt_DangKy);
-        txt_dangxuat = view.findViewById(R.id.txt_dangxuat);
         txt_Them_Ten = view.findViewById(R.id.txt_Them_Ten);
         txt_TinNhan = view.findViewById(R.id.txt_TinNhan);
+        txt_ThietLap = view.findViewById(R.id.txt_thietlap);
 
         OnclickQuanLySanPham();
         OnclickTrangCaNhan();
-        OnclickDangNhap();
-        OnclickDangKy();
-        OnclickDangXuat();
         TenNguoiDung();
         OnclickTinNhan();
-
+        OnclickThietLap();
 
 
         return view;
     }
-
+    private void OnclickThietLap(){
+        txt_ThietLap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), ThietLapActivity.class));
+            }
+        });
+    }
     private void OnclickTinNhan() {
 
         txt_TinNhan.setOnClickListener(new View.OnClickListener() {
@@ -86,36 +89,9 @@ public class fragment_them extends Fragment {
 
     }
 
-    private void OnclickDangXuat() {
-        txt_dangxuat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                mAuth.signOut();
-                Toast.makeText(getActivity(), "Bạn đã đăng xuất", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
-    private void OnclickDangKy() {
-        txt_DangKy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                startActivity(new Intent(getActivity(), DangKyActivity.class));
 
-            }
-        });
-    }
-
-    private void OnclickDangNhap() {
-        txt_DangNhap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), DangNhapActivity.class));
-            }
-        });
-    }
 
     private void OnclickTrangCaNhan() {
         txt_Them_trangCaNhan.setOnClickListener(new View.OnClickListener() {

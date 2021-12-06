@@ -11,6 +11,7 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -20,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Activity.ThietLapActivity"
+            android:exported="false" />
         <activity
             android:name=".Activity.NhanTinActivity"
             android:exported="true" />

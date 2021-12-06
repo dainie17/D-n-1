@@ -2,6 +2,8 @@ package com.example.test_du_an_mau.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +28,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 public class UserAcivity extends AppCompatActivity {
     private TextView tv_name, tv_email, tv_sdt;
     String id;
+    ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,7 @@ public class UserAcivity extends AppCompatActivity {
         tv_name = findViewById(R.id.tv_name);
         tv_email = findViewById(R.id.tv_email);
         tv_sdt = findViewById(R.id.tv_sdt);
+        back = findViewById(R.id.img_back_tcn);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
@@ -62,6 +66,12 @@ public class UserAcivity extends AppCompatActivity {
             });
 
         }
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
     }
 

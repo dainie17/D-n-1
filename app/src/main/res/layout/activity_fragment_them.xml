@@ -58,7 +58,8 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_margin="10dp"
+        android:background="@color/white"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,7 +86,10 @@
                 android:textSize="15sp" />
 
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/black" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,12 +110,10 @@
                 android:textSize="15sp" />
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@color/black" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -133,7 +135,10 @@
                 android:textSize="15sp" />
 
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/black" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -157,19 +162,9 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@color/black" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -192,9 +187,11 @@
 
         </LinearLayout>
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@color/black" />
 
         <LinearLayout
@@ -210,37 +207,10 @@
                 android:src="@drawable/ic_baseline_image_24" />
 
             <TextView
-                android:id="@+id/txt_DangNhap"
+                android:id="@+id/txt_thietlap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đăng nhập"
-                android:textColor="@color/black"
-                android:textSize="15sp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/black" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center|left"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:src="@drawable/ic_baseline_image_24" />
-
-            <TextView
-                android:id="@+id/txt_DangKy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Đăng ký"
+                android:text="Thiết lập tài khoản"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
 
@@ -249,37 +219,10 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.5dp"
             android:background="@color/black" />
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="20dp"
-        android:background="#336666"
-        android:gravity="center"
-
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout10">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/logout" />
-
-        <TextView
-            android:id="@+id/txt_dangxuat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đăng xuất"
-
-            android:textColor="@color/white"
-            android:textSize="20dp" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
