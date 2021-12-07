@@ -10,15 +10,21 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Adapter.SlideShowAdapter;
+import com.example.test_du_an_mau.Domian.Comment;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,15 +47,21 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
     SlideShowAdapter slideShowAdapter;
 
-    ImageView img_prev, img_next, img_BackCT;
+    ImageView img_prev, img_next, img_BackCT, img_comment;
 
     TextView txt_LoaiHinhSPCT, txt_LoaiSanPhamCT, txt_LoaiCTCTSP, txt_SoLuongCT, txt_DonViCT,
             txt_HanSuDungCT, txt_NoiSanXuatCT, txt_GioiHanCT, txt_MoTaCT, txt_TenNguoiDungCT,
             txt_NhanTinVNB, txt_Goi;
 
+    EditText edt_coment;
+
     RecyclerView rscv_CacSanPhamKhac;
 
     DatabaseReference ref;
+
+    FirebaseAuth firebaseAuth;
+
+    String key;
 
     List<SanPhamDomian> list_SanPhamKhac;
 
@@ -84,6 +96,8 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         txt_NhanTinVNB = this.findViewById(R.id.txt_NhanTinVNB);
         txt_Goi = this.findViewById(R.id.txt_Goi);
         rscv_CacSanPhamKhac = this.findViewById(R.id.rscv_CacSanPhamKhac);
+        img_comment = this.findViewById(R.id.img_comment);
+        edt_coment = this.findViewById(R.id.edt_comment);
 
         FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
@@ -256,7 +270,38 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             });
 
         }
+        img_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                img_comment.setVisibility(View.INVISIBLE);
+                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+                ref = database.getReference("Comment").child(key).push();
+                String content = edt_coment.getText().toString();
+                String uid = firebaseUser.getUid();
+                String username = firebaseUser.getDisplayName();
+                String uimg = firebaseUser.getPhotoUrl().toString();
+                Comment cmt = new Comment(content, uid, uimg, username);
+
+                ref.setValue(cmt).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        showMessage("Comment thành công: ");
+                        edt_coment.setText("");
+                        img_comment.setVisibility(View.VISIBLE);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        showMessage("Comment thất bại: " + e.getMessage());
+                    }
+                });
+            }
+
+            private void showMessage(String message) {
+                Toast.makeText(ChiTietSanPhamActivity.this,message, Toast.LENGTH_SHORT).show();
+            }
+        });
         img_BackCT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

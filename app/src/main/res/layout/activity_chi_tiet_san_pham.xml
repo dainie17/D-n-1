@@ -114,6 +114,8 @@
 
             </LinearLayout>
 
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -352,7 +354,70 @@
                 android:text="mô tả"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#DDDDDD"
+                android:elevation="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_margin="10dp"
+                android:text="Đánh giá sản phẩm"/>
+            <RatingBar
+                android:layout_gravity="center"
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:progressBackgroundTint="#BDBDBD"
+                android:progressTint="#ff0"
+                android:rating="3"
+                android:secondaryProgressTint="@color/black"
+                android:stepSize="0.5" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:layout_margin="10dp"
+                android:text="Bình luận"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
+                <EditText
+                    android:id="@+id/edt_comment"
+                    android:layout_weight="10"
+                    android:padding="15dp"
+                    android:layout_width="150dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:hint="Viết bình luận..."
+
+                    android:background="@drawable/bacground_them_vao_tim"
+                    android:layout_marginBottom="20dp"/>
+                <ImageView
+                    android:id="@+id/img_comment"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_baseline_send_24"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rscv_Binhluan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#DDDDDD"
+                android:layout_marginBottom="10dp"
+                android:elevation="5dp"/>
             <TextView
                 android:id="@+id/txt_cacsanphamkhac"
                 android:layout_width="wrap_content"
@@ -371,6 +436,7 @@
                 android:layout_marginBottom="100dp" />
 
         </LinearLayout>
+
     </ScrollView>
 
     <ImageView
