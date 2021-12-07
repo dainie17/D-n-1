@@ -64,15 +64,15 @@
             android:orientation="vertical"
             android:paddingRight="30dp">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_AnhNguoiDungSP"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="@drawable/background_img"
-                android:scaleType="fitXY"
                 android:src="@drawable/user" />
 
             <TextView
-                android:id="@+id/ten_nguoi_dung"
+                android:id="@+id/txt_ten_nguoi_dung"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -80,6 +80,7 @@
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/txt_SoDienThoaiSP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

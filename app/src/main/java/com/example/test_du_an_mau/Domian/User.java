@@ -1,5 +1,8 @@
 package com.example.test_du_an_mau.Domian;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
 
     private String id;
@@ -89,4 +92,18 @@ public class User {
     public void setLoai(int loai) {
         this.loai = loai;
     }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> resuft = new HashMap<>();
+        resuft.put("id", id);
+        resuft.put("imageURL", imageURL);
+        resuft.put("loai", loai);
+        resuft.put("search", search);
+        resuft.put("status", status);
+        resuft.put("phone", Phone);
+        resuft.put("username", username);
+        resuft.put("diaChi", DiaChi);
+        return resuft;
+    }
+
 }

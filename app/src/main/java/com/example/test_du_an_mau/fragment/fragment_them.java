@@ -32,11 +32,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class fragment_them extends Fragment {
 
     TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_ThietLap, txt_DangKy,
              txt_Them_Ten, txt_TinNhan;
+    CircleImageView img_AnhNguoiDung;
     String id;
     DatabaseReference ref;
     private FirebaseDatabase database;
@@ -51,6 +55,7 @@ public class fragment_them extends Fragment {
         txt_Them_Ten = view.findViewById(R.id.txt_Them_Ten);
         txt_TinNhan = view.findViewById(R.id.txt_TinNhan);
         txt_ThietLap = view.findViewById(R.id.txt_thietlap);
+        img_AnhNguoiDung = view.findViewById(R.id.img_AnhNguoiDung);
 
         OnclickQuanLySanPham();
         OnclickTrangCaNhan();
@@ -129,6 +134,7 @@ public class fragment_them extends Fragment {
                 User user = snapshot.getValue(User.class);
                 if (user != null){
                     txt_Them_Ten.setText(user.getUsername());
+                    Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhNguoiDung);
                 }
             }
 

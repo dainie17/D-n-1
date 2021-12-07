@@ -21,6 +21,7 @@ import com.example.test_du_an_mau.Adapter.LoaiSPAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.LoaiSPDomian;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
+import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -29,14 +30,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class fragment_home extends Fragment {
 
     private RecyclerView lspList, rscv_SanPhamMoiNhat;
     private LoaiSPAdapter loaiSPAdapter;
+    CircleImageView img_AnhNguoiDungHome;
     DatabaseReference ref;
     LinearLayout lnl_TimKiem;
     List<SanPhamDomian> list_SanPhamMoi;
@@ -50,8 +55,7 @@ public class fragment_home extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_fragment_home, container, false);
 
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String id = auth.getUid();
+        img_AnhNguoiDungHome = view.findViewById(R.id.img_AnhNguoiDungHome);
 
         lspList = view.findViewById(R.id.rccv_LoaiSanPham);
         rscv_SanPhamMoiNhat = view.findViewById(R.id.rscv_SanPhamMoiNhat);
@@ -95,6 +99,8 @@ public class fragment_home extends Fragment {
                 startActivity(new Intent(getActivity(), TimKiemActivity.class));
             }
         });
+
+        TenNguoiDung();
 
         return view;
     }
@@ -145,6 +151,49 @@ public class fragment_home extends Fragment {
         list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "lúa"));
         list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "hoa quả"));
         return list;
+    }
+
+    private void TenNguoiDung(){
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String id = mAuth.getUid();
+
+        if (id == null){
+            return;
+        }
+
+        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        ref = database.getReference("Users");
+        Query query = ref.orderByChild("id").equalTo(id);
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                User user = snapshot.getValue(User.class);
+                if (user != null){
+                    Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhNguoiDungHome);
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
 }

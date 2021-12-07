@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.test_du_an_mau.Adapter.SanPhamCaNhanAdapter;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
+import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -36,19 +37,18 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuanLySanPhamActivity extends AppCompatActivity {
 
-    Button Them_Sp;
-
     String id;
 
-    TextView ten_nguoi_dung;
+    TextView ten_nguoi_dung, txt_SoDienThoaiSP;
 
-    ImageView img_Quaylai;
+    ImageView img_Quaylai, img_AnhNguoiDungSP;
 
     RecyclerView rscv_QuanLySanPham;
 
@@ -65,9 +65,13 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quan_ly_san_pham);
 
-        ten_nguoi_dung = findViewById(R.id.ten_nguoi_dung);
+        ten_nguoi_dung = findViewById(R.id.txt_ten_nguoi_dung);
         img_Quaylai = this.findViewById(R.id.img_QuayLai);
         rscv_QuanLySanPham = this.findViewById(R.id.rscv_QuanLySanPham);
+        img_AnhNguoiDungSP = this.findViewById(R.id.img_AnhNguoiDungSP);
+        txt_SoDienThoaiSP = this.findViewById(R.id.txt_SoDienThoaiSP);
+
+        TenNguoiDung();
 
         img_Quaylai.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,8 +98,6 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         });
 
         rscv_QuanLySanPham.setAdapter(sanPhamCaNhanAdapter);
-
-        TenNguoiDung();
 
 
     }
@@ -204,18 +206,47 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
 
     private void TenNguoiDung(){
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-        id = mAuth.getUid();
+        String id = mAuth.getUid();
 
+        if (id == null){
+            return;
+        }
 
-        DocumentReference documentReference = fStore.collection("user").document(id);
-        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        ref = database.getReference("Users");
+        Query query = ref.orderByChild("id").equalTo(id);
+        query.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                ten_nguoi_dung.setText(value.getString("hoten"));
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                User user = snapshot.getValue(User.class);
+                if (user != null){
+                    ten_nguoi_dung.setText(user.getUsername());
+                    txt_SoDienThoaiSP.setText(user.getPhone());
+                    Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhNguoiDungSP);
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
-    }
 
+    }
 
 }
