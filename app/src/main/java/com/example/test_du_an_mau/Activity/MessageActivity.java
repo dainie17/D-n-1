@@ -118,7 +118,7 @@ public class MessageActivity extends AppCompatActivity {
                 if (user.getImageURL().equals("default")){
                     profile_image.setImageResource(R.drawable.ic_launcher_background);
                 } else {
-                    //and this
+
                     Picasso.get().load(user.getImageURL()).placeholder(R.drawable.ic_baseline_image_24).into(profile_image);
                 }
 

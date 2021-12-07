@@ -104,7 +104,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout9"
         android:weightSum="2">
 
-        <LinearLayout
+        <FrameLayout
             android:orientation="horizontal"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -118,7 +118,15 @@
                 android:src="@drawable/ic_baseline_favorite_border_24"
                 app:tint="@color/black" />
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/img_DaThich"
+                android:layout_gravity="left"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_baseline_red_favorite_24"
+                app:tint="#FF0000" />
+
+        </FrameLayout>
 
         <LinearLayout
             android:orientation="horizontal"

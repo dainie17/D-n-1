@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -81,7 +84,7 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
     public class SanPhamViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txt_GiaBanDau, txt_TenLoai, txt_LoaiChiTiet, txt_SoLuong, txt_DonVi, txt_DanhGia;
-        private ImageView img_AnhSanPham1, img_YeuThich;
+        private ImageView img_AnhSanPham1, img_YeuThich, img_DaThich;
         private ConstraintLayout constraintLayout;
 
         public SanPhamViewHolder(@NonNull View itemView) {
@@ -96,6 +99,7 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
 
             img_AnhSanPham1 = itemView.findViewById(R.id.img_AnhSanPham1);
             img_YeuThich = itemView.findViewById(R.id.img_YeuThich);
+            img_DaThich = itemView.findViewById(R.id.img_DaThich);
 
             constraintLayout = itemView.findViewById(R.id.ItemSanPham);
 

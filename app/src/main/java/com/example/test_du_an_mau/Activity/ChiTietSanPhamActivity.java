@@ -7,8 +7,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.example.test_du_an_mau.Adapter.CommentAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Adapter.SlideShowAdapter;
 import com.example.test_du_an_mau.Domian.Comment;
@@ -31,6 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -42,6 +49,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChiTietSanPhamActivity extends AppCompatActivity {
+
+    private static final int MY_CALLPHONE_PERMISSION_CODE = 100;
 
     ViewPager2 vp_SildeHinhAnh;
 
@@ -55,7 +64,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
     EditText edt_coment;
 
-    RecyclerView rscv_CacSanPhamKhac;
+    RecyclerView rscv_CacSanPhamKhac, rscv_Comment;
 
     DatabaseReference ref;
 
@@ -65,7 +74,11 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
     List<SanPhamDomian> list_SanPhamKhac;
 
+    List<Comment> listComment;
+
     private SanPhamMoiAdapter sanPhamAdapter;
+
+    private CommentAdapter commentAdapter;
 
     private FirebaseDatabase database;
 
@@ -96,10 +109,12 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         txt_NhanTinVNB = this.findViewById(R.id.txt_NhanTinVNB);
         txt_Goi = this.findViewById(R.id.txt_Goi);
         rscv_CacSanPhamKhac = this.findViewById(R.id.rscv_CacSanPhamKhac);
+        rscv_Comment = this.findViewById(R.id.rscv_Binhluan);
         img_comment = this.findViewById(R.id.img_comment);
         edt_coment = this.findViewById(R.id.edt_comment);
 
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String idmen = auth.getUid();
 
         if (getIntent().getExtras() != null){
 
@@ -133,18 +148,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             txt_MoTaCT.setText(mota);
 
             String id = sanPhamDomian.getMaNguoiDung();
-
-            DocumentReference documentReference = fStore.collection("user").document(id);
-            documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                @Override
-                public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-
-                    if (value != null){
-                        txt_TenNguoiDungCT.setText(value.getString("hoten"));
-                    }
-
-                }
-            });
 
             sanPhamAdapter = new SanPhamMoiAdapter();
             rscv_CacSanPhamKhac.setHasFixedSize(true);
@@ -265,43 +268,85 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             txt_Goi.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    String dial = "tel:" + sanPhamDomian.getSoDienThoai();
+
+                    if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                        if (checkSelfPermission(Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, MY_CALLPHONE_PERMISSION_CODE);
+                        } else
+                        {
+                            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(dial));
+                            v.getContext().startActivity(callIntent);
+                        }
+                    } else
+                    {
+                        Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(dial));
+                        v.getContext().startActivity(callIntent);
+                    }
 
                 }
             });
 
+            img_comment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    img_comment.setVisibility(View.INVISIBLE);
+                    FirebaseAuth firebaseUser = FirebaseAuth.getInstance();
+                    ref = database.getReference("Comment");
+                    String content = edt_coment.getText().toString();
+                    String uid = firebaseUser.getUid();
+                    Comment cmt = new Comment(content, uid, sanPhamDomian.getMaSP());
+
+                    ref.child(cmt.getIdsp()).setValue(cmt).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+                            showMessage("Comment thành công: ");
+                            edt_coment.setText("");
+                            img_comment.setVisibility(View.VISIBLE);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            showMessage("Comment thất bại: " + e.getMessage());
+                        }
+                    });
+                }
+
+                private void showMessage(String message) {
+                    Toast.makeText(ChiTietSanPhamActivity.this,message, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            commentAdapter = new CommentAdapter();
+            rscv_Comment.setHasFixedSize(true);
+            rscv_Comment.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
+            listComment = new ArrayList<>();
+            DatabaseReference reff = database.getReference("Comment");
+            reff.child(sanPhamDomian.getMaSP()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    Comment comment = snapshot.getValue(Comment.class);
+                    if (comment == null){
+                        return;
+                    }
+
+                    listComment.add(comment);
+                    commentAdapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+            commentAdapter.setData(listComment);
+
+            rscv_Comment.setAdapter(commentAdapter);
+
         }
-        img_comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                img_comment.setVisibility(View.INVISIBLE);
-                FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                ref = database.getReference("Comment").child(key).push();
-                String content = edt_coment.getText().toString();
-                String uid = firebaseUser.getUid();
-                String username = firebaseUser.getDisplayName();
-                String uimg = firebaseUser.getPhotoUrl().toString();
-                Comment cmt = new Comment(content, uid, uimg, username);
-
-                ref.setValue(cmt).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-                        showMessage("Comment thành công: ");
-                        edt_coment.setText("");
-                        img_comment.setVisibility(View.VISIBLE);
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        showMessage("Comment thất bại: " + e.getMessage());
-                    }
-                });
-            }
-
-            private void showMessage(String message) {
-                Toast.makeText(ChiTietSanPhamActivity.this,message, Toast.LENGTH_SHORT).show();
-            }
-        });
         img_BackCT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

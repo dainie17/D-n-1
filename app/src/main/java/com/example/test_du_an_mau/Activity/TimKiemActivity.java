@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +52,9 @@ public class TimKiemActivity extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
         ref = database.getReference("SanPham");
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String id = auth.getUid();
 
         img_BackTK = this.findViewById(R.id.img_BackTK);
 

@@ -22,6 +22,7 @@ import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.LoaiSPDomian;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,6 +49,9 @@ public class fragment_home extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_fragment_home, container, false);
+
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        String id = auth.getUid();
 
         lspList = view.findViewById(R.id.rccv_LoaiSanPham);
         rscv_SanPhamMoiNhat = view.findViewById(R.id.rscv_SanPhamMoiNhat);

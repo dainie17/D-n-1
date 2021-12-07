@@ -122,7 +122,7 @@ public class fragment_them extends Fragment {
 
         database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
         ref = database.getReference("Users");
-        Query query = ref.orderByChild("id");
+        Query query = ref.orderByChild("id").equalTo(id);
         query.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {

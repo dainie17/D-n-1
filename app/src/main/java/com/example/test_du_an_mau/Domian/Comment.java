@@ -2,27 +2,18 @@ package com.example.test_du_an_mau.Domian;
 
 import com.google.firebase.database.ServerValue;
 
-public class Comment {
-    private String content, uid, uimg, username;
-    private Object time;
+import java.io.Serializable;
+
+public class Comment implements Serializable {
+    private String content, uid, idsp;
 
     public Comment() {
     }
 
-    public Comment(String content, String uid, String uimg, String username) {
+    public Comment(String content, String uid, String idsp) {
         this.content = content;
         this.uid = uid;
-        this.uimg = uimg;
-        this.username = username;
-        this.time = ServerValue.TIMESTAMP;
-    }
-
-    public Comment(String content, String uid, String uimg, String username, Object time) {
-        this.content = content;
-        this.uid = uid;
-        this.uimg = uimg;
-        this.username = username;
-        this.time = time;
+        this.idsp = idsp;
     }
 
     public String getContent() {
@@ -41,27 +32,11 @@ public class Comment {
         this.uid = uid;
     }
 
-    public String getUimg() {
-        return uimg;
+    public String getIdsp() {
+        return idsp;
     }
 
-    public void setUimg(String uimg) {
-        this.uimg = uimg;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public Object getTime() {
-        return time;
-    }
-
-    public void setTime(Object time) {
-        this.time = time;
+    public void setIdsp(String uimg) {
+        this.idsp = idsp;
     }
 }
