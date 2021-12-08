@@ -20,8 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activity.ThietLapActivity"
-            android:exported="true"/>
+        <activity
+            android:name=".Activity.LoaiSanPhamActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.ThietLapActivity"
+            android:exported="true" />
         <activity
             android:name=".Activity.NhanTinActivity"
             android:exported="true" />

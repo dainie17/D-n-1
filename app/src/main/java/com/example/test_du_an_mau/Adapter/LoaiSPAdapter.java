@@ -1,10 +1,12 @@
 package com.example.test_du_an_mau.Adapter;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test_du_an_mau.Domian.LoaiSPDomian;
 import com.example.test_du_an_mau.Activity.MainActivity;
+import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
 
 import java.util.List;
@@ -20,6 +23,12 @@ public class LoaiSPAdapter extends RecyclerView.Adapter<LoaiSPAdapter.lspViewHol
 
     private List<LoaiSPDomian> loaiSPDomians;
 
+    private LoaiSPAdapter.LoaiOnClick loaiOnClick;
+
+    public interface LoaiOnClick{
+        void SpOnclick(String loai);
+    }
+
     public LoaiSPAdapter(MainActivity mainActivity) {
     }
 
@@ -27,8 +36,9 @@ public class LoaiSPAdapter extends RecyclerView.Adapter<LoaiSPAdapter.lspViewHol
 
     }
 
-    public void setData (List<LoaiSPDomian> list){
+    public void setData (List<LoaiSPDomian> list, LoaiOnClick loaiOnClick){
         this.loaiSPDomians = list;
+        this.loaiOnClick = loaiOnClick;
         notifyDataSetChanged();
     }
 
@@ -47,6 +57,12 @@ public class LoaiSPAdapter extends RecyclerView.Adapter<LoaiSPAdapter.lspViewHol
         }
         holder.imgLSP.setImageResource(loaiSPDomiann.getResourceId());
         holder.name.setText(loaiSPDomiann.getTitle());
+        holder.lnl_LoaiSP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loaiOnClick.SpOnclick(loaiSPDomiann.getTitle());
+            }
+        });
     }
 
     @Override
@@ -61,6 +77,7 @@ public class LoaiSPAdapter extends RecyclerView.Adapter<LoaiSPAdapter.lspViewHol
 
         private ImageView imgLSP;
         private TextView name;
+        LinearLayout lnl_LoaiSP;
 
         public lspViewHolder(@NonNull View itemView) {
 
@@ -68,6 +85,7 @@ public class LoaiSPAdapter extends RecyclerView.Adapter<LoaiSPAdapter.lspViewHol
 
             imgLSP = itemView.findViewById(R.id.HinhSP);
             name = itemView.findViewById(R.id.TenLSP);
+            lnl_LoaiSP = itemView.findViewById(R.id.lnl_LoaiSP);
         }
     }
 

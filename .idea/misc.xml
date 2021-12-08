@@ -45,6 +45,7 @@
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_fragment_home.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_fragment_them.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_fragment_user.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_loai_san_pham.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_message.xml" value="0.264" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_nhan_tin.xml" value="0.27447916666666666" />
@@ -59,6 +60,7 @@
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/fragment_chats.xml" value="0.264" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/fragment_users.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/item_san_pham_moi.xml" value="0.2713541666666667" />
+        <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/loai_sp_item.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/progressdialog.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/user_item.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/ThuLanMot/app/src/main/res/drawable/background_chonlhsp.xml" value="0.290625" />

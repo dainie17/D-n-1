@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
+import com.example.test_du_an_mau.Activity.LoaiSanPhamActivity;
 import com.example.test_du_an_mau.Activity.TimKiemActivity;
 import com.example.test_du_an_mau.Adapter.LoaiSPAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
@@ -86,7 +87,16 @@ public class fragment_home extends Fragment {
         lspList.setLayoutManager(linearLayoutManager);
 
 
-        loaiSPAdapter.setData(getListLSP());
+        loaiSPAdapter.setData(getListLSP(), new LoaiSPAdapter.LoaiOnClick() {
+            @Override
+            public void SpOnclick(String loai) {
+                Intent intent = new Intent(getActivity(), LoaiSanPhamActivity.class);
+
+               intent.putExtra("LoaiSP", loai);
+
+                startActivityForResult(intent, MY_REQUEST_CODE);
+            }
+        });
         lspList.setAdapter(loaiSPAdapter);
 
         lnl_TimKiem = view.findViewById(R.id.lnl_TimKiem);
@@ -145,7 +155,7 @@ public class fragment_home extends Fragment {
 
     private List<LoaiSPDomian> getListLSP() {
         List<LoaiSPDomian> list = new ArrayList<>();
-        list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "cà phê"));
+        list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "Cà phê"));
         list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "tiêu"));
         list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "điều"));
         list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "lúa"));
