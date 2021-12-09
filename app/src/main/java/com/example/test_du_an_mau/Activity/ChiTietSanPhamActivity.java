@@ -288,13 +288,11 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                             requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, MY_CALLPHONE_PERMISSION_CODE);
                         } else
                         {
-                            Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(dial));
-                            v.getContext().startActivity(callIntent);
+                            v.getContext().startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
                         }
                     } else
                     {
-                        Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse(dial));
-                        v.getContext().startActivity(callIntent);
+                        v.getContext().startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
                     }
 
                 }
