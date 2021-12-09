@@ -108,7 +108,6 @@ public class TimKiemActivity extends AppCompatActivity {
         sanPhamMoiAdapter.setData(list, new SanPhamMoiAdapter.SanPhamOnClick() {
             @Override
             public void SpOnclick(SanPhamDomian sanPhamDomian) {
-
                 Intent intent = new Intent(TimKiemActivity.this, ChiTietSanPhamActivity.class);
 
                 Bundle bundle = new Bundle();
@@ -117,9 +116,23 @@ public class TimKiemActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
 
                 startActivityForResult(intent, MY_REQUEST_CODE);
+            }
+
+            @Override
+            public void YeuThichOnclick(SanPhamDomian sanPhamDomian) {
 
             }
-        });
+
+            @Override
+            public void DaThichOnclick(SanPhamDomian sanPhamDomian) {
+
+            }
+
+            @Override
+            public void KiemTraYeuThich(SanPhamDomian sanPhamDomian) {
+
+            }
+        }, id);
         rscv_TimKiem.setAdapter(sanPhamMoiAdapter);
 
     }

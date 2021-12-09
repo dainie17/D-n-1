@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,6 +51,8 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
         img_BackLoai = this.findViewById(R.id.img_BackLoai);
         txt_TenLoaiLoai = this.findViewById(R.id.txt_TenLoaiLoai);
         rscv_SanPhamTheoLoai = this.findViewById(R.id.rscv_SanPhamTheoLoai);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String id = mAuth.getUid();
 
         sanPhamAdapter = new SanPhamMoiAdapter();
         rscv_SanPhamTheoLoai.setHasFixedSize(true);
@@ -59,7 +62,6 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
         sanPhamAdapter.setData(list_SanPhamMoi, new SanPhamMoiAdapter.SanPhamOnClick() {
             @Override
             public void SpOnclick(SanPhamDomian sanPhamDomian) {
-
                 Intent intent = new Intent(LoaiSanPhamActivity.this, ChiTietSanPhamActivity.class);
 
                 Bundle bundle = new Bundle();
@@ -68,9 +70,23 @@ public class LoaiSanPhamActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
 
                 startActivityForResult(intent, MY_REQUEST_CODE);
+            }
+
+            @Override
+            public void YeuThichOnclick(SanPhamDomian sanPhamDomian) {
 
             }
-        });
+
+            @Override
+            public void DaThichOnclick(SanPhamDomian sanPhamDomian) {
+
+            }
+
+            @Override
+            public void KiemTraYeuThich(SanPhamDomian sanPhamDomian) {
+
+            }
+        }, id);
         rscv_SanPhamTheoLoai.setAdapter(sanPhamAdapter);
 
         img_BackLoai.setOnClickListener(new View.OnClickListener() {

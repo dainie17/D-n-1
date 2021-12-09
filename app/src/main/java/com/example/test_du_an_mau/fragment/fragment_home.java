@@ -14,16 +14,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
 import com.example.test_du_an_mau.Activity.LoaiSanPhamActivity;
 import com.example.test_du_an_mau.Activity.TimKiemActivity;
 import com.example.test_du_an_mau.Adapter.LoaiSPAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
+import com.example.test_du_an_mau.Domian.Favorite;
 import com.example.test_du_an_mau.Domian.LoaiSPDomian;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -43,7 +47,7 @@ public class fragment_home extends Fragment {
     private RecyclerView lspList, rscv_SanPhamMoiNhat;
     private LoaiSPAdapter loaiSPAdapter;
     CircleImageView img_AnhNguoiDungHome;
-    DatabaseReference ref;
+    DatabaseReference ref, reff;
     LinearLayout lnl_TimKiem;
     List<SanPhamDomian> list_SanPhamMoi;
     private SanPhamMoiAdapter sanPhamAdapter;
@@ -51,12 +55,17 @@ public class fragment_home extends Fragment {
     private View view;
     private static final int MY_REQUEST_CODE = 10;
 
+    int thich;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_fragment_home, container, false);
 
         img_AnhNguoiDungHome = view.findViewById(R.id.img_AnhNguoiDungHome);
+
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String id = mAuth.getUid();
 
         lspList = view.findViewById(R.id.rccv_LoaiSanPham);
         rscv_SanPhamMoiNhat = view.findViewById(R.id.rscv_SanPhamMoiNhat);
@@ -69,7 +78,6 @@ public class fragment_home extends Fragment {
         sanPhamAdapter.setData(list_SanPhamMoi, new SanPhamMoiAdapter.SanPhamOnClick() {
             @Override
             public void SpOnclick(SanPhamDomian sanPhamDomian) {
-
                 Intent intent = new Intent(getActivity(), ChiTietSanPhamActivity.class);
 
                 Bundle bundle = new Bundle();
@@ -78,9 +86,76 @@ public class fragment_home extends Fragment {
                 intent.putExtras(bundle);
 
                 startActivityForResult(intent, MY_REQUEST_CODE);
-
             }
-        });
+
+            @Override
+            public void YeuThichOnclick(SanPhamDomian sanPhamDomian) {
+                database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                reff = database.getReference("YeuThich");
+
+                if (id == null){
+                    return;
+                }
+
+                Favorite favorite = new Favorite();
+
+                favorite.setYeuThich(1);
+                favorite.setIdSanPham(id.trim());
+                reff.child(id).child(sanPhamDomian.getMaSP().trim()).setValue(favorite.toMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getActivity(), "Đã thêm vào yêu thích", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void DaThichOnclick(SanPhamDomian sanPhamDomian) {
+                database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                reff = database.getReference("YeuThich");
+
+                if (id == null){
+                    return;
+                }
+
+                Favorite favorite = new Favorite();
+
+                favorite.setYeuThich(2);
+                favorite.setIdSanPham(id.trim());
+
+                reff.child(id).child(sanPhamDomian.getMaSP().trim()).updateChildren(favorite.toMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getActivity(), "Đã bỏ thích", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void KiemTraYeuThich(SanPhamDomian sanPhamDomian) {
+                database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                reff = database.getReference("YeuThich").child(sanPhamDomian.getMaSP());
+                Query query = reff.orderByChild("idSanPham").equalTo(id);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+
+                            Favorite favorite = snapshot.getValue(Favorite.class);
+
+                            if (favorite != null){
+                                thich = favorite.getYeuThich();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        }, mAuth.getUid());
         rscv_SanPhamMoiNhat.setAdapter(sanPhamAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);

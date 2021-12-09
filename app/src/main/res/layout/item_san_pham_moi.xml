@@ -123,6 +123,7 @@
                 android:layout_gravity="left"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
+                android:visibility="invisible"
                 android:src="@drawable/ic_baseline_red_favorite_24"
                 app:tint="#FF0000" />
 

@@ -189,7 +189,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             sanPhamAdapter.setData(list_SanPhamKhac, new SanPhamMoiAdapter.SanPhamOnClick() {
                 @Override
                 public void SpOnclick(SanPhamDomian sanPhamDomian) {
-
                     Intent intent = new Intent(ChiTietSanPhamActivity.this, ChiTietSanPhamActivity.class);
 
                     Bundle bundle = new Bundle();
@@ -198,9 +197,23 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                     intent.putExtras(bundle);
 
                     startActivityForResult(intent, MY_REQUEST_CODE);
+                }
+
+                @Override
+                public void YeuThichOnclick(SanPhamDomian sanPhamDomian) {
 
                 }
-            });
+
+                @Override
+                public void DaThichOnclick(SanPhamDomian sanPhamDomian) {
+
+                }
+
+                @Override
+                public void KiemTraYeuThich(SanPhamDomian sanPhamDomian) {
+
+                }
+            }, idmen);
             rscv_CacSanPhamKhac.setAdapter(sanPhamAdapter);
 
             List<String> listHinhAnh = sanPhamDomian.getAlbumAnh();

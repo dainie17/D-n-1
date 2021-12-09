@@ -5,16 +5,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test_du_an_mau.Domian.Favorite;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
@@ -24,14 +30,20 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
 
     List<SanPhamDomian> sanPhamDomianList;
     private SanPhamOnClick sanPhamOnClick;
+    String Thich;
+    int yeu;
 
     public interface SanPhamOnClick{
         void SpOnclick(SanPhamDomian sanPhamDomian);
+        void YeuThichOnclick(SanPhamDomian sanPhamDomian);
+        void DaThichOnclick(SanPhamDomian sanPhamDomian);
+        void KiemTraYeuThich(SanPhamDomian sanPhamDomian);
     }
 
-    public void setData(List<SanPhamDomian> sanPhamDomianList, SanPhamOnClick sanPhamOnClick) {
+    public void setData(List<SanPhamDomian> sanPhamDomianList, SanPhamOnClick sanPhamOnClick, String thich) {
         this.sanPhamDomianList = sanPhamDomianList;
         this.sanPhamOnClick = sanPhamOnClick;
+        this.Thich = thich;
         notifyDataSetChanged();
     }
 
@@ -51,6 +63,46 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
             return;
         }
 
+        sanPhamOnClick.KiemTraYeuThich(sanPhamDomian);
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+            DatabaseReference ref = database.getReference("YeuThich").child(Thich);
+            ref.child(sanPhamDomian.getMaSP()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (!snapshot.exists()){
+                        holder.img_DaThich.setVisibility(View.INVISIBLE);
+                        holder.img_YeuThich.setVisibility(View.INVISIBLE);
+                    } else {
+                        Favorite favorite = snapshot.getValue(Favorite.class);
+
+                        if (favorite == null){
+                            holder.img_DaThich.setVisibility(View.INVISIBLE);
+                            holder.img_YeuThich.setVisibility(View.INVISIBLE);
+                        } else {
+
+                            String idSp = favorite.getIdSanPham();
+                            yeu = favorite.getYeuThich();
+
+                            if (yeu == 1){
+                                holder.img_DaThich.setVisibility(View.VISIBLE);
+                                holder.img_YeuThich.setVisibility(View.INVISIBLE);
+                            } else if (yeu == 2){
+                                holder.img_DaThich.setVisibility(View.INVISIBLE);
+                                holder.img_YeuThich.setVisibility(View.VISIBLE);
+                            }
+
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
         holder.txt_TenLoai.setText(sanPhamDomian.getLoaiSP());
         holder.txt_LoaiChiTiet.setText(sanPhamDomian.getLoaiChiTietSP());
         String soLuong = String.valueOf(sanPhamDomian.getSoLuong());
@@ -66,6 +118,24 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
             @Override
             public void onClick(View v) {
                 sanPhamOnClick.SpOnclick(sanPhamDomian);
+            }
+        });
+
+        holder.img_YeuThich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sanPhamOnClick.YeuThichOnclick(sanPhamDomian);
+                holder.img_YeuThich.setVisibility(View.INVISIBLE);
+                holder.img_DaThich.setVisibility(View.VISIBLE);
+            }
+        });
+
+        holder.img_DaThich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sanPhamOnClick.DaThichOnclick(sanPhamDomian);
+                holder.img_YeuThich.setVisibility(View.VISIBLE);
+                holder.img_DaThich.setVisibility(View.INVISIBLE);
             }
         });
 

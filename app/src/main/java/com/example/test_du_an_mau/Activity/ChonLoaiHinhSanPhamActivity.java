@@ -62,6 +62,12 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
                         User user = snapshot.getValue(User.class);
                         if (user != null){
                             sdt = user.getPhone();
+                            if (sdt == null){
+                                Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc sdt", Toast.LENGTH_SHORT).show();
+                            }else {
+                                sanPhamDomian.setSoDienThoai(sdt);
+                            }
+
                         } else {
                             Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc số điện thoại", Toast.LENGTH_SHORT).show();
                         }
@@ -72,10 +78,7 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
 
                     }
                 });
-                if (sdt == null){
-                    Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc sdt", Toast.LENGTH_SHORT).show();
-                }
-                sanPhamDomian.setSoDienThoai(sdt);
+
                 sanPhamDomian.setQuyen(1);
 
                 sanPhamDomian.setLoaiHinhSP("Nông nghiệp cơ bản");
