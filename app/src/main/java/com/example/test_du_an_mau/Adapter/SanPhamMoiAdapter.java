@@ -71,8 +71,7 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (!snapshot.exists()){
-                        holder.img_DaThich.setVisibility(View.INVISIBLE);
-                        holder.img_YeuThich.setVisibility(View.INVISIBLE);
+                        return;
                     } else {
                         Favorite favorite = snapshot.getValue(Favorite.class);
 
@@ -87,7 +86,7 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
                             if (yeu == 1){
                                 holder.img_DaThich.setVisibility(View.VISIBLE);
                                 holder.img_YeuThich.setVisibility(View.INVISIBLE);
-                            } else if (yeu == 2){
+                            } else {
                                 holder.img_DaThich.setVisibility(View.INVISIBLE);
                                 holder.img_YeuThich.setVisibility(View.VISIBLE);
                             }

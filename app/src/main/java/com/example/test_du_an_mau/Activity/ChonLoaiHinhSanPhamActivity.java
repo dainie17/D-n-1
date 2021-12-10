@@ -49,36 +49,38 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         id = mAuth.getUid();
 
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = firebaseDatabase.getReference("Users");
+
+        if (id == null){
+            return;
+        }
+
+        reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                if (user != null){
+                    sdt = user.getPhone();
+                    if (sdt == null){
+                        Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko có sdt", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc số điện thoại", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         LoaiHinhSP_NNCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference reference = firebaseDatabase.getReference("Users");
-
-                reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User user = snapshot.getValue(User.class);
-                        if (user != null){
-                            sdt = user.getPhone();
-                            if (sdt == null){
-                                Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc sdt", Toast.LENGTH_SHORT).show();
-                            }else {
-                                sanPhamDomian.setSoDienThoai(sdt);
-                            }
-
-                        } else {
-                            Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc số điện thoại", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
+                sanPhamDomian.setSoDienThoai(sdt);
                 sanPhamDomian.setQuyen(1);
 
                 sanPhamDomian.setLoaiHinhSP("Nông nghiệp cơ bản");
@@ -98,28 +100,6 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference reference = firebaseDatabase.getReference("Users");
-
-                reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User user = snapshot.getValue(User.class);
-                        if (user != null){
-                            sdt = user.getPhone();
-                        } else {
-                            Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc số điện thoại", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                if (sdt == null){
-                    Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc sdt", Toast.LENGTH_SHORT).show();
-                }
                 sanPhamDomian.setSoDienThoai(sdt);
                 sanPhamDomian.setQuyen(1);
 
@@ -139,30 +119,6 @@ public class ChonLoaiHinhSanPhamActivity extends AppCompatActivity {
         LoaiHinhSP_CSPDCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference reference = firebaseDatabase.getReference("Users");
-
-                reference.child(id).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        User user = snapshot.getValue(User.class);
-                        if (user != null){
-                            sdt = user.getPhone();
-                        } else {
-                            Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc số điện thoại", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                if (sdt == null){
-                    Toast.makeText(ChonLoaiHinhSanPhamActivity.this, "ko lấy đc sdt", Toast.LENGTH_SHORT).show();
-                }
 
                 sanPhamDomian.setSoDienThoai(sdt);
                 sanPhamDomian.setQuyen(1);

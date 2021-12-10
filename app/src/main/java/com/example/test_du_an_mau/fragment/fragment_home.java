@@ -38,6 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -101,12 +102,23 @@ public class fragment_home extends Fragment {
 
                 favorite.setYeuThich(1);
                 favorite.setIdSanPham(id.trim());
+
                 reff.child(id).child(sanPhamDomian.getMaSP().trim()).setValue(favorite.toMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                    }
+                });
+
+                DatabaseReference reference = database.getReference("SanPham").child(sanPhamDomian.getMaSP()).child("NYT");
+
+                reference.child(id).setValue(id).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(getActivity(), "Đã thêm vào yêu thích", Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
 
             @Override
@@ -118,42 +130,21 @@ public class fragment_home extends Fragment {
                     return;
                 }
 
-                Favorite favorite = new Favorite();
+                reff.child(id).child(sanPhamDomian.getMaSP().trim()).removeValue();
 
-                favorite.setYeuThich(2);
-                favorite.setIdSanPham(id.trim());
+                DatabaseReference reference = database.getReference("SanPham").child(sanPhamDomian.getMaSP()).child("NYT");
 
-                reff.child(id).child(sanPhamDomian.getMaSP().trim()).updateChildren(favorite.toMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                reference.child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(getActivity(), "Đã bỏ thích", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Đã xóa khỏi yêu thích", Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
 
             @Override
             public void KiemTraYeuThich(SanPhamDomian sanPhamDomian) {
-                database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                reff = database.getReference("YeuThich").child(sanPhamDomian.getMaSP());
-                Query query = reff.orderByChild("idSanPham").equalTo(id);
-                query.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()){
-
-                            Favorite favorite = snapshot.getValue(Favorite.class);
-
-                            if (favorite != null){
-                                thich = favorite.getYeuThich();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
             }
         }, mAuth.getUid());
         rscv_SanPhamMoiNhat.setAdapter(sanPhamAdapter);
