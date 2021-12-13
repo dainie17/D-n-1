@@ -1,5 +1,6 @@
 package com.example.test_du_an_mau.Activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.test_du_an_mau.Activity.DangNhapActivity;
 import com.example.test_du_an_mau.Domian.User;
+import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,6 +47,7 @@ public class UserAcivity extends AppCompatActivity {
     String id;
     ImageView back, img_AnhNguoiDung1;
     private static final int REQUEST_IMAGE_OPEN = 1;
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +61,6 @@ public class UserAcivity extends AppCompatActivity {
         img_AnhNguoiDung1 = findViewById(R.id.img_AnhNguoiDung1);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         id = mAuth.getUid();
 
         if(id == null){
@@ -83,6 +85,9 @@ public class UserAcivity extends AppCompatActivity {
                     txt_ChinhSuaTrang.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+                            dialog = Utils.showLoader(UserAcivity.this);
+
                             FirebaseStorage storage = FirebaseStorage.getInstance("gs://asigment-a306b.appspot.com");
                             Calendar calendar = Calendar.getInstance();
                             final StorageReference storageRef = storage.getReference();
@@ -114,10 +119,12 @@ public class UserAcivity extends AppCompatActivity {
                                             user.setDiaChi(diachi);
                                             user.setImageURL(uri.toString().trim());
 
-                                            fer.child(id).updateChildren(user.toMap(), new DatabaseReference.CompletionListener() {
+                                            fer.child(id).updateChildren(user.toMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
-                                                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-
+                                                public void onSuccess(Void unused) {
+                                                    if(dialog!=null){
+                                                        dialog.dismiss();
+                                                    }
                                                 }
                                             });
 

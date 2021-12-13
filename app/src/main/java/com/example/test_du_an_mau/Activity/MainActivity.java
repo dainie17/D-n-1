@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentFragment = FRAGMENT_TRANG_CHINH;
     Button btn_themSanPham;
     String id;
-
     FirebaseUser firebaseUser;
     DatabaseReference reference;
 
@@ -66,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (id != null){
+                if (firebaseUser != null){
                     startActivity(new Intent(MainActivity.this, ChonLoaiHinhSanPhamActivity.class));
                 } else {
                     startActivity(new Intent(MainActivity.this, DangNhapActivity.class));
@@ -121,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
         if (id == null){
             return;
         }
+
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
         HashMap<String, Object> hashMap = new HashMap<>();

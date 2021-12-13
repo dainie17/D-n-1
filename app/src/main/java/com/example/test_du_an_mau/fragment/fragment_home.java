@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
+import com.example.test_du_an_mau.Activity.DangNhapActivity;
 import com.example.test_du_an_mau.Activity.LoaiSanPhamActivity;
 import com.example.test_du_an_mau.Activity.TimKiemActivity;
 import com.example.test_du_an_mau.Adapter.LoaiSPAdapter;
@@ -28,6 +29,7 @@ import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -64,6 +66,7 @@ public class fragment_home extends Fragment {
         img_AnhNguoiDungHome = view.findViewById(R.id.img_AnhNguoiDungHome);
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
         String id = mAuth.getUid();
 
         lspList = view.findViewById(R.id.rccv_LoaiSanPham);
@@ -91,6 +94,10 @@ public class fragment_home extends Fragment {
             public void YeuThichOnclick(SanPhamDomian sanPhamDomian) {
                 database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 reff = database.getReference("YeuThich");
+
+                if (currentUser == null){
+                    startActivity(new Intent(getActivity(), DangNhapActivity.class));
+                }
 
                 if (id == null){
                     return;
@@ -123,6 +130,10 @@ public class fragment_home extends Fragment {
             public void DaThichOnclick(SanPhamDomian sanPhamDomian) {
                 database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 reff = database.getReference("YeuThich");
+
+                if (currentUser == null){
+                    startActivity(new Intent(getActivity(), DangNhapActivity.class));
+                }
 
                 if (id == null){
                     return;

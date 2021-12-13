@@ -18,6 +18,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class DangNhapActivity extends AppCompatActivity {
     private EditText edt_emai, edt_matkhau;
@@ -85,6 +89,14 @@ public class DangNhapActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    //trạng thái của người dùng
+
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(mAuth.getUid());
+
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("status", "online");
+
+                        reference.updateChildren(hashMap);
                     Toast.makeText(getApplicationContext(), "Đăng nhập thành công ", Toast.LENGTH_SHORT).show();
                     Intent intent  = new Intent(DangNhapActivity.this, MainActivity.class);
                     startActivity(intent);

@@ -157,6 +157,10 @@ public class fragment_favorite extends Fragment {
 
     private void LayMaSanPham(DataSnapshot snapshot) {
 
+        if (id == null){
+            return;
+        }
+
         if (snapshot.exists()){
             for (DataSnapshot sn:snapshot.getChildren()){
 

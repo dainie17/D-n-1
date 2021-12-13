@@ -3,6 +3,7 @@ package com.example.test_du_an_mau.Activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
+import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,6 +37,8 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     DatabaseReference ref;
+
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,8 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
         btn_DangSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                dialog = Utils.showLoader(NhapDuLieuSanPhamActivity.this);
 
                 database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 ref = database.getReference("DuyetSP");
@@ -104,6 +110,9 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
                     ref.child(sanPhamGuiLen.getMaSP()).setValue(sanPhamGuiLen).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+                            if(dialog!=null){
+                                dialog.dismiss();
+                            }
                             Toast.makeText(NhapDuLieuSanPhamActivity.this, "Đăng sản phẩm thành công !", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(NhapDuLieuSanPhamActivity.this, MainActivity.class);
                             startActivity(intent);

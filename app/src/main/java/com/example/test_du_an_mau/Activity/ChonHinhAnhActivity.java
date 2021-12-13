@@ -153,7 +153,7 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
 
                                     linkAnhList.add(uri.toString().trim());
 
-                                    Toast.makeText(ChonHinhAnhActivity.this, "Load ảnh thành công", Toast.LENGTH_SHORT).show();
+                                    btn_TiepTucThemHA.setVisibility(View.VISIBLE);
 
                                 }
                             });

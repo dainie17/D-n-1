@@ -65,6 +65,8 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
 
         sanPhamOnClick.KiemTraYeuThich(sanPhamDomian);
 
+            if (Thich != null){
+
             FirebaseDatabase database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
             DatabaseReference ref = database.getReference("YeuThich").child(Thich);
             ref.child(sanPhamDomian.getMaSP()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -80,7 +82,6 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
                             holder.img_YeuThich.setVisibility(View.INVISIBLE);
                         } else {
 
-                            String idSp = favorite.getIdSanPham();
                             yeu = favorite.getYeuThich();
 
                             if (yeu == 1){
@@ -101,6 +102,7 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
 
                 }
             });
+            }
 
         holder.txt_TenLoai.setText(sanPhamDomian.getLoaiSP());
         holder.txt_LoaiChiTiet.setText(sanPhamDomian.getLoaiChiTietSP());
