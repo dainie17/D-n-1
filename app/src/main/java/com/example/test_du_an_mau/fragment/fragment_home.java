@@ -56,8 +56,6 @@ public class fragment_home extends Fragment {
     private View view;
     private static final int MY_REQUEST_CODE = 10;
 
-    int thich;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

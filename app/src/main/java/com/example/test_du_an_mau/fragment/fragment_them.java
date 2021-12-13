@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,7 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.test_du_an_mau.Activity.DangKyActivity;
+import com.example.test_du_an_mau.Activity.DangKyAdminActivity;
 import com.example.test_du_an_mau.Activity.DangNhapActivity;
+import com.example.test_du_an_mau.Activity.DuyetSanPhamActivity;
 import com.example.test_du_an_mau.Activity.NhanTinActivity;
 import com.example.test_du_an_mau.Activity.QuanLySanPhamActivity;
 import com.example.test_du_an_mau.Activity.ThietLapActivity;
@@ -38,8 +41,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class fragment_them extends Fragment {
 
-    TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_ThietLap, txt_DangKy,
-             txt_Them_Ten, txt_TinNhan;
+    TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_ThietLap,txt_ThemAdmin,
+             txt_Them_Ten, txt_TinNhan, txt_DuyetSanPham;
+    LinearLayout lnl_QuyenAdmin;
     CircleImageView img_AnhNguoiDung;
     String id;
     DatabaseReference ref;
@@ -55,17 +59,44 @@ public class fragment_them extends Fragment {
         txt_Them_Ten = view.findViewById(R.id.txt_Them_Ten);
         txt_TinNhan = view.findViewById(R.id.txt_TinNhan);
         txt_ThietLap = view.findViewById(R.id.txt_thietlap);
+        txt_ThemAdmin = view.findViewById(R.id.txt_ThemAdmin);
+        txt_DuyetSanPham = view.findViewById(R.id.txt_DuyetSanPham);
         img_AnhNguoiDung = view.findViewById(R.id.img_AnhNguoiDung);
+        lnl_QuyenAdmin = view.findViewById(R.id.lnl_QuyenAdmin);
 
         OnclickQuanLySanPham();
         OnclickTrangCaNhan();
         TenNguoiDung();
         OnclickTinNhan();
         OnclickThietLap();
-
+        OnClickThemAdmin();
+        OnClickDuyetSanPham();
 
         return view;
     }
+
+    private void OnClickDuyetSanPham() {
+
+        txt_DuyetSanPham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DuyetSanPhamActivity.class));
+            }
+        });
+
+    }
+
+    private void OnClickThemAdmin() {
+
+        txt_ThemAdmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DangKyAdminActivity.class));
+            }
+        });
+
+    }
+
     private void OnclickThietLap(){
         txt_ThietLap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,10 +124,6 @@ public class fragment_them extends Fragment {
         });
 
     }
-
-
-
-
 
     private void OnclickTrangCaNhan() {
         txt_Them_trangCaNhan.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +162,14 @@ public class fragment_them extends Fragment {
                 if (user != null){
                     txt_Them_Ten.setText(user.getUsername());
                     Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhNguoiDung);
+                    int idnd = user.getLoai();
+
+                    if (idnd == 2){
+                        lnl_QuyenAdmin.setVisibility(View.VISIBLE);
+                    } else {
+                        lnl_QuyenAdmin.setVisibility(View.INVISIBLE);
+                    }
+
                 }
             }
 

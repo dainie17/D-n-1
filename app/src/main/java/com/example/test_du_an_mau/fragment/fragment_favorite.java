@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test_du_an_mau.Activity.ChiTietDuyetSPActivity;
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.Favorite;
@@ -131,6 +132,16 @@ public class fragment_favorite extends Fragment {
                 favorite.setIdSanPham(id.trim());
 
                 databaseReference.child(id).child(sanPhamDomian.getMaSP().trim()).removeValue();
+
+                DatabaseReference reference = database.getReference("SanPham").child(sanPhamDomian.getMaSP()).child("NYT");
+
+                reference.child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Toast.makeText(getActivity(), "Đã xóa khỏi yêu thích", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
 
             @Override

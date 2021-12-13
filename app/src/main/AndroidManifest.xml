@@ -11,7 +11,7 @@
         tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -21,6 +21,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Activity.ChiTietDuyetSPActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.DuyetSanPhamActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Activity.DangKyAdminActivity"
+            android:exported="true" />
         <activity
             android:name=".Activity.LoaiSanPhamActivity"
             android:exported="true" />

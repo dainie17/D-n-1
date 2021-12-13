@@ -26,6 +26,7 @@ import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Adapter.SlideShowAdapter;
 import com.example.test_du_an_mau.Domian.Comment;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
+import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -56,7 +57,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
     SlideShowAdapter slideShowAdapter;
 
-    ImageView img_prev, img_next, img_BackCT, img_comment;
+    ImageView img_prev, img_next, img_BackCT, img_comment, img_AnhNguoiDang;
 
     TextView txt_LoaiHinhSPCT, txt_LoaiSanPhamCT, txt_LoaiCTCTSP, txt_SoLuongCT, txt_DonViCT,
             txt_HanSuDungCT, txt_NoiSanXuatCT, txt_GioiHanCT, txt_MoTaCT, txt_TenNguoiDungCT,
@@ -67,10 +68,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
     RecyclerView rscv_CacSanPhamKhac, rscv_Comment;
 
     DatabaseReference ref;
-
-    FirebaseAuth firebaseAuth;
-
-    String key;
 
     List<SanPhamDomian> list_SanPhamKhac;
 
@@ -95,6 +92,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         img_prev = this.findViewById(R.id.img_prev);
         img_next = this.findViewById(R.id.img_next);
         img_BackCT = this.findViewById(R.id.img_BackCT);
+        img_AnhNguoiDang = this.findViewById(R.id.img_AnhNguoiDang);
 
         txt_LoaiHinhSPCT = this.findViewById(R.id.txt_LoaiHinhSPCT);
         txt_LoaiSanPhamCT = this.findViewById(R.id.txt_LoaiSanPhamCT);
@@ -148,6 +146,8 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             txt_MoTaCT.setText(mota);
 
             String id = sanPhamDomian.getMaNguoiDung();
+
+            LayTenNguoiDung(id);
 
             sanPhamAdapter = new SanPhamMoiAdapter();
             rscv_CacSanPhamKhac.setHasFixedSize(true);
@@ -221,7 +221,6 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             slideShowAdapter = new SlideShowAdapter(this, listHinhAnh);
 
             vp_SildeHinhAnh.setAdapter(slideShowAdapter);
-
 
             vp_SildeHinhAnh.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
                 @Override
@@ -362,6 +361,45 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+    }
+
+    private void LayTenNguoiDung(String id) {
+
+        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        ref = database.getReference("Users");
+        Query query = ref.orderByChild("id").equalTo(id);
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                User user = snapshot.getValue(User.class);
+                if (user != null){
+                    txt_TenNguoiDungCT.setText(user.getUsername());
+                    Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhNguoiDang);
+
+                }
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
 

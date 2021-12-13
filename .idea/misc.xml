@@ -39,8 +39,10 @@
         <entry key="..\:/androidnangcao/D-n-1/app/src/main/res/layout/activity_logingg.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/drawable-v24/backgroud_thongtin.xml" value="0.27314814814814814" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/drawable-v24/background_right.xml" value="0.24444444444444444" />
+        <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_chi_tiet_duyet_spactivity.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_chi_tiet_san_pham.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_dang_ky.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_duyet_san_pham.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_fragment_favorite.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_fragment_home.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/activity_fragment_them.xml" value="0.27447916666666666" />
@@ -59,6 +61,8 @@
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/empty_state.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/fragment_chats.xml" value="0.264" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/fragment_users.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/item_duyet_sanpham.xml" value="0.27447916666666666" />
+        <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/item_quan_ly_san_pham.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/item_san_pham_moi.xml" value="0.2713541666666667" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/loai_sp_item.xml" value="0.27447916666666666" />
         <entry key="..\:/androidnangcao/DungDeGit/app/src/main/res/layout/progressdialog.xml" value="0.27447916666666666" />

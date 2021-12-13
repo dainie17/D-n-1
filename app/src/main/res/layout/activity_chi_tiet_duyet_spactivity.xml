@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.ChiTietSanPhamActivity">
+    tools:context=".Activity.ChiTietDuyetSPActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -20,17 +20,17 @@
             android:orientation="vertical">
 
             <FrameLayout
-                android:id="@+id/frameLayout"
+                android:id="@+id/frameLayoutDuyet"
                 android:layout_width="match_parent"
                 android:layout_height="200dp">
 
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/vp_SildeHinhAnh"
+                    android:id="@+id/vp_SildeHinhAnhDuyet"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
                 <ImageView
-                    android:id="@+id/img_prev"
+                    android:id="@+id/img_prevDuyet"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
@@ -43,7 +43,7 @@
                     app:tint="@color/black" />
 
                 <ImageView
-                    android:id="@+id/img_next"
+                    android:id="@+id/img_nextDuyet"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="right"
@@ -98,23 +98,9 @@
                     android:orientation="horizontal"
                     android:paddingRight="15dp">
 
-                    <TextView
-                        android:id="@+id/txt_ThemVaoTimCT"
-                        android:layout_width="130dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bacground_them_vao_tim"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Thêm vào"
-                        android:textColor="@color/black"
-                        app:drawableRightCompat="@drawable/ic_baseline_favorite_border_24"
-                        app:drawableTint="@color/black" />
-
                 </LinearLayout>
 
             </LinearLayout>
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -125,7 +111,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/img_AnhNguoiDang"
+                    android:id="@+id/img_AnhNguoiDangDuyet"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_gravity="left|center"
@@ -140,7 +126,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/txt_TenNguoiDungCT"
+                        android:id="@+id/txt_TenNguoiDungDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center"
@@ -151,7 +137,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_TrangCaNhanCT"
+                        android:id="@+id/txt_TrangCaNhanDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -185,7 +171,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_LoaiHinhSPCT"
+                        android:id="@+id/txt_LoaiHinhSPDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="loại hình sản phẩm"
@@ -208,7 +194,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_LoaiSanPhamCT"
+                        android:id="@+id/txt_LoaiSanPhamCTDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="loại sản phẩm"
@@ -231,7 +217,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_LoaiCTCTSP"
+                        android:id="@+id/txt_LoaiCTCTSPDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="loại chi tiết sản phẩm"
@@ -254,7 +240,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_SoLuongCT"
+                        android:id="@+id/txt_SoLuongCTDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="số lượng"
@@ -262,7 +248,7 @@
                         android:textSize="18sp" />
 
                     <TextView
-                        android:id="@+id/txt_DonViCT"
+                        android:id="@+id/txt_DonViCTDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="đơn vị"
@@ -285,7 +271,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_HanSuDungCT"
+                        android:id="@+id/txt_HanSuDungCTDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="hạn sử dụng"
@@ -308,7 +294,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/txt_NoiSanXuatCT"
+                        android:id="@+id/txt_NoiSanXuatCTDuyet"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="nơi sản xuất"
@@ -327,7 +313,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/txt_GioiHanCT"
+                    android:id="@+id/txt_GioiHanCTDuyet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="gới hạn vị trí người mua"
@@ -347,100 +333,21 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_MoTaCT"
+                android:id="@+id/txt_MoTaCTDuyet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginBottom="100dp"
                 android:text="mô tả"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
-            <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#DDDDDD"
-                android:elevation="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_margin="10dp"
-                android:text="Đánh giá sản phẩm"/>
-            <RatingBar
-                android:layout_gravity="center"
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:numStars="5"
-                android:progressBackgroundTint="#BDBDBD"
-                android:progressTint="#ff0"
-                android:rating="3"
-                android:secondaryProgressTint="@color/black"
-                android:stepSize="0.5" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_margin="10dp"
-                android:text="Bình luận"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/edt_comment"
-                    android:layout_weight="10"
-                    android:padding="15dp"
-                    android:layout_width="150dp"
-                    android:layout_height="50dp"
-                    android:layout_margin="10dp"
-                    android:hint="Viết bình luận..."
-
-                    android:background="@drawable/bacground_them_vao_tim"
-                    android:layout_marginBottom="20dp"/>
-                <ImageView
-                    android:id="@+id/img_comment"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_baseline_send_24"/>
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rscv_Binhluan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="#DDDDDD"
-                android:layout_marginBottom="10dp"
-                android:elevation="5dp"/>
-            <TextView
-                android:id="@+id/txt_cacsanphamkhac"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:text="Các sản phẩm khác của người dùng này : "
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rscv_CacSanPhamKhac"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="100dp" />
 
         </LinearLayout>
 
     </ScrollView>
 
     <ImageView
-        android:id="@+id/img_BackCT"
+        android:id="@+id/img_BackCTDuyet"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/quay_lai"
@@ -448,31 +355,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txt_NhanTinVNB"
+        android:id="@+id/txt_Duyet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:elevation="8dp"
         android:background="@drawable/backgruond_chitietdlnd"
-        android:drawableLeft="@drawable/conversation"
         android:drawablePadding="10dp"
         android:padding="20dp"
-        android:text="Nhắn tin"
-        android:layout_marginLeft="45dp"
+        android:text="Duyệt"
+        android:layout_marginLeft="80dp"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/txt_Goi"
+        android:id="@+id/txt_Xoa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableLeft="@drawable/ic_baseline_call_24"
         android:drawableTint="@color/black"
         android:drawablePadding="10dp"
         android:padding="20dp"
-        android:text="Gọi"
+        android:text="Xóa"
         android:background="@drawable/backgruond_chitietdlnd"
         android:elevation="8dp"
         android:textColor="@color/black"
@@ -480,6 +385,6 @@
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txt_NhanTinVNB" />
+        app:layout_constraintStart_toEndOf="@+id/txt_Duyet" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

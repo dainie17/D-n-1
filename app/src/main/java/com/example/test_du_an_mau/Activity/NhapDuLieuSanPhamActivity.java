@@ -62,7 +62,7 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
-                ref = database.getReference("SanPham");
+                ref = database.getReference("DuyetSP");
 
                 SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("ChonHinhAnh");
 
