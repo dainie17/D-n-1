@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.fragment.fragment_favorite;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_THEM = 3;
 
     private int mCurrentFragment = FRAGMENT_TRANG_CHINH;
-    Button btn_themSanPham;
+    TextView btn_themSanPham;
     String id;
     FirebaseUser firebaseUser;
     DatabaseReference reference;

@@ -13,9 +13,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/logo_app" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_splash" />
+
 
     </RelativeLayout>
 
@@ -38,34 +39,48 @@
         android:paddingRight="50dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/rlHeader" >
-
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white">
         <EditText
             android:layout_marginTop="15dp"
             android:id="@+id/edt_emai"
             android:hint="Emai"
-            android:drawableRight="@drawable/message"
+            android:drawableRight="@drawable/ic_baseline_email_24"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            app:passwordToggleEnabled="true">
         <EditText
             android:id="@+id/edt_matkhau"
             android:hint="Mật khẩu"
             android:drawableRight="@drawable/key"
             android:layout_width="match_parent"
             android:layout_height="60dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
+            android:layout_marginTop="15dp"
             android:gravity="right"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Quên mật khẩu?"/>
+            android:text="Quên mật khẩu ?"/>
 
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/btn_dangnhap"
         android:layout_width="150dp"
         android:layout_height="60dp"
+        android:background="@drawable/slape_button"
+        android:gravity="center"
         android:text="Đăng Nhập"
-        android:background="@drawable/custom_search"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/lnLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -90,27 +105,7 @@
         android:text="Đăng Ký"
         app:layout_constraintBottom_toTopOf="@+id/lnLogin" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" >
 
-        <ImageView
-            android:id="@+id/btn_google"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/google"/>
-
-        <ImageView
-            android:id="@+id/img_ButtonLoginFB"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/facebook"
-            android:layout_marginLeft="50dp" />
-
-    </LinearLayout>
 
 
     <LinearLayout

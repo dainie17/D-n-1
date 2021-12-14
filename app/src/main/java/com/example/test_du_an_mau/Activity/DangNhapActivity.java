@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class DangNhapActivity extends AppCompatActivity {
     private EditText edt_emai, edt_matkhau;
-    private Button btn_dangnhap;
+    private TextView btn_dangnhap;
     private FirebaseAuth mAuth;
     private ImageView btn_loginGG;
 
@@ -41,7 +41,6 @@ public class DangNhapActivity extends AppCompatActivity {
         edt_emai = findViewById(R.id.edt_emai);
         edt_matkhau = findViewById(R.id.edt_matkhau);
         btn_dangnhap = findViewById(R.id.btn_dangnhap);
-        btn_loginGG = findViewById(R.id.btn_google);
 
         tv_dangkyapp.setOnClickListener(dangky());
         tv_dangky.setOnClickListener(dangky());
@@ -54,12 +53,6 @@ public class DangNhapActivity extends AppCompatActivity {
             }
         });
 
-        btn_loginGG.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
 
     }

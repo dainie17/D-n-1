@@ -27,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class DangKyAdminActivity extends AppCompatActivity {
     private EditText tv_emai, tv_matkhau, tv_nhaplai, tv_hoten, edt_Phone;
     private TextView tv_dangnhapapp, tv_dangnhap;
-    private Button btn_dangky;
+    private TextView btn_dangky;
     FirebaseAuth auth;
     DatabaseReference reference;
     ProgressDialog dialog;
