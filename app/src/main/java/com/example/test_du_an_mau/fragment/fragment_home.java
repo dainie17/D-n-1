@@ -190,7 +190,12 @@ public class fragment_home extends Fragment {
         img_mess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), NhanTinActivity.class));
+
+                Intent intent = new Intent(getActivity(), NhanTinActivity.class);
+
+                intent.putExtra("id", id);
+
+                startActivity(intent);
             }
         });
 

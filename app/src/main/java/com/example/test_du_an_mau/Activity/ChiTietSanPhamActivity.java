@@ -303,12 +303,12 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
                     img_comment.setVisibility(View.INVISIBLE);
                     FirebaseAuth firebaseUser = FirebaseAuth.getInstance();
-                    ref = database.getReference("Comment");
+                    DatabaseReference reff = database.getReference("Comment");
                     String content = edt_coment.getText().toString();
                     String uid = firebaseUser.getUid();
                     Comment cmt = new Comment(content, uid, sanPhamDomian.getMaSP());
 
-                    ref.child(cmt.getIdsp()).setValue(cmt).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    reff.child(reff.push().getKey()).setValue(cmt).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
                             showMessage("Comment thành công: ");
@@ -331,18 +331,31 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
             commentAdapter = new CommentAdapter();
             rscv_Comment.setHasFixedSize(true);
             rscv_Comment.setLayoutManager(new GridLayoutManager(getApplicationContext(), 1));
-            listComment = new ArrayList<>();
-            DatabaseReference reff = database.getReference("Comment");
-            reff.child(sanPhamDomian.getMaSP()).addListenerForSingleValueEvent(new ValueEventListener() {
+            String idSp = sanPhamDomian.getMaSP();
+            DatabaseReference reference = database.getReference("Comment");
+            Query query1 = reference.orderByChild("idsp").equalTo(idSp);
+            query1.addChildEventListener(new ChildEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     Comment comment = snapshot.getValue(Comment.class);
-                    if (comment == null){
-                        return;
-                    }
 
                     listComment.add(comment);
                     commentAdapter.notifyDataSetChanged();
+
+                }
+
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                }
+
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                }
+
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
                 }
 
@@ -351,8 +364,8 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
                 }
             });
+            listComment = new ArrayList<>();
             commentAdapter.setData(listComment);
-
             rscv_Comment.setAdapter(commentAdapter);
 
         }
