@@ -25,7 +25,7 @@
             android:layout_gravity="right"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:src="@drawable/user" />
+            android:src="@drawable/baby" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -59,6 +59,7 @@
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/img_mess"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp"

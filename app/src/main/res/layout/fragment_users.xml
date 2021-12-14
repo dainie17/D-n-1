@@ -7,18 +7,21 @@
     tools:context=".fragment.UsersFragment">
 
     <EditText
+        android:id="@+id/search_users"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_margin="10dp"
-        android:drawableLeft="@drawable/ic_launcher_background"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/timkiem"
         android:drawablePadding="5dp"
-        android:textSize="16sp"
-        android:textCursorDrawable="@null"
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
         android:hint="Search user by name..."
-        android:id="@+id/search_users"/>
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:textCursorDrawable="@null"
+        android:textSize="16sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@id/search_users"

@@ -41,6 +41,7 @@ public class NhanTinActivity extends AppCompatActivity {
     CircleImageView img_AnhNguoiDungTN;
     TextView username;
     ProgressDialog dialog;
+    ImageView back_mess;
 
     String id;
     DatabaseReference reference;
@@ -54,6 +55,16 @@ public class NhanTinActivity extends AppCompatActivity {
         img_AnhNguoiDungTN = findViewById(R.id.img_AnhNguoiDungTN);
         final TabLayout tbl_TinNhan = findViewById(R.id.tbl_TinNhan);
         final ViewPager vp_TinNhan = findViewById(R.id.vp_TinNhan);
+        back_mess = findViewById(R.id.back_mess);
+
+
+
+        back_mess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         img_AnhNguoiDungTN.setOnClickListener(new View.OnClickListener() {
             @Override

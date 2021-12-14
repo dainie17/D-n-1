@@ -13,12 +13,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
 import com.example.test_du_an_mau.Activity.DangNhapActivity;
 import com.example.test_du_an_mau.Activity.LoaiSanPhamActivity;
+import com.example.test_du_an_mau.Activity.NhanTinActivity;
 import com.example.test_du_an_mau.Activity.TimKiemActivity;
 import com.example.test_du_an_mau.Adapter.LoaiSPAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
@@ -57,6 +59,7 @@ public class fragment_home extends Fragment {
     private FirebaseDatabase database;
     private View view;
     private static final int MY_REQUEST_CODE = 10;
+    ImageView img_mess;
 
     @Nullable
     @Override
@@ -64,7 +67,7 @@ public class fragment_home extends Fragment {
         view = inflater.inflate(R.layout.activity_fragment_home, container, false);
 
         img_AnhNguoiDungHome = view.findViewById(R.id.img_AnhNguoiDungHome);
-
+        img_mess = view.findViewById(R.id.img_mess);
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         String id = mAuth.getUid();
@@ -167,7 +170,7 @@ public class fragment_home extends Fragment {
             public void SpOnclick(String loai) {
                 Intent intent = new Intent(getActivity(), LoaiSanPhamActivity.class);
 
-               intent.putExtra("LoaiSP", loai);
+                intent.putExtra("LoaiSP", loai);
 
                 startActivityForResult(intent, MY_REQUEST_CODE);
             }
@@ -182,6 +185,12 @@ public class fragment_home extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), TimKiemActivity.class));
+            }
+        });
+        img_mess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), NhanTinActivity.class));
             }
         });
 
@@ -230,11 +239,13 @@ public class fragment_home extends Fragment {
 
     private List<LoaiSPDomian> getListLSP() {
         List<LoaiSPDomian> list = new ArrayList<>();
-        list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "Cà phê"));
-        list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "tiêu"));
-        list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "điều"));
-        list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "lúa"));
-        list.add(new LoaiSPDomian(R.drawable.ic_baseline_image_24, "hoa quả"));
+        list.add(new LoaiSPDomian(R.drawable.coffe, "Cà phê"));
+        list.add(new LoaiSPDomian(R.drawable.pepper, "Tiêu"));
+        list.add(new LoaiSPDomian(R.drawable.cashew, "Điều"));
+        list.add(new LoaiSPDomian(R.drawable.wheat, "Lúa"));
+        list.add(new LoaiSPDomian(R.drawable.meat, "Thịt"));
+        list.add(new LoaiSPDomian(R.drawable.cocoa, "Ca cao"));
+        list.add(new LoaiSPDomian(R.drawable.whiskey, "Rượu"));
         return list;
     }
 
