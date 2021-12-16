@@ -12,7 +12,7 @@ import com.example.test_du_an_mau.Activity.ChonHinhAnhActivity;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
 
-public class LoaiChiTietPSDieuActivity extends AppCompatActivity {
+public class LoaiChiTietPSBoActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 10;
     LinearLayout LoaiChiTietPSDieu, LoaiChiTietPSDieu1, LoaiChiTietPSDieu2, LoaiChiTietPSDieu3, LoaiChiTietPSDieu4;
@@ -22,7 +22,7 @@ public class LoaiChiTietPSDieuActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loai_chi_tiet_psdieu);
+        setContentView(R.layout.activity_loai_chi_tiet_psbo);
 
         back = findViewById(R.id.button_back_PSDieu);
         LoaiChiTietPSDieu = this.findViewById(R.id.LoaiChiTietPSDieu);
@@ -39,7 +39,7 @@ public class LoaiChiTietPSDieuActivity extends AppCompatActivity {
 
                     SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSDieu");
 
-                    Intent intent = new Intent(LoaiChiTietPSDieuActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietPSBoActivity.this, ChonHinhAnhActivity.class);
 
                     sanPhamDomian.setLoaiChiTietSP("Bơ Nhạt");
 
@@ -62,7 +62,7 @@ public class LoaiChiTietPSDieuActivity extends AppCompatActivity {
 
                     SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSDieu");
 
-                    Intent intent = new Intent(LoaiChiTietPSDieuActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietPSBoActivity.this, ChonHinhAnhActivity.class);
 
                     sanPhamDomian.setLoaiChiTietSP("Bơ Mặn");
 
@@ -85,7 +85,7 @@ public class LoaiChiTietPSDieuActivity extends AppCompatActivity {
 
                     SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSDieu");
 
-                    Intent intent = new Intent(LoaiChiTietPSDieuActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietPSBoActivity.this, ChonHinhAnhActivity.class);
 
                     sanPhamDomian.setLoaiChiTietSP("Bơ Động Vật");
 
@@ -108,7 +108,7 @@ public class LoaiChiTietPSDieuActivity extends AppCompatActivity {
 
                     SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSDieu");
 
-                    Intent intent = new Intent(LoaiChiTietPSDieuActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietPSBoActivity.this, ChonHinhAnhActivity.class);
 
                     sanPhamDomian.setLoaiChiTietSP("Bơ Thực Vật");
 
@@ -131,7 +131,7 @@ public class LoaiChiTietPSDieuActivity extends AppCompatActivity {
 
                     SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSDieu");
 
-                    Intent intent = new Intent(LoaiChiTietPSDieuActivity.this, ChonHinhAnhActivity.class);
+                    Intent intent = new Intent(LoaiChiTietPSBoActivity.this, ChonHinhAnhActivity.class);
 
                     sanPhamDomian.setLoaiChiTietSP("Không Xác Định");
 

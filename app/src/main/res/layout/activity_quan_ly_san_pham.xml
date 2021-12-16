@@ -66,6 +66,7 @@
             android:paddingRight="30dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:paddingTop="10dp"
                 android:id="@+id/img_AnhNguoiDungSP"
                 android:layout_width="100dp"
                 android:layout_height="100dp"

@@ -123,7 +123,6 @@ public class fragment_home extends Fragment {
                 reference.child(id).setValue(id).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(getActivity(), "Đã thêm vào yêu thích", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -149,7 +148,6 @@ public class fragment_home extends Fragment {
                 reference.child(id).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Toast.makeText(getActivity(), "Đã xóa khỏi yêu thích", Toast.LENGTH_SHORT).show();
                     }
                 });
 

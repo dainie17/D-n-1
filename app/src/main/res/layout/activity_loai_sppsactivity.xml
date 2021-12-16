@@ -44,7 +44,7 @@
         android:weightSum="10"
         android:layout_marginTop="10dp"
         android:elevation="3dp"
-        android:background="@drawable/ca_phe"
+        android:background="@drawable/thit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
@@ -82,7 +82,7 @@
         android:id="@+id/LoaiSPPS_Tieu"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/tieu"
+        android:background="@drawable/banhmi1"
         android:baselineAligned="false"
         android:gravity="right"
         android:orientation="horizontal"
@@ -126,7 +126,7 @@
         android:id="@+id/LoaiSPPS_Dieu"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/dieu"
+        android:background="@drawable/bo"
         android:baselineAligned="false"
         android:gravity="right"
         android:orientation="horizontal"
@@ -170,7 +170,7 @@
         android:id="@+id/LoaiSPPS_CaCao"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/cacao"
+        android:background="@drawable/dau"
         android:baselineAligned="false"
         android:gravity="right"
         android:orientation="horizontal"
@@ -210,48 +210,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/LoaiSPPS_MacCa"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/macca"
-        android:baselineAligned="false"
-        android:gravity="right"
-        android:orientation="horizontal"
-        android:weightSum="10"
-        android:elevation="3dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiSPPS_CaCao">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:paddingTop="10dp"
-            android:paddingBottom="5dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Macca"
-                android:textColor="#FFFFFF"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="9"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_baseline_send_24"
-            app:tint="@color/white" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

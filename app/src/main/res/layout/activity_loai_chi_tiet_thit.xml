@@ -38,8 +38,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietThit"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/thit"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -82,8 +82,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietThit1"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/thitbo"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -96,7 +96,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -126,8 +126,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietThit2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/thitca"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -140,7 +140,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -170,8 +170,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietThit3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/thitga"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -184,7 +184,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -215,8 +215,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietThit4"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="#A3A1A5"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -229,7 +229,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"

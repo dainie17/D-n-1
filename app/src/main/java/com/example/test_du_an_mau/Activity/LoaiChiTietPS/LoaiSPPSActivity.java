@@ -8,17 +8,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.test_du_an_mau.Activity.ChonHinhAnhActivity;
-import com.example.test_du_an_mau.Activity.LoaiChiTietCB.LoaiChiTietCaPheActivity;
-import com.example.test_du_an_mau.Activity.LoaiChiTietCB.LoaiChiTietDieuActivity;
-import com.example.test_du_an_mau.Activity.LoaiChiTietCB.LoaiSPCBActivity;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.R;
 
 public class LoaiSPPSActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 10;
-    LinearLayout LoaiSPPS_Thit, LoaiSPPS_Tieu, LoaiSPPS_Dieu, LoaiSPPS_CaCao, LoaiSPPS_Macca;
+    LinearLayout LoaiSPPS_Thit, LoaiSPPS_Tieu, LoaiSPPS_Dieu, LoaiSPPS_CaCao;
     ImageView back;
 
     @Override
@@ -32,7 +28,6 @@ public class LoaiSPPSActivity extends AppCompatActivity {
         LoaiSPPS_Tieu = this.findViewById(R.id.LoaiSPPS_Tieu);
         LoaiSPPS_Dieu = this.findViewById(R.id.LoaiSPPS_Dieu);
         LoaiSPPS_CaCao = this.findViewById(R.id.LoaiSPPS_CaCao);
-        LoaiSPPS_Macca = this.findViewById(R.id.LoaiSPPS_MacCa);
 
 
         LoaiSPPS_Thit.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +86,7 @@ public class LoaiSPPSActivity extends AppCompatActivity {
 
                     SanPhamDomian sanPham = (SanPhamDomian) getIntent().getExtras().get("LoaiHinhSP");
 
-                    Intent intent = new Intent(LoaiSPPSActivity.this, LoaiChiTietPSDieuActivity.class);
+                    Intent intent = new Intent(LoaiSPPSActivity.this, LoaiChiTietPSBoActivity.class);
 
                     sanPham.setLoaiSP("Bơ");
 
