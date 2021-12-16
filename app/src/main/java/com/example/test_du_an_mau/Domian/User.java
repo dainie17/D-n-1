@@ -1,9 +1,10 @@
 package com.example.test_du_an_mau.Domian;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class User {
+public class User implements Serializable {
 
     private String id;
     private String username;
@@ -12,20 +13,23 @@ public class User {
     private String search;
     private String Phone;
     private String DiaChi;
+    private String Email;
+    private String pass;
     private int loai;
 
     public User() {
     }
 
-    public User(String id, String username, String imageURL, String status,
-                String search, String phone, String diaChi, int loai) {
+    public User(String id, String username, String imageURL, String status, String search, String phone, String diaChi, String email, String pass, int loai) {
         this.id = id;
         this.username = username;
         this.imageURL = imageURL;
         this.status = status;
         this.search = search;
-        Phone = phone;
-        DiaChi = diaChi;
+        this.Phone = phone;
+        this.DiaChi = diaChi;
+        this.Email = email;
+        this.pass = pass;
         this.loai = loai;
     }
 
@@ -85,6 +89,22 @@ public class User {
         DiaChi = diaChi;
     }
 
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
     public int getLoai() {
         return loai;
     }
@@ -103,6 +123,8 @@ public class User {
         resuft.put("phone", Phone);
         resuft.put("username", username);
         resuft.put("diaChi", DiaChi);
+        resuft.put("email", Email);
+        resuft.put("pass", pass);
         return resuft;
     }
 

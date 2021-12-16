@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private int mCurrentFragment = FRAGMENT_TRANG_CHINH;
     Button btn_themSanPham;
     String id;
-    FirebaseUser firebaseUser;
     DatabaseReference reference;
 
     @Override
@@ -49,14 +48,12 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new fragment_home());
         bottomNavigationView.getMenu().findItem(R.id.fragment_home).setChecked(true);
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
         id = mAuth.getUid();
 
         if (id != null){
-            reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+            reference = FirebaseDatabase.getInstance().getReference("Users").child(id);
         }
 
         btn_themSanPham = this.findViewById(R.id.btn_dangbai);
@@ -65,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (firebaseUser != null){
+                if (id != null){
                     startActivity(new Intent(MainActivity.this, ChonLoaiHinhSanPhamActivity.class));
                 } else {
                     startActivity(new Intent(MainActivity.this, DangNhapActivity.class));
@@ -112,33 +109,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fl_fragment_container, fragment);
         transaction.commit();
-    }
-
-    //trạng thái của người dùng
-    private void status(String status){
-
-        if (id == null){
-            return;
-        }
-
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("status", status);
-
-        reference.updateChildren(hashMap);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        status("online");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        status("offline");
     }
 
 }

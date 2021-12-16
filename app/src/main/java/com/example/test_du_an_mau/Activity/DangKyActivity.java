@@ -115,6 +115,8 @@ public class DangKyActivity extends AppCompatActivity {
                             user.setImageURL("default");
                             user.setStatus("offline");
                             user.setDiaChi("default");
+                            user.setEmail(email);
+                            user.setPass(pass);
 
                             if(dialog!=null){
                                 dialog.dismiss();

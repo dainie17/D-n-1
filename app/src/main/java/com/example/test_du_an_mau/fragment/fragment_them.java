@@ -19,6 +19,7 @@ import com.example.test_du_an_mau.Activity.DangNhapActivity;
 import com.example.test_du_an_mau.Activity.DuyetSanPhamActivity;
 import com.example.test_du_an_mau.Activity.NhanTinActivity;
 import com.example.test_du_an_mau.Activity.QuanLySanPhamActivity;
+import com.example.test_du_an_mau.Activity.QuanLyTaiKhoanActivity;
 import com.example.test_du_an_mau.Activity.ThietLapActivity;
 import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
@@ -42,7 +43,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class fragment_them extends Fragment {
 
     TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_ThietLap,txt_ThemAdmin,
-             txt_Them_Ten, txt_TinNhan, txt_DuyetSanPham;
+             txt_Them_Ten, txt_TinNhan, txt_DuyetSanPham, txt_KTTaiKhoan;
     LinearLayout lnl_QuyenAdmin;
     CircleImageView img_AnhNguoiDung;
     String id;
@@ -61,6 +62,7 @@ public class fragment_them extends Fragment {
         txt_ThietLap = view.findViewById(R.id.txt_thietlap);
         txt_ThemAdmin = view.findViewById(R.id.txt_ThemAdmin);
         txt_DuyetSanPham = view.findViewById(R.id.txt_DuyetSanPham);
+        txt_KTTaiKhoan = view.findViewById(R.id.txt_KTTaiKhoan);
         img_AnhNguoiDung = view.findViewById(R.id.img_AnhNguoiDung);
         lnl_QuyenAdmin = view.findViewById(R.id.lnl_QuyenAdmin);
 
@@ -71,8 +73,20 @@ public class fragment_them extends Fragment {
         OnclickThietLap();
         OnClickThemAdmin();
         OnClickDuyetSanPham();
+        OnClickQuanLyTaiKhoan();
 
         return view;
+    }
+
+    private void OnClickQuanLyTaiKhoan() {
+
+        txt_KTTaiKhoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), QuanLyTaiKhoanActivity.class));
+            }
+        });
+
     }
 
     private void OnClickDuyetSanPham() {

@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.test_du_an_mau.Adapter.DuyetSanPhamAdapter;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
@@ -29,13 +31,14 @@ public class DuyetSanPhamActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference ref;
     DuyetSanPhamAdapter duyetSanPhamAdapter;
+    ImageView img_QuayLaiDuyet;
     private static final int MY_REQUEST_CODE = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_duyet_san_pham);
-
+        img_QuayLaiDuyet = this.findViewById(R.id.img_QuayLaiDuyet);
         rscv_DuyetSP = this.findViewById(R.id.rscv_DuyetSP);
 
         database = FirebaseDatabase.getInstance();
@@ -96,5 +99,14 @@ public class DuyetSanPhamActivity extends AppCompatActivity {
 
             }
         });
+
+        img_QuayLaiDuyet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(DuyetSanPhamActivity.this, MainActivity.class));
+                finish();
+            }
+        });
+
     }
 }
