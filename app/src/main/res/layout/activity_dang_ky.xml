@@ -38,46 +38,78 @@
         android:paddingRight="50dp"
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/rlHeader" >
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white">
         <EditText
             android:id="@+id/tv_name"
             android:hint="Họ và tên"
-            android:drawableRight="@drawable/message"
+            android:drawableRight="@drawable/person"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white">
         <EditText
             android:id="@+id/tv_email"
             android:hint="Emai"
-            android:drawableRight="@drawable/message"
+            android:drawableRight="@drawable/ic_baseline_email_24"
+            android:drawablePadding="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            app:passwordToggleEnabled="true">
         <EditText
             android:id="@+id/tv_matkhau"
             android:hint="Mật khẩu"
-            android:drawableRight="@drawable/key"
+            android:drawableLeft="@drawable/ic_baseline_vpn_key_24"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white"
+            app:passwordToggleEnabled="true">
         <EditText
             android:id="@+id/tv_nhaplai"
             android:hint="Nhập lại mật khẩu .."
             android:drawableRight="@drawable/key"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxBackgroundColor="@color/white">
         <EditText
             android:id="@+id/edt_Phone"
             android:hint="Số điện thoại .."
-            android:drawableRight="@drawable/key"
+            android:drawableRight="@drawable/ic_baseline_phone_24"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/btn_dangky"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:background="@drawable/slape_button"
+        android:gravity="center"
         android:text="Đăng Ký"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/lnLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test_du_an_mau.Activity.ChiTietDuyetSPActivity;
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
+import com.example.test_du_an_mau.Activity.QuanLyTaiKhoanActivity;
+import com.example.test_du_an_mau.Activity.UserAcivity;
 import com.example.test_du_an_mau.Adapter.SanPhamMoiAdapter;
 import com.example.test_du_an_mau.Domian.Favorite;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
@@ -48,6 +51,7 @@ public class fragment_favorite extends Fragment {
     RecyclerView rscv_SanPhamYeuThich;
     List<SanPhamDomian> list = new ArrayList<>();
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    LinearLayout txt_TrangCaNhan;
     List<String> maSP;
     String ma;
     String id;
@@ -58,10 +62,19 @@ public class fragment_favorite extends Fragment {
 
         img_AnhNguoiDungFVR = view.findViewById(R.id.img_AnhNguoiDungFVR);
         rscv_SanPhamYeuThich = view.findViewById(R.id.rscv_SanPhamYeuThich);
+        txt_TrangCaNhan = view.findViewById(R.id.txt_TrangCaNhan);
 
         id = mAuth.getUid();
 
         TenNguoiDung();
+
+
+        txt_TrangCaNhan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), UserAcivity.class));
+            }
+        });
 
         maSP = new ArrayList<>();
 

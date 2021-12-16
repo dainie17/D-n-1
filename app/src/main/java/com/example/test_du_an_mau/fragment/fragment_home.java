@@ -244,7 +244,7 @@ public class fragment_home extends Fragment {
 
     private List<LoaiSPDomian> getListLSP() {
         List<LoaiSPDomian> list = new ArrayList<>();
-        list.add(new LoaiSPDomian(R.drawable.coffe, "Cà phê"));
+        list.add(new LoaiSPDomian(R.drawable.coffee, "Cà phê"));
         list.add(new LoaiSPDomian(R.drawable.pepper, "Tiêu"));
         list.add(new LoaiSPDomian(R.drawable.cashew, "Điều"));
         list.add(new LoaiSPDomian(R.drawable.wheat, "Lúa"));

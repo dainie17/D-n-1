@@ -22,9 +22,6 @@
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Activity.TrangCaNhanActivity"
-            android:exported="true" />
-        <activity
             android:name=".Activity.PhanHoiActivity"
             android:exported="true" />
         <activity

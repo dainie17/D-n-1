@@ -106,6 +106,29 @@ public class LoaiSPDCBActivity extends AppCompatActivity {
 
             }
         });
+        LoaiSPDCB_Ruoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (getIntent().getExtras() != null){
+
+                    SanPhamDomian sanPham = (SanPhamDomian) getIntent().getExtras().get("LoaiHinhSP");
+
+                    Intent intent = new Intent(LoaiSPDCBActivity.this, LoaiChiTietDCBRuoiActivity.class);
+
+                    sanPham.setLoaiSP("Rượu");
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("LoaiSanPhamDCBRuou", sanPham);
+
+                    intent.putExtras(bundle);
+
+                    startActivityForResult(intent, MY_REQUEST_CODE);
+
+                }
+
+            }
+        });
 
 
 

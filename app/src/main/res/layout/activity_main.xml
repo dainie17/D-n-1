@@ -29,20 +29,24 @@
         android:clipToPadding="false"
         android:orientation="horizontal"
         app:labelVisibilityMode="auto"
+        app:itemTextColor="@color/menu"
+        app:itemIconTint="@color/menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/fragment_menu"
         tools:ignore="MissingConstraints">
 
-        <Button
+        <TextView
             android:id="@+id/btn_dangbai"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:gravity="center"
+            android:textStyle="bold"
             android:layout_gravity="center"
             android:background="@drawable/background_tron"
             android:text="Đăng bài"
-            android:textSize="9dp"/>
+            android:textSize="17dp"/>
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 

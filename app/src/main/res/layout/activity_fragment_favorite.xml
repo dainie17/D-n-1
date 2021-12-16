@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:text="Sản Phẩm Đã Lưu"
+            android:text="Sản Phẩm Yêu Thích"
             android:textColor="@color/black"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -43,6 +43,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:id="@+id/txt_TrangCaNhan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_main">
