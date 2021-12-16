@@ -85,6 +85,8 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     String LoaiSua;
     String LoaiChiTietSua;
 
+    private static final int MY_REQUEST_CODE = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -525,7 +527,14 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(getApplicationContext(), CapNhatHinhActivity.class);
 
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("DuLieuSanPham",sanPhamDomian);
+
+                intent.putExtras(bundle);
+
+                startActivityForResult(intent, MY_REQUEST_CODE);
 
             }
         });
