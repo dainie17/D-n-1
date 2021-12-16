@@ -176,7 +176,7 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
 
                                         thongbao.setIDThongBao(reference.push().getKey());
                                         thongbao.setIDNguoiNhan(listMaID.get(i));
-                                        reference.child(reference.push().getKey()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        reference.child(thongbao.getIDThongBao()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
                                                 Toast.makeText(ChiTietDuyetSPActivity.this, "Đã duyệt !!", Toast.LENGTH_SHORT).show();
