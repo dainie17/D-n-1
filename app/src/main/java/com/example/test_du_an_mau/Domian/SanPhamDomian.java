@@ -2,7 +2,9 @@ package com.example.test_du_an_mau.Domian;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SanPhamDomian implements Serializable {
 
@@ -165,4 +167,26 @@ public class SanPhamDomian implements Serializable {
     public void setNgayThem(Date ngayThem) {
         NgayThem = ngayThem;
     }
+
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> resuft = new HashMap<>();
+        resuft.put("albumAnh", AlbumAnh);
+        resuft.put("donVi", DonVi);
+        resuft.put("giaBan", GiaBan);
+        resuft.put("gioiHanViTri", GioiHanViTri);
+        resuft.put("hanSuDung", HanSuDung);
+        resuft.put("loaiChiTietSP", LoaiChiTietSP);
+        resuft.put("loaiHinhSP", LoaiHinhSP);
+        resuft.put("loaiSP", LoaiSP);
+        resuft.put("maNguoiDung", MaNguoiDung);
+        resuft.put("maSP", MaSP);
+        resuft.put("moTaChiTiet", MoTaChiTiet);
+        resuft.put("ngayThem", NgayThem);
+        resuft.put("noiSanXuat", NoiSanXuat);
+        resuft.put("quyen", Quyen);
+        resuft.put("soDienThoai", SoDienThoai);
+        resuft.put("soLuong", SoLuong);
+        return resuft;
+    }
+
 }

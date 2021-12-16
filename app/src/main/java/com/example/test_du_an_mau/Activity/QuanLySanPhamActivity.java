@@ -41,6 +41,7 @@ import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -79,6 +80,10 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     RecyclerView rscv_HienAnhSua;
 
     SlideShowAdapter slideShowAdapter;
+
+    String LoaiHinhSua;
+    String LoaiSua;
+    String LoaiChiTietSua;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +139,8 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
 
         Button btn_Regup, btn_Relayup;
         ImageView img_ChonHinh;
-        AutoCompleteTextView edt_SuaLoaiHinh, edt_SuaLoai, edt_SuaChiTiet;
+        AutoCompleteTextView edt_SuaLoaiHinh, edt_SuaLoai, edt_SuaChiTiet, edt_DonVi;
+        TextInputEditText edt_SoLuongSua, edt_GiaSua, edt_HanSua, edt_NoiSanXuatSua, edt_ViTriSua, edt_MoTaSanPhamSua;
 
         btn_Relayup = dialog.findViewById(R.id.btn_Relayup);
         btn_Regup = dialog.findViewById(R.id.btn_Regup);
@@ -142,6 +148,13 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         edt_SuaLoaiHinh = dialog.findViewById(R.id.edt_SuaLoaiHinh);
         edt_SuaLoai = dialog.findViewById(R.id.edt_SuaLoai);
         edt_SuaChiTiet = dialog.findViewById(R.id.edt_SuaChiTiet);
+        edt_DonVi = dialog.findViewById(R.id.edt_DonVi);
+        edt_SoLuongSua = dialog.findViewById(R.id.edt_SoLuongSua);
+        edt_GiaSua = dialog.findViewById(R.id.edt_GiaSua);
+        edt_HanSua = dialog.findViewById(R.id.edt_HanSua);
+        edt_NoiSanXuatSua = dialog.findViewById(R.id.edt_NoiSanXuatSua);
+        edt_ViTriSua = dialog.findViewById(R.id.edt_ViTriSua);
+        edt_MoTaSanPhamSua = dialog.findViewById(R.id.edt_MoTaSanPhamSua);
 
         rscv_HienAnhSua.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getParent(), RecyclerView.HORIZONTAL, false);
@@ -203,17 +216,17 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String item = parent.getItemAtPosition(position).toString();
+                LoaiHinhSua = parent.getItemAtPosition(position).toString();
 
-                if (item.equals("Nông nghiệp cơ bản")){
+                if (LoaiHinhSua.equals("Nông nghiệp cơ bản")){
 
                     edt_SuaLoai.setAdapter(adapterLoaiCoban);
 
-                } else if (item.equals("Cac San Pham Phat Sinh")){
+                } else if (LoaiHinhSua.equals("Cac San Pham Phat Sinh")){
 
                     edt_SuaLoai.setAdapter(adapterLoaiPhatSinh);
 
-                } else if (item.equals("Các Sản Phẩm Đã Chê Biến")){
+                } else if (LoaiHinhSua.equals("Các Sản Phẩm Đã Chê Biến")){
 
                     edt_SuaLoai.setAdapter(adapterLoaiCheBien);
 
@@ -231,12 +244,14 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         LoaiChiTietCaPhe.add("CULI");
         LoaiChiTietCaPhe.add("MOKA");
         LoaiChiTietCaPhe.add("Không Xác Định");
+        ArrayAdapter adapterLoaiChiTietCaPhe = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietCaPhe);
 
         ArrayList<String> LoaiChiTietCaCao = new ArrayList<>();
         LoaiChiTietCaCao.add("Criollo");
         LoaiChiTietCaCao.add("Trinitario");
         LoaiChiTietCaCao.add("Forastero");
         LoaiChiTietCaCao.add("Không Xác Định");
+        ArrayAdapter adapterLoaiChiTietCaCao = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietCaCao);
 
         ArrayList<String> LoaiChiTietDieu = new ArrayList<>();
         LoaiChiTietDieu.add("Hạt Điều Nhân Trắng");
@@ -244,6 +259,7 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         LoaiChiTietDieu.add("Hạt Điều Nhân Vàng");
         LoaiChiTietDieu.add("Hạt Điều Nhân Bị Nám, Teo, Xâu");
         LoaiChiTietDieu.add("Không Xác Định");
+        ArrayAdapter adapterLoaiChiTietDieu = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietDieu);
 
         ArrayList<String> LoaiChiTietMC = new ArrayList<>();
         LoaiChiTietMC.add("MacCao Úc");
@@ -251,37 +267,261 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         LoaiChiTietMC.add("MacCao Nam Phi");
         LoaiChiTietMC.add("MacCao Việt Nam");
         LoaiChiTietMC.add("Không Xác Định");
+        ArrayAdapter adapterLoaiChiTietMC = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietMC);
 
         ArrayList<String> LoaiChiTietTieu = new ArrayList<>();
         LoaiChiTietTieu.add("Tiêu Đen");
         LoaiChiTietTieu.add("Tiêu Xọ");
         LoaiChiTietTieu.add("Tiêu Đỏ");
         LoaiChiTietTieu.add("Tiêu Lép");
+        ArrayAdapter adapterLoaiChiTietTieu = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietTieu);
 
         ArrayList<String> LoaiChiTietBanh = new ArrayList<>();
         LoaiChiTietBanh.add("Bánh Mì");
         LoaiChiTietBanh.add("Bánh Kẹo");
         LoaiChiTietBanh.add("Không Xác Định");
+        ArrayAdapter adapterLoaiChiTietBanh = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietBanh);
 
         ArrayList<String> LoaiChiTietNuoc = new ArrayList<>();
         LoaiChiTietNuoc.add("Nước Lọc");
         LoaiChiTietNuoc.add("Nước Ngọt");
         LoaiChiTietNuoc.add("Cà Phê");
         LoaiChiTietNuoc.add("Ca Cao");
+        ArrayAdapter adapterLoaiChiTietNuoc = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietNuoc);
 
         ArrayList<String> LoaiChiTietRuou = new ArrayList<>();
-        LoaiChiTietRuou.add("Nước Lọc");;
+        LoaiChiTietRuou.add("Rượu gạo Mẫu Sơn");
+        LoaiChiTietRuou.add("Rượu Gò Đen");
+        LoaiChiTietRuou.add("Rượu Nếp");
+        LoaiChiTietRuou.add("Rượu Gạo");
+        ArrayAdapter adapterLoaiChiTietRuou = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietRuou);
 
-        img_ChonHinh = dialog.findViewById(R.id.img_ChonHinh);
+        ArrayList<String> LoaiChiTietXucXich = new ArrayList<>();
+        LoaiChiTietXucXich.add("Xúc Xích Heo");
+        LoaiChiTietXucXich.add("Xúc Xích Đức");
+        LoaiChiTietXucXich.add("Xúc Xích Ăn Liền");
+        ArrayAdapter adapterLoaiChiTietXucXich = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietXucXich);
 
-        img_ChonHinh.setOnClickListener(new View.OnClickListener() {
+        ArrayList<String> LoaiChiTietDau = new ArrayList<>();
+        LoaiChiTietDau.add("Dầu Ô Liu");
+        LoaiChiTietDau.add("Dầu Bơ");
+        LoaiChiTietDau.add("Dầu Mè");
+        LoaiChiTietDau.add("Dầu Đậu Nành");
+        ArrayAdapter adapterLoaiChiTietDau = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietDau);
+
+        ArrayList<String> LoaiChiTietBo = new ArrayList<>();
+        LoaiChiTietBo.add("Bơ Nhạt");
+        LoaiChiTietBo.add("Bơ Mặn");
+        LoaiChiTietBo.add("Bơ Động Vật");
+        LoaiChiTietBo.add("Bơ Thực Vật");
+        ArrayAdapter adapterLoaiChiTietBo = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietBo);
+
+        ArrayList<String> LoaiChiTietBanhmi = new ArrayList<>();
+        LoaiChiTietBanhmi.add("Bánh mì Pháp");
+        LoaiChiTietBanhmi.add("Bánh mì nướng Kaya");
+        LoaiChiTietBanhmi.add("Bánh mì Mitrailette");
+        LoaiChiTietBanhmi.add("Bánh mì Việt Nam");
+        ArrayAdapter adapterLoaiChiTietBanhmi = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietBanhmi);
+
+        ArrayList<String> LoaiChiTietThit = new ArrayList<>();
+        LoaiChiTietThit.add("Thịt Heo");
+        LoaiChiTietThit.add("Thịt Bò");
+        LoaiChiTietThit.add("Thịt Cá");
+        LoaiChiTietThit.add("Thịt Gà");
+        ArrayAdapter adapterLoaiChiTietThit = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiChiTietThit);
+
+        edt_SuaChiTiet.setText(sanPhamDomian.getLoaiChiTietSP());
+
+        if (loai.equals("Cà phê")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietCaPhe);
+
+        } else if (loai.equals("Tiêu")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietTieu);
+
+        } else if (loai.equals("Hạt Điều")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietDieu);
+
+        } else if (loai.equals("Ca Cao")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietCaCao);
+
+        } else if (loai.equals("MacCa")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietMC);
+
+        } else if (loai.equals("Thịt")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietThit);
+
+        } else if (loai.equals("Bánh mì")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietBanhmi);
+
+        } else if (loai.equals("Bơ")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietBo);
+
+        } else if (loai.equals("Dầu")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietDau);
+
+        } else if (loai.equals("Bánh")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietBanh);
+
+        } else if (loai.equals("Nước ngọt")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietNuoc);
+
+        } else if (loai.equals("Xúc xích")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietXucXich);
+
+        } else if (loai.equals("Rượu")){
+
+            edt_SuaChiTiet.setAdapter(adapterLoaiChiTietRuou);
+
+        }
+
+        edt_SuaLoai.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                LoaiSua = parent.getItemAtPosition(position).toString();
+
+                if (LoaiSua.equals("Cà phê")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietCaPhe);
+
+                } else if (LoaiSua.equals("Tiêu")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietTieu);
+
+                } else if (LoaiSua.equals("Hạt Điều")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietDieu);
+
+                } else if (LoaiSua.equals("Ca Cao")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietCaCao);
+
+                } else if (LoaiSua.equals("MacCa")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietMC);
+
+                } else if (LoaiSua.equals("Thịt")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietThit);
+
+                } else if (LoaiSua.equals("Bánh mì")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietBanhmi);
+
+                } else if (LoaiSua.equals("Bơ")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietBo);
+
+                } else if (LoaiSua.equals("Dầu")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietDau);
+
+                } else if (LoaiSua.equals("Bánh")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietBanh);
+
+                } else if (LoaiSua.equals("Nước ngọt")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietNuoc);
+
+                } else if (LoaiSua.equals("Xúc xích")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietXucXich);
+
+                } else if (LoaiSua.equals("Rượu")){
+
+                    edt_SuaChiTiet.setAdapter(adapterLoaiChiTietRuou);
+
+                }
 
             }
         });
 
+        edt_SuaChiTiet.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                LoaiChiTietSua = parent.getItemAtPosition(position).toString();
+
+            }
+        });
+
+        edt_DonVi.setText(sanPhamDomian.getDonVi());
+
+        ArrayList<String> DonVi = new ArrayList<>();
+        DonVi.add("kg");
+        DonVi.add("tấn");
+        DonVi.add("tạ");
+        DonVi.add("bao");
+        DonVi.add("con");
+        DonVi.add("cây");
+        ArrayAdapter adapterDonVi = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, DonVi);
+        edt_DonVi.setAdapter(adapterDonVi);
+
+        edt_SoLuongSua.setText(String.valueOf(sanPhamDomian.getSoLuong()));
+        edt_GiaSua.setText(sanPhamDomian.getGiaBan());
+        edt_HanSua.setText(sanPhamDomian.getHanSuDung());
+        edt_NoiSanXuatSua.setText(sanPhamDomian.getNoiSanXuat());
+        edt_ViTriSua.setText(sanPhamDomian.getGioiHanViTri());
+        edt_MoTaSanPhamSua.setText(sanPhamDomian.getMoTaChiTiet());
+
         btn_Regup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (LoaiHinhSua != null){
+                    sanPhamDomian.setLoaiHinhSP(LoaiHinhSua);
+                } else {
+                    sanPhamDomian.setLoaiHinhSP(edt_SuaLoaiHinh.getText().toString());
+                }
+
+                if (LoaiSua != null){
+                    sanPhamDomian.setLoaiSP(LoaiSua);
+                } else {
+                    sanPhamDomian.setLoaiSP(edt_SuaLoai.getText().toString());
+                }
+
+                if (LoaiChiTietSua != null){
+                    sanPhamDomian.setLoaiChiTietSP(LoaiChiTietSua);
+                } else {
+                    sanPhamDomian.setLoaiChiTietSP(edt_SuaChiTiet.getText().toString());
+                }
+
+                sanPhamDomian.setSoLuong(Integer.parseInt(edt_SoLuongSua.getText().toString()));
+                sanPhamDomian.setGiaBan(edt_GiaSua.getText().toString());
+                sanPhamDomian.setDonVi(edt_DonVi.getText().toString());
+                sanPhamDomian.setHanSuDung(edt_HanSua.getText().toString());
+                sanPhamDomian.setNoiSanXuat(edt_NoiSanXuatSua.getText().toString());
+                sanPhamDomian.setGioiHanViTri(edt_ViTriSua.getText().toString());
+                sanPhamDomian.setMoTaChiTiet(edt_MoTaSanPhamSua.getText().toString());
+
+                database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                ref = database.getReference("SanPham");
+                ref.child(sanPhamDomian.getMaSP()).updateChildren(sanPhamDomian.toMap()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                        dialog.dismiss();
+
+                    }
+                });
+            }
+        });
+
+        img_ChonHinh = dialog.findViewById(R.id.img_ChonHinh);
+
+        img_ChonHinh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

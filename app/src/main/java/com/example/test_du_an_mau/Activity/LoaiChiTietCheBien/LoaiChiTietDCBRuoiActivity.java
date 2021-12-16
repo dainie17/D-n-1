@@ -64,7 +64,7 @@ public class LoaiChiTietDCBRuoiActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiChiTietDCBRuoiActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("Rượi Gò Đen");
+                    sanPhamDomian.setLoaiChiTietSP("Rượu Gò Đen");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -87,7 +87,7 @@ public class LoaiChiTietDCBRuoiActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiChiTietDCBRuoiActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("Rượi Nếp");
+                    sanPhamDomian.setLoaiChiTietSP("Rượu Nếp");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -110,7 +110,7 @@ public class LoaiChiTietDCBRuoiActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiChiTietDCBRuoiActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("Rượi Gạo");
+                    sanPhamDomian.setLoaiChiTietSP("Rượu Gạo");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
