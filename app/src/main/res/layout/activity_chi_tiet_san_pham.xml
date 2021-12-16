@@ -99,17 +99,37 @@
                     android:gravity="right|center_vertical"
                     android:orientation="horizontal"
                     android:paddingRight="15dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:padding="10dp"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:text="Giá: "
+                        android:textColor="@color/black"
+                        app:drawableTint="@color/black" />
 
                     <TextView
-                        android:id="@+id/txt_ThemVaoTimCT"
-                        android:layout_width="130dp"
+                        android:id="@+id/txt_GiaChiTiet"
+                        android:layout_width="wrap_content"
                         android:layout_height="40dp"
-                        android:background="@drawable/bacground_them_vao_tim"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:text="Thêm vào"
+                        android:gravity="right"
+                        android:paddingTop="10dp"
+                        android:text="Giá Sản Phẩm"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
                         android:textColor="@color/black"
-                        app:drawableRightCompat="@drawable/ic_baseline_favorite_border_24"
+                        app:drawableTint="@color/black" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:gravity="left"
+                        android:padding="10dp"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:text="Đ"
+                        android:textColor="@color/black"
                         app:drawableTint="@color/black" />
 
                 </LinearLayout>
@@ -391,6 +411,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_AnhBinhLuan"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="left|center"
+                    android:layout_marginLeft="20dp"
+                    android:src="@drawable/baby" />
 
                 <EditText
                     android:id="@+id/edt_comment"

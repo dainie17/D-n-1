@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Chọn loại Tiêu"
+            android:text="Loại chi tiết phát sinh bánh mì"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiêu sấy khô"
+                android:text="Bánh mì Pháp"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -106,7 +106,89 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tiêu say"
+                android:text="Bánh mì nướng Kaya"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:paddingRight="5dp"
+            android:src="@drawable/ic_baseline_send_24"
+            app:tint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+        android:id="@+id/LoaiChiTietPSTieu2"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/macca"
+        android:baselineAligned="false"
+        android:elevation="3dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSTieu1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bánh mì Mitrailette"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:paddingRight="5dp"
+                android:src="@drawable/ic_baseline_send_24"
+                app:tint="@color/white" />
+        </LinearLayout>
+        <LinearLayout
+        android:id="@+id/LoaiChiTietPSTieu3"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/macca"
+        android:baselineAligned="false"
+        android:elevation="3dp"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSTieu2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bánh mì Việt Nam"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -124,7 +206,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietPSTieu2"
+        android:id="@+id/LoaiChiTietPSTieu4"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/macca"
@@ -136,7 +218,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSTieu1">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSTieu3">
 
         <LinearLayout
             android:layout_width="match_parent"

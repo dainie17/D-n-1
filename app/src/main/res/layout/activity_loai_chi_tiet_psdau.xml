@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.LoaiChiTietPS.LoaiChiTietPSDieuActivity">
-
+    tools:context=".Activity.LoaiChiTietPS.LoaiChiTietPSDauActivity">
     <LinearLayout
         android:id="@+id/linearLayout8"
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="40dp"
-            android:id="@+id/button_back_PSDieu"
+            android:id="@+id/button_back_PSDau"
             android:layout_marginTop="5dp"
             android:src="@drawable/quay_lai"
             app:tint="@color/white" />
@@ -28,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Loại chi tiết phát sinh bơ"
+            android:text="Loại chi tiết phát sinh Dầu"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -36,7 +35,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietPSDieu"
+        android:id="@+id/LoaiChiTietPSDau"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/macca"
@@ -62,7 +61,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bơ Nhạt"
+                android:text="Dầu Ô Liu"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -80,7 +79,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietPSDieu1"
+        android:id="@+id/LoaiChiTietPSDau1"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/macca"
@@ -92,7 +91,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDieu">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDau">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,7 +105,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bơ Mặn"
+                android:text="Dầu Bơ"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -124,7 +123,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietPSDieu2"
+        android:id="@+id/LoaiChiTietPSDau2"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/macca"
@@ -136,7 +135,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDieu1">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDau1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,7 +149,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bơ Động Vật"
+                android:text="Dầu Mè"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -168,7 +167,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietPSDieu3"
+        android:id="@+id/LoaiChiTietPSDau3"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/macca"
@@ -180,7 +179,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDieu2">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDau2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -194,7 +193,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bơ Thực Vật"
+                android:text="Dầu Đậu Nành"
                 android:textColor="#FFFFFF"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -212,7 +211,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/LoaiChiTietPSDieu4"
+        android:id="@+id/LoaiChiTietPSDau4"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/macca"
@@ -224,7 +223,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDieu3">
+        app:layout_constraintTop_toBottomOf="@+id/LoaiChiTietPSDau3">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -254,7 +253,5 @@
             app:tint="@color/white" />
 
     </LinearLayout>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

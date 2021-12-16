@@ -60,11 +60,11 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
     SlideShowAdapter slideShowAdapter;
 
     ImageView img_prev, img_next, img_BackCT, img_comment;
-    CircleImageView  img_AnhNguoiDang;
+    CircleImageView  img_AnhNguoiDang, img_AnhBinhLuan;
 
     TextView txt_LoaiHinhSPCT, txt_LoaiSanPhamCT, txt_LoaiCTCTSP, txt_SoLuongCT, txt_DonViCT,
             txt_HanSuDungCT, txt_NoiSanXuatCT, txt_GioiHanCT, txt_MoTaCT, txt_TenNguoiDungCT,
-            txt_NhanTinVNB, txt_Goi, ct_sp, ct_nsx;
+            txt_NhanTinVNB, txt_Goi, ct_sp, ct_nsx, txt_GiaChiTiet;
 
     EditText edt_coment;
 
@@ -96,7 +96,9 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
         img_next = this.findViewById(R.id.img_next);
         img_BackCT = this.findViewById(R.id.img_BackCT);
         img_AnhNguoiDang = this.findViewById(R.id.img_AnhNguoiDang);
+        img_AnhBinhLuan = this.findViewById(R.id.img_AnhBinhLuan);
 
+        txt_GiaChiTiet = this.findViewById(R.id.txt_GiaChiTiet);
         ct_sp = this.findViewById(R.id.ct_sp);
         ct_nsx = this.findViewById(R.id.ct_nsx);
         txt_LoaiHinhSPCT = this.findViewById(R.id.txt_LoaiHinhSPCT);
@@ -155,6 +157,9 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
 
             String ct_ns = sanPhamDomian.getNoiSanXuat();
             ct_nsx.setText(ct_ns);
+
+            String gia = sanPhamDomian.getGiaBan();
+            txt_GiaChiTiet.setText(gia);
 
             String id = sanPhamDomian.getMaNguoiDung();
 
@@ -402,6 +407,7 @@ public class ChiTietSanPhamActivity extends AppCompatActivity {
                 if (user != null){
                     txt_TenNguoiDungCT.setText(user.getUsername());
                     Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhNguoiDang);
+                    Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhBinhLuan);
 
                 }
             }

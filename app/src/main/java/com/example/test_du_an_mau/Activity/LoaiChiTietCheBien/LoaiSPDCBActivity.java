@@ -18,7 +18,7 @@ import com.example.test_du_an_mau.R;
 public class LoaiSPDCBActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 10;
-    LinearLayout LoaiSPDCB_Banh, LoaiSPDCB_Nuoc, LoaiSPDCB_XX, LoaiSPDCB_Ruoi, LoaiSPDCB_KXD;
+    LinearLayout LoaiSPDCB_Banh, LoaiSPDCB_Nuoc, LoaiSPDCB_XX, LoaiSPDCB_Ruoi;
     ImageView back;
 
     @Override
@@ -32,7 +32,6 @@ public class LoaiSPDCBActivity extends AppCompatActivity {
         LoaiSPDCB_Nuoc = this.findViewById(R.id.LoaiSPDCB_Nuoc);
         LoaiSPDCB_XX = this.findViewById(R.id.LoaiSPDPS_XX);
         LoaiSPDCB_Ruoi = this.findViewById(R.id.LoaiSPDCB_Ruoi);
-        LoaiSPDCB_KXD = this.findViewById(R.id.LoaiSPDCB_KXD);
 
 
         LoaiSPDCB_Banh.setOnClickListener(new View.OnClickListener() {

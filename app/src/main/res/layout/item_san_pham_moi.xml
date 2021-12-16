@@ -106,13 +106,12 @@
 
         <FrameLayout
             android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/img_YeuThich"
-                android:layout_gravity="left"
+                android:layout_gravity="right"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:src="@drawable/ic_baseline_favorite_border_24"
@@ -120,7 +119,7 @@
 
             <ImageView
                 android:id="@+id/img_DaThich"
-                android:layout_gravity="left"
+                android:layout_gravity="right"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:visibility="invisible"
@@ -128,25 +127,6 @@
                 app:tint="#FF0000" />
 
         </FrameLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="25dp"
-            android:gravity="center|right">
-
-            <TextView
-                android:id="@+id/txt_DanhGia"
-                android:layout_gravity="bottom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="23sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="5.0"/>
-
-        </LinearLayout>
 
     </LinearLayout>
 
