@@ -18,6 +18,7 @@ import com.example.test_du_an_mau.Adapter.ThongBaoAdapter;
 import com.example.test_du_an_mau.Domian.Thongbao;
 import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -86,9 +87,13 @@ public class fragment_user extends Fragment {
 
                 database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 ref = database.getReference("ThongBao");
-                ref.child(thongbao.getIDThongBao()).removeValue();
-                list.remove(position);
-                adapter.notifyDataSetChanged();
+                ref.child(thongbao.getIDThongBao()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        list.remove(position);
+                        adapter.notifyDataSetChanged();
+                    }
+                });
             }
         });
 
@@ -109,18 +114,14 @@ public class fragment_user extends Fragment {
 
                 if (thongbao != null){
 
-                    List<String> listID = thongbao.getIDNguoiNhan();
+                    String listID = thongbao.getIDNguoiNhan();
 
-                    for (int i = 0; i < listID.size(); i++){
-
-                        if (id.equals(listID.get(i))){
+                        if (id.equals(listID)){
 
                             list.add(thongbao);
                             adapter.notifyDataSetChanged();
 
                         }
-
-                    }
 
                 }
 
