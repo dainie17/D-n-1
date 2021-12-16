@@ -7,24 +7,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.OpenableColumns;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.test_du_an_mau.Adapter.HinhAnhAdapter;
 import com.example.test_du_an_mau.Adapter.SanPhamCaNhanAdapter;
+import com.example.test_du_an_mau.Adapter.SlideShowAdapter;
+import com.example.test_du_an_mau.Domian.ChonHinh;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.Domian.User;
+import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -37,14 +53,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class QuanLySanPhamActivity extends AppCompatActivity {
-
-    String id;
 
     TextView ten_nguoi_dung, txt_SoDienThoaiSP;
 
@@ -59,6 +75,10 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
     DatabaseReference ref;
 
     List<SanPhamDomian> list;
+
+    RecyclerView rscv_HienAnhSua;
+
+    SlideShowAdapter slideShowAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +130,174 @@ public class QuanLySanPhamActivity extends AppCompatActivity {
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.setCancelable(false);
+
+
+        Button btn_Regup, btn_Relayup;
+        ImageView img_ChonHinh;
+        AutoCompleteTextView edt_SuaLoaiHinh, edt_SuaLoai, edt_SuaChiTiet;
+
+        btn_Relayup = dialog.findViewById(R.id.btn_Relayup);
+        btn_Regup = dialog.findViewById(R.id.btn_Regup);
+        rscv_HienAnhSua = dialog.findViewById(R.id.rscv_HienAnhSua);
+        edt_SuaLoaiHinh = dialog.findViewById(R.id.edt_SuaLoaiHinh);
+        edt_SuaLoai = dialog.findViewById(R.id.edt_SuaLoai);
+        edt_SuaChiTiet = dialog.findViewById(R.id.edt_SuaChiTiet);
+
+        rscv_HienAnhSua.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getParent(), RecyclerView.HORIZONTAL, false);
+        rscv_HienAnhSua.setLayoutManager(linearLayoutManager);
+        List<String> listHinhAnh = sanPhamDomian.getAlbumAnh();
+
+        slideShowAdapter = new SlideShowAdapter(this, listHinhAnh);
+        rscv_HienAnhSua.setAdapter(slideShowAdapter);
+
+        edt_SuaLoaiHinh.setText(sanPhamDomian.getLoaiHinhSP());
+        ArrayList<String> LoaiHinh = new ArrayList<>();
+        LoaiHinh.add("Nông nghiệp cơ bản");
+        LoaiHinh.add("Cac San Pham Phat Sinh");
+        LoaiHinh.add("Các Sản Phẩm Đã Chê Biến");
+        ArrayAdapter adapterLoaiHinh = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiHinh);
+        edt_SuaLoaiHinh.setAdapter(adapterLoaiHinh);
+
+        String loaihinh = edt_SuaLoaiHinh.getText().toString();
+
+        ArrayList<String> LoaiCoBan = new ArrayList<>();
+        LoaiCoBan.add("Cà phê");
+        LoaiCoBan.add("Tiêu");
+        LoaiCoBan.add("Hạt Điều");
+        LoaiCoBan.add("Ca Cao");
+        LoaiCoBan.add("MacCa");
+        ArrayAdapter adapterLoaiCoban = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiCoBan);
+
+        ArrayList<String> LoaiPhatSinh = new ArrayList<>();
+        LoaiPhatSinh.add("Thịt");
+        LoaiPhatSinh.add("Bánh mì");
+        LoaiPhatSinh.add("Bơ");
+        LoaiPhatSinh.add("Dầu");
+        ArrayAdapter adapterLoaiPhatSinh = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiPhatSinh);
+
+        ArrayList<String> LoaiDaCheBien = new ArrayList<>();
+        LoaiDaCheBien.add("Bánh");
+        LoaiDaCheBien.add("Nước ngọt");
+        LoaiDaCheBien.add("Xúc xích");
+        LoaiDaCheBien.add("Rượu");
+        ArrayAdapter adapterLoaiCheBien = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, LoaiDaCheBien);
+
+        edt_SuaLoai.setText(sanPhamDomian.getLoaiSP());
+
+        if (loaihinh.equals("Nông nghiệp cơ bản")){
+
+            edt_SuaLoai.setAdapter(adapterLoaiCoban);
+
+        } else if (loaihinh.equals("Cac San Pham Phat Sinh")){
+
+            edt_SuaLoai.setAdapter(adapterLoaiPhatSinh);
+
+        } else if (loaihinh.equals("Các Sản Phẩm Đã Chê Biến")){
+
+            edt_SuaLoai.setAdapter(adapterLoaiCheBien);
+
+        }
+
+        edt_SuaLoaiHinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = parent.getItemAtPosition(position).toString();
+
+                if (item.equals("Nông nghiệp cơ bản")){
+
+                    edt_SuaLoai.setAdapter(adapterLoaiCoban);
+
+                } else if (item.equals("Cac San Pham Phat Sinh")){
+
+                    edt_SuaLoai.setAdapter(adapterLoaiPhatSinh);
+
+                } else if (item.equals("Các Sản Phẩm Đã Chê Biến")){
+
+                    edt_SuaLoai.setAdapter(adapterLoaiCheBien);
+
+                }
+
+            }
+        });
+
+        String loai = edt_SuaLoai.getText().toString();
+
+        ArrayList<String> LoaiChiTietCaPhe = new ArrayList<>();
+        LoaiChiTietCaPhe.add("ROBUSTA");
+        LoaiChiTietCaPhe.add("ARABICA");
+        LoaiChiTietCaPhe.add("CHERRY");
+        LoaiChiTietCaPhe.add("CULI");
+        LoaiChiTietCaPhe.add("MOKA");
+        LoaiChiTietCaPhe.add("Không Xác Định");
+
+        ArrayList<String> LoaiChiTietCaCao = new ArrayList<>();
+        LoaiChiTietCaCao.add("Criollo");
+        LoaiChiTietCaCao.add("Trinitario");
+        LoaiChiTietCaCao.add("Forastero");
+        LoaiChiTietCaCao.add("Không Xác Định");
+
+        ArrayList<String> LoaiChiTietDieu = new ArrayList<>();
+        LoaiChiTietDieu.add("Hạt Điều Nhân Trắng");
+        LoaiChiTietDieu.add("Hạt Điều Nhân Vỡ");
+        LoaiChiTietDieu.add("Hạt Điều Nhân Vàng");
+        LoaiChiTietDieu.add("Hạt Điều Nhân Bị Nám, Teo, Xâu");
+        LoaiChiTietDieu.add("Không Xác Định");
+
+        ArrayList<String> LoaiChiTietMC = new ArrayList<>();
+        LoaiChiTietMC.add("MacCao Úc");
+        LoaiChiTietMC.add("MacCao Trung Quốc");
+        LoaiChiTietMC.add("MacCao Nam Phi");
+        LoaiChiTietMC.add("MacCao Việt Nam");
+        LoaiChiTietMC.add("Không Xác Định");
+
+        ArrayList<String> LoaiChiTietTieu = new ArrayList<>();
+        LoaiChiTietTieu.add("Tiêu Đen");
+        LoaiChiTietTieu.add("Tiêu Xọ");
+        LoaiChiTietTieu.add("Tiêu Đỏ");
+        LoaiChiTietTieu.add("Tiêu Lép");
+
+        ArrayList<String> LoaiChiTietBanh = new ArrayList<>();
+        LoaiChiTietBanh.add("Bánh Mì");
+        LoaiChiTietBanh.add("Bánh Kẹo");
+        LoaiChiTietBanh.add("Không Xác Định");
+
+        ArrayList<String> LoaiChiTietNuoc = new ArrayList<>();
+        LoaiChiTietNuoc.add("Nước Lọc");
+        LoaiChiTietNuoc.add("Nước Ngọt");
+        LoaiChiTietNuoc.add("Cà Phê");
+        LoaiChiTietNuoc.add("Ca Cao");
+
+        ArrayList<String> LoaiChiTietRuou = new ArrayList<>();
+        LoaiChiTietRuou.add("Nước Lọc");;
+
+        img_ChonHinh = dialog.findViewById(R.id.img_ChonHinh);
+
+        img_ChonHinh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btn_Regup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+
+            }
+        });
+
+        btn_Relayup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
 
     private void onClickDeleteData(SanPhamDomian sanPhamDomian) {

@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <item name="edt_SuaLoai" type="id" />
+    <item name="edt_SuaChiTiet" type="id" />
+    <item name="btn_Regup" type="id" />
+    <item name="btn_Relayup" type="id" />
+    <item name="edt_SuaLoaiHinh" type="id" />
+    <item name="rscv_HienAnhSua" type="id" />
+    <item name="img_ChonHinh" type="id" />
 </resources>

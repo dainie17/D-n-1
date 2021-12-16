@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,6 +37,7 @@
 
             <LinearLayout
                 android:id="@+id/logovi"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/action_context_bar"
@@ -43,15 +45,18 @@
                 android:gravity="center"
                 android:padding="0dp">
 
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/anhdaidien"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="20dp"
+                <ImageView
+                    android:id="@+id/img_ChonHinh"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
                     android:paddingBottom="15dp"
-                    android:src="@drawable/ic_baseline_image_24"
-                    app:civ_border_color="#FFFFFF"
-                    app:civ_border_width="2dp" />
+                    android:src="@drawable/camera"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rscv_HienAnhSua"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
             <RelativeLayout
@@ -75,36 +80,48 @@
                     android:orientation="vertical"
                     android:paddingTop="0dp">
 
-                    <EditText
-                        android:id="@+id/edtSuaTenSP"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:hint="Tên sản phẩm..."
-                        android:padding="14dp"
-                        android:textSize="17dp" />
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_SuaLoaiHinh"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="none"
+                            android:text="Loại hình sản phẩm" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <EditText
-                        android:id="@+id/edtSuaGia"
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="10dp"
-                        android:hint="Giá ..."
-                        android:inputType="number"
-                        android:padding="14dp"
-                        android:textSize="17dp"
-                        app:passwordToggleEnabled="true" />
+                        android:layout_height="wrap_content">
 
-                    <EditText
-                        android:id="@+id/edtSuaMoTa"
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_SuaLoai"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="none"
+                            android:text="Loại sản phẩm" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:layout_marginTop="10dp"
-                        android:hint="Mô tả ..."
-                        android:padding="14dp"
-                        android:textSize="17dp"
-                        app:passwordToggleEnabled="true" />
+                        android:layout_height="wrap_content">
 
+                        <AutoCompleteTextView
+                            android:id="@+id/edt_SuaChiTiet"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:inputType="none"
+                            android:text="Loại Chi Tiết sản phẩm" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -114,7 +131,7 @@
                         android:weightSum="2">
 
                         <Button
-                            android:id="@+id/btnRegup"
+                            android:id="@+id/btn_Regup"
                             android:layout_width="wrap_content"
                             android:layout_height="60dp"
                             android:layout_marginRight="10dp"
@@ -124,7 +141,7 @@
                             android:textColor="@color/white" />
 
                         <Button
-                            android:id="@+id/btnRelayup"
+                            android:id="@+id/btn_Relayup"
                             android:layout_width="wrap_content"
                             android:layout_height="60dp"
                             android:layout_weight="1"
