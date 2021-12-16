@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Chọn loại chi tiết cà phê"
+            android:text="Chọn loại chi tiết ca cao"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -38,8 +38,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietCC"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/criollo"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -82,8 +82,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietCC1"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/trimi"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -126,8 +126,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietCC2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/fora"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -140,7 +140,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -170,8 +170,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietCC3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="#A3A1A5"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -184,7 +184,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"

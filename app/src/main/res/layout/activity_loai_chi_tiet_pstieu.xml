@@ -38,8 +38,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSTieu"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/banhmi1"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -82,8 +82,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSTieu1"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/bm2"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -96,7 +96,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -123,8 +123,8 @@
         <LinearLayout
         android:id="@+id/LoaiChiTietPSTieu2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/bm3"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -137,7 +137,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -164,8 +164,8 @@
         <LinearLayout
         android:id="@+id/LoaiChiTietPSTieu3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/bm4"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -178,7 +178,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -208,8 +208,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSTieu4"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="#A3A1A5"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -222,7 +222,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"

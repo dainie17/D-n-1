@@ -73,16 +73,19 @@
             android:name=".Activity.LoaiChiTietCheBien.LoaiSPDCBActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoaiChiTietPS.LoaiChiTietPSDieuActivity"
+            android:name=".Activity.LoaiChiTietPS.LoaiChiTietPSBoActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.ChiTietSanPhamActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.LoaiChiTietPS.LoaiChiTietPSTieuActivity"
+            android:name=".Activity.LoaiChiTietPS.LoaiChiTietThitActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.LoaiChiTietPS.LoaiChiTietThitActivity"
+            android:name=".Activity.LoaiChiTietPS.LoaiChiTietPSDauActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.LoaiChiTietPS.LoaiChiTietPSTieuActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.LoaiChiTietPS.LoaiSPPSActivity"

@@ -122,7 +122,7 @@
         android:id="@+id/LoaiSP_Dieu"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="@drawable/dieu"
+        android:background="@drawable/macca"
         android:baselineAligned="false"
         android:gravity="right"
         android:orientation="horizontal"

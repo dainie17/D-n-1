@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:text="Chọn loại chi tiết cà phê"
+            android:text="Chọn loại chi tiết xúc xích"
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -38,8 +38,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietDCBXX"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/xx"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -82,8 +82,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietDCBXX1"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/xxduc"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -96,7 +96,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -126,8 +126,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietDCBXX2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/xxanlien"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -140,7 +140,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -169,8 +169,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietDCBXX3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="#A3A1A5"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -183,7 +183,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"

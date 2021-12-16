@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.LoaiChiTietPS.LoaiChiTietPSDieuActivity">
+    tools:context=".Activity.LoaiChiTietPS.LoaiChiTietPSBoActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout8"
@@ -38,8 +38,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSDieu"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/bo"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -82,8 +82,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSDieu1"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/bonhat"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -96,7 +96,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -126,8 +126,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSDieu2"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/bodv"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -140,7 +140,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -170,8 +170,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSDieu3"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="@drawable/botv"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -184,7 +184,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"
@@ -214,8 +214,8 @@
     <LinearLayout
         android:id="@+id/LoaiChiTietPSDieu4"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/macca"
+        android:layout_height="100dp"
+        android:background="#A3A1A5"
         android:baselineAligned="false"
         android:elevation="3dp"
         android:gravity="right"
@@ -228,7 +228,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical"

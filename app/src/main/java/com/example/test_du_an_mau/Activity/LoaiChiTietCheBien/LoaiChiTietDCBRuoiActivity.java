@@ -41,7 +41,7 @@ public class LoaiChiTietDCBRuoiActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiChiTietDCBRuoiActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("Nước Lọc");
+                    sanPhamDomian.setLoaiChiTietSP("Rượi gạo Mẫu Sơn");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
