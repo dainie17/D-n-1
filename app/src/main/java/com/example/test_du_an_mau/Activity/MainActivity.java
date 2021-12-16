@@ -83,11 +83,8 @@ public class MainActivity extends AppCompatActivity {
         });
         list = new ArrayList<>();
         layDuLieuThongBao();
-
         txt_SLTB = this.findViewById(R.id.txt_SLTB);
-        if (list.size() > 1){
-            txt_SLTB.setVisibility(View.INVISIBLE);
-        } else {
+        if (list.size() > 0){
             txt_SLTB.setVisibility(View.VISIBLE);
         }
 
