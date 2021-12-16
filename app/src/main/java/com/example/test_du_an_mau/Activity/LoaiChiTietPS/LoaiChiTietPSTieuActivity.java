@@ -15,7 +15,7 @@ import com.example.test_du_an_mau.R;
 public class LoaiChiTietPSTieuActivity extends AppCompatActivity {
 
     private static final int MY_REQUEST_CODE = 10;
-    LinearLayout LoaiChiTietPSTieu, LoaiChiTietPSTieu1, LoaiChiTietPSTieu2;
+    LinearLayout LoaiChiTietPSTieu, LoaiChiTietPSTieu1, LoaiChiTietPSTieu2,LoaiChiTietPSTieu3,LoaiChiTietPSTieu4;
     ImageView back;
 
     @Override
@@ -28,6 +28,8 @@ public class LoaiChiTietPSTieuActivity extends AppCompatActivity {
         LoaiChiTietPSTieu= this.findViewById(R.id.LoaiChiTietPSTieu);
         LoaiChiTietPSTieu1 = this.findViewById(R.id.LoaiChiTietPSTieu1);
         LoaiChiTietPSTieu2 = this.findViewById(R.id.LoaiChiTietPSTieu2);
+        LoaiChiTietPSTieu3 = this.findViewById(R.id.LoaiChiTietPSTieu3);
+        LoaiChiTietPSTieu4 = this.findViewById(R.id.LoaiChiTietPSTieu4);
 
         LoaiChiTietPSTieu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +41,7 @@ public class LoaiChiTietPSTieuActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiChiTietPSTieuActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("Tiêu Xấy Khô");
+                    sanPhamDomian.setLoaiChiTietSP("Bánh mì Pháp");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -62,7 +64,30 @@ public class LoaiChiTietPSTieuActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiChiTietPSTieuActivity.this, ChonHinhAnhActivity.class);
 
-                    sanPhamDomian.setLoaiChiTietSP("Tiêu Xay");
+                    sanPhamDomian.setLoaiChiTietSP("Bánh mì nướng Kaya");
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
+
+                    intent.putExtras(bundle);
+
+                    startActivityForResult(intent, MY_REQUEST_CODE);
+
+                }
+
+            }
+        });
+        LoaiChiTietPSTieu1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (getIntent().getExtras() != null){
+
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSTieu");
+
+                    Intent intent = new Intent(LoaiChiTietPSTieuActivity.this, ChonHinhAnhActivity.class);
+
+                    sanPhamDomian.setLoaiChiTietSP("Bánh mì nướng Kaya");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
@@ -76,6 +101,52 @@ public class LoaiChiTietPSTieuActivity extends AppCompatActivity {
             }
         });
         LoaiChiTietPSTieu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (getIntent().getExtras() != null){
+
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSTieu");
+
+                    Intent intent = new Intent(LoaiChiTietPSTieuActivity.this, ChonHinhAnhActivity.class);
+
+                    sanPhamDomian.setLoaiChiTietSP("Bánh mì Mitrailette");
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
+
+                    intent.putExtras(bundle);
+
+                    startActivityForResult(intent, MY_REQUEST_CODE);
+
+                }
+
+            }
+        });
+        LoaiChiTietPSTieu3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (getIntent().getExtras() != null){
+
+                    SanPhamDomian sanPhamDomian = (SanPhamDomian) getIntent().getExtras().get("LoaiSanPhamPSTieu");
+
+                    Intent intent = new Intent(LoaiChiTietPSTieuActivity.this, ChonHinhAnhActivity.class);
+
+                    sanPhamDomian.setLoaiChiTietSP("Bánh mì Việt Nam");
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("LoaiChiTiet", sanPhamDomian);
+
+                    intent.putExtras(bundle);
+
+                    startActivityForResult(intent, MY_REQUEST_CODE);
+
+                }
+
+            }
+        });
+        LoaiChiTietPSTieu4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

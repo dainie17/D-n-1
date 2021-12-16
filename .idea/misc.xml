@@ -35,6 +35,7 @@
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_dcbxucxich.xml" value="0.22418478260869565" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_dieu.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_mcactivity.xml" value="0.27447916666666666" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_psdau.xml" value="0.2341485507246377" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_psdieu.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_pstieu.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_loai_chi_tiet_thit.xml" value="0.27447916666666666" />
@@ -52,7 +53,10 @@
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/activity_user_acivity.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/chat_item_left.xml" value="0.25769927536231885" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/comment_item.xml" value="0.25769927536231885" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/empty_state.xml" value="0.2341485507246377" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/fragment_users.xml" value="0.20471014492753623" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/item_duyet_sanpham.xml" value="0.2341485507246377" />
+        <entry key="..\:/Du An/Duan/app/src/main/res/layout/item_hinh_anh.xml" value="0.2341485507246377" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/item_quan_ly_san_pham.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/item_san_pham_moi.xml" value="0.27447916666666666" />
         <entry key="..\:/Du An/Duan/app/src/main/res/layout/list_item_slide.xml" value="0.27447916666666666" />

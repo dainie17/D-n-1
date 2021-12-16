@@ -45,7 +45,7 @@ public class LoaiSPPSActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiSPPSActivity.this, LoaiChiTietThitActivity.class);
 
-                    sanPham.setLoaiSP("Thit");
+                    sanPham.setLoaiSP("Thịt");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiSanPhamPSThit", sanPham);
@@ -69,7 +69,7 @@ public class LoaiSPPSActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiSPPSActivity.this, LoaiChiTietPSTieuActivity.class);
 
-                    sanPham.setLoaiSP("Tiêu");
+                    sanPham.setLoaiSP("Bánh Mì");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiSanPhamPSTieu", sanPham);
@@ -93,10 +93,33 @@ public class LoaiSPPSActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(LoaiSPPSActivity.this, LoaiChiTietPSDieuActivity.class);
 
-                    sanPham.setLoaiSP("Phát sinh điều");
+                    sanPham.setLoaiSP("Bơ");
 
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("LoaiSanPhamPSDieu", sanPham);
+
+                    intent.putExtras(bundle);
+
+                    startActivityForResult(intent, MY_REQUEST_CODE);
+
+                }
+
+            }
+        });
+        LoaiSPPS_CaCao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (getIntent().getExtras() != null){
+
+                    SanPhamDomian sanPham = (SanPhamDomian) getIntent().getExtras().get("LoaiHinhSP");
+
+                    Intent intent = new Intent(LoaiSPPSActivity.this, LoaiChiTietPSDauActivity.class);
+
+                    sanPham.setLoaiSP("Dầu");
+
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("LoaiSanPhamPSDau", sanPham);
 
                     intent.putExtras(bundle);
 

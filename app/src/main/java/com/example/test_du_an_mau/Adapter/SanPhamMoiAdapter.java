@@ -154,7 +154,7 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
 
     public class SanPhamViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView txt_GiaBanDau, txt_TenLoai, txt_LoaiChiTiet, txt_SoLuong, txt_DonVi, txt_DanhGia;
+        private TextView txt_GiaBanDau, txt_TenLoai, txt_LoaiChiTiet, txt_SoLuong, txt_DonVi;
         private ImageView img_AnhSanPham1, img_YeuThich, img_DaThich;
         private ConstraintLayout constraintLayout;
 
@@ -166,7 +166,6 @@ public class SanPhamMoiAdapter extends RecyclerView.Adapter<SanPhamMoiAdapter.Sa
             txt_LoaiChiTiet = itemView.findViewById(R.id.txt_LoaiChiTiet);
             txt_SoLuong = itemView.findViewById(R.id.txt_SoLuong);
             txt_DonVi = itemView.findViewById(R.id.txt_DonVi);
-            txt_DanhGia = itemView.findViewById(R.id.txt_DanhGia);
 
             img_AnhSanPham1 = itemView.findViewById(R.id.img_AnhSanPham1);
             img_YeuThich = itemView.findViewById(R.id.img_YeuThich);

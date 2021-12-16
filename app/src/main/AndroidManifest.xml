@@ -22,6 +22,9 @@
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activity.LoaiChiTietPS.LoaiChiTietPSDauActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.LoaiChiTietCheBien.LoaiChiTietDCBRuoiActivity"
             android:exported="false" />
         <activity
