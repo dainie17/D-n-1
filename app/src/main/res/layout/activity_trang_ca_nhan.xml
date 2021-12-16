@@ -116,30 +116,17 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/txt_GuiThongBao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gửi thông báo"
-        android:textColor="@color/white"
-        android:padding="10dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/background_tron"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
         android:id="@+id/txt_XoaNguoiDung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/background_tron"
         android:padding="10dp"
         android:text="Xóa người dùng này"
         android:textColor="@color/white"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/img_QuayLaiCN"

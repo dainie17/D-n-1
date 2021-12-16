@@ -43,7 +43,6 @@ public class TrangCaNhanActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference ref;
     List<SanPhamDomian> list_SanPhamKhac;
-    List<SanPhamDomian> list = new ArrayList<>();
     ImageView img_AnhCn, img_QuayLaiCN;
     TextView txt_TenDungCN, txt_SDTCN, txt_DiaChi, txt_XoaNguoiDung;
     private static final int MY_REQUEST_CODE = 10;
