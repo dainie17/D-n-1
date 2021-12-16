@@ -122,7 +122,6 @@ public class GuiThongBaoActivity extends AppCompatActivity {
         if (getIntent().getExtras() != null){
 
             List<String> IdNguoiNhan = getIntent().getStringArrayListExtra("listId");
-            thongbao.setIDNguoiNhan(IdNguoiNhan);
 
             btn_GuiThongBao.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -137,7 +136,8 @@ public class GuiThongBaoActivity extends AppCompatActivity {
 
                         String idTB = reference.push().getKey();
                         thongbao.setIDThongBao(idTB);
-                        reference.child(reference.push().getKey()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        thongbao.setIDNguoiNhan(IdNguoiNhan.get(i));
+                        reference.child(thongbao.getIDThongBao()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
 

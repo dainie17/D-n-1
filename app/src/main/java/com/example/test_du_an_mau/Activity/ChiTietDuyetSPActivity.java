@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -51,6 +52,8 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
     List<String> listmaSP, listMaID;
 
     DatabaseReference ref;
+
+    String linkAnh;
 
     int currentImage;
 
@@ -146,49 +149,10 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
             });
 
             LayIDNguoiDang(sanPhamDomian);
-            ArrayAdapter adapterDonVi = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, listMaID);
-            edt_IDSanPham.setAdapter(adapterDonVi);
-
-            database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
-            ref = database.getReference("SanPham");
-
-            for (int i = 0; i < listmaSP.size(); i++){
-
-                ref.child(listmaSP.get(i)).child("NYT").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                        if (snapshot.exists()){
-
-                            String idND = snapshot.getValue(String.class);
-                            listMaID.add("idND");
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-            }
+            Thongbao thongbao = new Thongbao();
+            thongbao.setLoaiThongBao("Thông báo");
+            thongbao.setNoiDung("Người dùng có sản phẩm bạn yêu thích đã đăng sản phẩm mới");
+            thongbao.setLinkAnh(linkAnh);
 
             txt_Duyet.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -205,25 +169,24 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void unused) {
 
-                                    Thongbao thongbao = new Thongbao();
                                     database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                                     DatabaseReference reference = database.getReference("ThongBao");
 
-                                    thongbao.setLoaiThongBao("Thông báo");
-                                    thongbao.setNoiDung("Người dùng có sản phẩm bạn yêu thích đã đăng sản phẩm mới");
-                                    thongbao.setLinkAnh("");
-                                    thongbao.setIDThongBao(reference.push().getKey());
-                                    thongbao.setIDNguoiNhan(listMaID);
+                                    for (int i = 0; i < listMaID.size(); i++){
 
-                                    reference.child(reference.push().getKey()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void unused) {
-                                            Toast.makeText(ChiTietDuyetSPActivity.this, "Đã duyệt !!", Toast.LENGTH_SHORT).show();
+                                        thongbao.setIDThongBao(reference.push().getKey());
+                                        thongbao.setIDNguoiNhan(listMaID.get(i));
+                                        reference.child(thongbao.getIDThongBao()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void unused) {
+                                                Toast.makeText(ChiTietDuyetSPActivity.this, "Đã duyệt !!", Toast.LENGTH_SHORT).show();
 
-                                            startActivity(new Intent(ChiTietDuyetSPActivity.this, DuyetSanPhamActivity.class));
-                                            finish();
-                                        }
-                                    });
+                                                startActivity(new Intent(ChiTietDuyetSPActivity.this, DuyetSanPhamActivity.class));
+                                                finish();
+                                            }
+                                        });
+
+                                    }
 
                                 }
                             });
@@ -282,6 +245,35 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
                 SanPhamDomian sanPhamDomian = snapshot.getValue(SanPhamDomian.class);
 
                 listmaSP.add(sanPhamDomian.getMaSP());
+                ref.child(sanPhamDomian.getMaSP()).child("NYT").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                        String idND = snapshot.getValue(String.class);
+                        listMaID.add(idND);
+
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
             }
 
@@ -319,6 +311,7 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
                 User user = snapshot.getValue(User.class);
                 if (user != null){
                     txt_TenNguoiDungDuyet.setText(user.getUsername());
+                    linkAnh = user.getImageURL();
                     Picasso.get().load(user.getImageURL()).placeholder(R.drawable.user).into(img_AnhNguoiDangDuyet);
 
                 }

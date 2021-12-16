@@ -6,13 +6,12 @@ import java.util.Map;
 
 public class Thongbao {
 
-    String IDThongBao, LoaiThongBao, NoiDung, LinkAnh;
-    List<String> IDNguoiNhan;
+    String IDThongBao, LoaiThongBao, NoiDung, LinkAnh, IDNguoiNhan;
 
     public Thongbao() {
     }
 
-    public Thongbao(String IDThongBao, String loaiThongBao, String noiDung, String linkAnh, List<String> IDNguoiNhan) {
+    public Thongbao(String IDThongBao, String loaiThongBao, String noiDung, String linkAnh, String IDNguoiNhan) {
         this.IDThongBao = IDThongBao;
         LoaiThongBao = loaiThongBao;
         NoiDung = noiDung;
@@ -52,11 +51,11 @@ public class Thongbao {
         LinkAnh = linkAnh;
     }
 
-    public List<String> getIDNguoiNhan() {
+    public String getIDNguoiNhan() {
         return IDNguoiNhan;
     }
 
-    public void setIDNguoiNhan(List<String> IDNguoiNhan) {
+    public void setIDNguoiNhan(String IDNguoiNhan) {
         this.IDNguoiNhan = IDNguoiNhan;
     }
 }
