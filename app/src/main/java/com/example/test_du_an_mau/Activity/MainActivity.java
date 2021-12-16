@@ -1,6 +1,7 @@
 package com.example.test_du_an_mau.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.test_du_an_mau.Domian.Thongbao;
 import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.fragment.fragment_favorite;
 import com.example.test_du_an_mau.fragment.fragment_home;
@@ -21,11 +23,16 @@ import com.example.test_du_an_mau.fragment.fragment_user;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,9 +42,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int FRAGMENT_THEM = 3;
 
     private int mCurrentFragment = FRAGMENT_TRANG_CHINH;
-    TextView btn_themSanPham;
+    TextView btn_themSanPham, txt_SLTB;
     String id;
     DatabaseReference reference;
+    List<Thongbao> list;
+    DatabaseReference ref;
+    private FirebaseDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +81,15 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        list = new ArrayList<>();
+        layDuLieuThongBao();
+
+        txt_SLTB = this.findViewById(R.id.txt_SLTB);
+        if (list.size() > 1){
+            txt_SLTB.setVisibility(View.INVISIBLE);
+        } else {
+            txt_SLTB.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -110,6 +129,53 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fl_fragment_container, fragment);
         transaction.commit();
+    }
+
+    private void layDuLieuThongBao() {
+
+        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        ref = database.getReference("ThongBao");
+        ref.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                Thongbao thongbao = snapshot.getValue(Thongbao.class);
+
+                if (thongbao != null){
+
+                    String listID = thongbao.getIDNguoiNhan();
+
+                    if (id.equals(listID)){
+
+                        list.add(thongbao);
+
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 
 }
