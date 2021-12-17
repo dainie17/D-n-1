@@ -22,6 +22,7 @@ import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,7 +35,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DangKyActivity extends AppCompatActivity {
-    private EditText tv_emai, tv_matkhau, tv_nhaplai, tv_hoten, edt_Phone;
+    private TextInputLayout tv_emai, tv_matkhau, tv_nhaplai, tv_hoten, edt_Phone;
     private TextView tv_dangnhapapp, tv_dangnhap;
     private TextView btn_dangky;
     FirebaseAuth auth;
@@ -63,24 +64,48 @@ public class DangKyActivity extends AppCompatActivity {
         btn_dangky.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = tv_emai.getText().toString().trim();
-                String pass = tv_matkhau.getText().toString().trim();
-                String hoten = tv_hoten.getText().toString().trim();
-                String nhaplai = tv_nhaplai.getText().toString().trim();
+                String email = tv_emai.getEditText().getText().toString().trim();
+                String pass = tv_matkhau.getEditText().getText().toString().trim();
+                String hoten = tv_hoten.getEditText().getText().toString().trim();
+                String nhaplai = tv_nhaplai.getEditText().getText().toString().trim();
+                String phone = edt_Phone.getEditText().getText().toString();
 
+                if (TextUtils.isEmpty(hoten)){
+                    tv_hoten.setError("Họ và tên không được để trống !");
+                }
                 if (TextUtils.isEmpty(email)){
-                    tv_emai.setError("Email không được bỏ trống!");
+                    tv_emai.setError("Email không được bỏ trống !");
                     return;
                 }
                 if (!email.matches("[a-zA-Z0-9._-]+@[a-z]+.[a-z]+")) {
-                    tv_emai.setError("Email không hợp lệ");
+                    tv_emai.setError("Email không hợp lệ !");
                     return;
                 }
 
                 if (TextUtils.isEmpty(pass)){
-                    tv_matkhau.setError("Pass không được bỏ trống !");
+                    tv_matkhau.setError("Mật khẩu không được bỏ trống !");
                     return;
                 }
+                if (TextUtils.isEmpty(nhaplai)){
+                    tv_nhaplai.setError("Mật khẩu không được bỏ trống !");
+                    return;
+                }
+                if (!nhaplai.equals(pass)){
+                    tv_nhaplai.setError("Mật khẩu phải trùng nhau !");
+                    return;
+                }
+                if (TextUtils.isEmpty(phone)){
+                    edt_Phone.setError("Số điện thoại không được bỏ trống !");
+                    return;
+                }
+                if (!phone.matches("(09|03|07|08|05)+([0-9]{8})")) {
+                    edt_Phone.setError("Số điện thoại không hợp lệ !");
+                    return;
+                }
+                if (pass.length() != 6){
+                    tv_matkhau.setError("Mật khẩu phải lớn hơn 6 !");
+                }
+
 
                 register(hoten, email, pass);
 
@@ -105,7 +130,7 @@ public class DangKyActivity extends AppCompatActivity {
 
                             User user = new User();
 
-                            String phone = edt_Phone.getText().toString();
+                            String phone = edt_Phone.getEditText().getText().toString();
 
                             user.setId(userid);
                             user.setUsername(hoten);
