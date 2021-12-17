@@ -4,14 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
@@ -32,19 +37,22 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
 
     Spinner spn_ChonDonVi;
 
-    Button btn_DangSanPham;
+    TextView btn_DangSanPham;
     ImageView back;
 
-    TextInputLayout edt_SoLuong, edt_HanSuDung, edt_NoiSanXuat, edt_GioiHanViTri, edt_MoTaSanPham,
+    TextInputLayout edt_SoLuong,  edt_NoiSanXuat, edt_GioiHanViTri, edt_MoTaSanPham,
     edt_Gia;
-
+    DatePicker edt_HanSuDung;
     private FirebaseDatabase database;
     DatabaseReference ref;
     List<String> idAdmin;
@@ -65,6 +73,14 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
         edt_GioiHanViTri = this.findViewById(R.id.edt_GioiHanViTri);
         edt_MoTaSanPham = this.findViewById(R.id.edt_MoTaSanPham);
         edt_Gia = this.findViewById(R.id.edt_Gia);
+
+
+//        edt_HanSuDung.getEditText().setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                chonngay();
+//            }
+//        });
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         id = firebaseUser.getUid();
@@ -140,12 +156,35 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
                     int quyen = sanPhamDomian.getQuyen();
                     int soLuong = Integer.parseInt(edt_SoLuong.getEditText().getText().toString().trim());
                     String donVi = spn_ChonDonVi.getSelectedItem().toString().trim();
-                    String hanSuDung = edt_HanSuDung.getEditText().getText().toString().trim();
+                    String hanSuDung = edt_HanSuDung.getDayOfMonth() + "/" + (edt_HanSuDung.getMonth())
+                            +"/"+edt_HanSuDung.getYear();
                     String noiSanXuat = edt_NoiSanXuat.getEditText().getText().toString().trim();
                     String gioiHanViTri = edt_GioiHanViTri.getEditText().getText().toString().trim();
                     String moTaSanPham = edt_MoTaSanPham.getEditText().getText().toString().trim();
                     String gia = edt_Gia.getEditText().getText().toString().trim();
                     String idSanPham = ref.push().getKey();
+
+                    if (TextUtils.isEmpty(String.valueOf(soLuong))){
+                        edt_SoLuong.setError("Họ và tên không được để trống !");
+                    }
+                    if (soLuong < 1){
+                        edt_SoLuong.setError("Số lượng phải lớn hơn 1!");
+                    }
+                    if (TextUtils.isEmpty(gia)){
+                        edt_Gia.setError("Giá không được bỏ trống");
+                    }
+                    if (Double.parseDouble(gia) == 0){
+                        edt_Gia.setError("Giá phải lớn hơn 0 !");
+                    }
+                    if (TextUtils.isEmpty(noiSanXuat)){
+                        edt_NoiSanXuat.setError("Nơi sản xuất không được bỏ trống !");
+                    }
+                    if (TextUtils.isEmpty(gioiHanViTri)){
+                        edt_GioiHanViTri.setError("Giới hạn vị trí không được bỏ trống !");
+                    }
+                    if (TextUtils.isEmpty(moTaSanPham)){
+                        edt_MoTaSanPham.setError("Mô tả không được bỏ trống !");
+                    }
 
                     SanPhamDomian sanPhamGuiLen = new SanPhamDomian();
 
@@ -247,4 +286,29 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
         });
 
     }
+//    public void chonngay() {
+//
+//        int selectedYear = 2021;
+//        int selectedMonth = 12;
+//        int selectedDayOfMonth = 19;
+//
+//        // Date Select Listener.
+//        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+//
+//            @Override
+//            public void onDateSet(DatePicker view, int year,
+//                                  int monthOfYear, int dayOfMonth) {
+//
+//                edt_HanSuDung.getEditText().setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
+//            }
+//        };
+//
+//        // Create DatePickerDialog (Spinner Mode):
+//        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+//                android.R.style.Theme_Holo_Light_Dialog_NoActionBar,
+//                dateSetListener, selectedYear, selectedMonth, selectedDayOfMonth);
+//
+//// Show
+//        datePickerDialog.show();
+//    }
 }

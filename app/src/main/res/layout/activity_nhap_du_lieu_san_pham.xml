@@ -66,7 +66,8 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent"
+                        android:inputType="number"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,21 +96,18 @@
 
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/edt_HanSuDung"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Vui lòng chọn hạn sử dụng !"
                 android:layout_margin="10dp"
-                android:elevation="2dp"
-                android:hint="Hạn sử dụng">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
+                android:gravity="center"/>
+            <DatePicker
+                android:id="@+id/edt_HanSuDung"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner" />
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/edt_Gia"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -121,7 +119,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:inputType="number"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -172,11 +171,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
+            <TextView
                 android:id="@+id/btn_DangSanPham"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                android:text="Đăng sản phẩm"/>
+                android:text="Đăng sản phẩm"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_margin="20dp"
+                android:background="@drawable/backgruond_chitietdlnd1"/>
 
         </LinearLayout>
     </ScrollView>
