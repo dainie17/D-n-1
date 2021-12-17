@@ -75,11 +75,12 @@
                 android:gravity="center|left"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/product" />
+                    android:src="@drawable/product"
+                    app:tint="@color/black" />
 
                 <TextView
                     android:id="@+id/txt_SanPhamCuaToi"
@@ -102,11 +103,12 @@
                 android:gravity="center|left"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/ic_baseline_favorite_border_24" />
+                    android:src="@drawable/ic_baseline_favorite_border_24"
+                    app:tint="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -211,11 +213,12 @@
                 android:visibility="invisible"
                 android:orientation="horizontal">
 
-                <de.hdodenhof.circleimageview.CircleImageView
+                <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_margin="10dp"
-                    android:src="@drawable/ic_baseline_image_24" />
+                    android:src="@drawable/ic_baseline_widgets_24"
+                    app:tint="@color/black" />
 
                 <TextView
                     android:id="@+id/txt_thietlap"
@@ -244,11 +247,12 @@
                     android:gravity="center|left"
                     android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_baseline_image_24" />
+                        android:src="@drawable/ic_baseline_login_24"
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/txt_DangNhap"
@@ -271,11 +275,12 @@
                     android:gravity="center|left"
                     android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_baseline_image_24" />
+                        android:src="@drawable/ic_baseline_person_add_alt_1_24"
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/txt_DangKy"
@@ -307,11 +312,11 @@
                     android:gravity="center|left"
                     android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_baseline_image_24" />
+                        android:src="@drawable/product" />
 
                     <TextView
                         android:id="@+id/txt_DuyetSanPham"
@@ -334,11 +339,12 @@
                     android:gravity="center|left"
                     android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_baseline_image_24" />
+                        android:src="@drawable/ic_baseline_supervisor_account_24"
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/txt_KTTaiKhoan"
@@ -356,11 +362,12 @@
                     android:gravity="center|left"
                     android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_baseline_image_24" />
+                        android:src="@drawable/ic_baseline_person_add_alt_1_24"
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/txt_ThemAdmin"
@@ -392,7 +399,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_baseline_image_24" />
+                        android:src="@drawable/gioithieu" />
 
                     <TextView
                         android:id="@+id/txt_DanhSachPhanHoi"
@@ -415,11 +422,12 @@
                     android:gravity="center|left"
                     android:orientation="horizontal">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:layout_margin="10dp"
-                        android:src="@drawable/ic_baseline_image_24" />
+                        android:src="@drawable/ic_baseline_notification_add_24"
+                        app:tint="@color/black" />
 
                     <TextView
                         android:id="@+id/txt_GuiThongBao"
