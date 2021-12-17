@@ -40,12 +40,13 @@
         android:orientation="vertical"
         app:layout_constraintTop_toBottomOf="@+id/rlHeader" >
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_emai"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/white">
 
             <EditText
-                android:id="@+id/edt_emai"
+
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="15dp"
@@ -54,13 +55,14 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edt_matkhau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:boxBackgroundColor="@color/white"
             app:passwordToggleEnabled="true">
 
             <EditText
-                android:id="@+id/edt_matkhau"
+
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:drawableRight="@drawable/key"

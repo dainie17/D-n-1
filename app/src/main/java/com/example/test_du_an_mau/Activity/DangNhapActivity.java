@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class DangNhapActivity extends AppCompatActivity {
-    private EditText edt_emai, edt_matkhau;
+    private TextInputLayout edt_emai,edt_matkhau;
     private TextView btn_dangnhap;
     private FirebaseAuth mAuth;
     private ImageView btn_loginGG;
@@ -68,8 +69,8 @@ public class DangNhapActivity extends AppCompatActivity {
         };
     }
     private void dangnhap(){  String email;
-        email = edt_emai.getText().toString();
-        String pass = edt_matkhau.getText().toString();
+        email = edt_emai.getEditText().getText().toString();
+        String pass = edt_matkhau.getEditText().getText().toString();
         if (TextUtils.isEmpty(email)){
             edt_emai.setError("Email không được bỏ trống");
             return;
