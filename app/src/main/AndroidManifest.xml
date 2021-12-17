@@ -21,6 +21,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test_Du_An_Mau"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".Activity.DanhSachPhanHoiActivity"
+            android:exported="true" />
+
         <service
             android:name=".Sevice.MyService"
             android:enabled="true"
