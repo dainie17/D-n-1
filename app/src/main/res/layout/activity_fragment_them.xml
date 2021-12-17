@@ -204,9 +204,11 @@
                 android:background="@color/black" />
 
             <LinearLayout
+                android:id="@+id/lnl_ThietLap"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center|left"
+                android:visibility="invisible"
                 android:orientation="horizontal">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -231,11 +233,73 @@
                 android:background="#000000" />
 
             <LinearLayout
+                android:id="@+id/lnl_DangNhap"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_baseline_image_24" />
+
+                    <TextView
+                        android:id="@+id/txt_DangNhap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đăng nhập"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center|left"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_baseline_image_24" />
+
+                    <TextView
+                        android:id="@+id/txt_DangKy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Đăng ký"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#000000" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lnl_QuyenAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:visibility="invisible">
 
                 <LinearLayout
                     android:layout_width="match_parent"

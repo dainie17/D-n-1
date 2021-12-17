@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.test_du_an_mau.Activity.MainActivity;
 import com.example.test_du_an_mau.Adapter.ThongBaoAdapter;
 import com.example.test_du_an_mau.Domian.Thongbao;
 import com.example.test_du_an_mau.Domian.User;

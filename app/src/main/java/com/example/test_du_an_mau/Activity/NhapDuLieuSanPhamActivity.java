@@ -1,6 +1,7 @@
 package com.example.test_du_an_mau.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -14,15 +15,24 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
+import com.example.test_du_an_mau.Domian.Thongbao;
+import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
@@ -37,8 +47,9 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
 
     private FirebaseDatabase database;
     DatabaseReference ref;
-
+    List<String> idAdmin;
     ProgressDialog dialog;
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,17 +66,64 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
         edt_MoTaSanPham = this.findViewById(R.id.edt_MoTaSanPham);
         edt_Gia = this.findViewById(R.id.edt_Gia);
 
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        id = firebaseUser.getUid();
+
         String[] soluong = new String[]{"kg", "tấn", "tạ", "bao", "con", "cây"};
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplication(), R.layout.support_simple_spinner_dropdown_item, soluong);
         spn_ChonDonVi.setAdapter(arrayAdapter);
-
+        idAdmin = new ArrayList<>();
         List<String> listLinkAnh = (List<String>) getIntent().getExtras().get("LinkHinhAnh");
+        Thongbao thongbao = new Thongbao();
+
+        thongbao.setLoaiThongBao("Thông báo");
+        thongbao.setNoiDung("Có sản phẩm cần duyệt");
+
+        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        ref = database.getReference("Users");
+        Query query = ref.orderByChild("id").equalTo(id);
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                User user = snapshot.getValue(User.class);
+
+                if (user != null){
+
+                    thongbao.setLinkAnh(user.getImageURL());
+
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         btn_DangSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog = Utils.showLoader(NhapDuLieuSanPhamActivity.this);
+
+                LayIDadmin();
 
                 database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                 ref = database.getReference("DuyetSP");
@@ -113,6 +171,16 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
                             if(dialog!=null){
                                 dialog.dismiss();
                             }
+
+                            for (int i = 0; i < idAdmin.size(); i++){
+
+                                ref = database.getReference("ThongBao");
+
+                                thongbao.setIDNguoiNhan(idAdmin.get(i));
+                                thongbao.setIDThongBao(ref.push().getKey());
+                                ref.child(thongbao.getIDThongBao()).setValue(thongbao);
+                            }
+
                             Toast.makeText(NhapDuLieuSanPhamActivity.this, "Đăng sản phẩm thành công !", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(NhapDuLieuSanPhamActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -136,5 +204,47 @@ public class NhapDuLieuSanPhamActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void LayIDadmin() {
+
+        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        ref = database.getReference("Users");
+        Query query = ref.orderByChild("loai").equalTo(2);
+        query.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                User user = snapshot.getValue(User.class);
+
+                if ( user != null ){
+
+                    idAdmin.add(user.getId());
+
+                }
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
     }
 }

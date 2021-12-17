@@ -12,12 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.test_du_an_mau.R;
+import com.example.test_du_an_mau.Sevice.MyService;
 
 public class SplashScreen extends AppCompatActivity {
 
     ImageView img_logo_slash_screen;
     TextView txt_name_developed, txt_name_land;
     Handler handler;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

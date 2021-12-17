@@ -3,10 +3,12 @@ package com.example.test_du_an_mau.Activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 
 import com.example.test_du_an_mau.Domian.Thongbao;
 import com.example.test_du_an_mau.R;
+import com.example.test_du_an_mau.Sevice.MyService;
 import com.example.test_du_an_mau.fragment.fragment_favorite;
 import com.example.test_du_an_mau.fragment.fragment_home;
 import com.example.test_du_an_mau.fragment.fragment_them;
@@ -45,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
     TextView btn_themSanPham, txt_SLTB;
     String id;
     DatabaseReference reference;
-    List<Thongbao> list;
     DatabaseReference ref;
+    List<Thongbao> list;
     private FirebaseDatabase database;
 
     @Override
@@ -81,12 +84,61 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        list = new ArrayList<>();
-        layDuLieuThongBao();
         txt_SLTB = this.findViewById(R.id.txt_SLTB);
-        if (list.size() == 0){
-            txt_SLTB.setVisibility(View.INVISIBLE);
-        }
+
+        list = new ArrayList<>();
+
+       if (id != null){
+
+           database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+           ref = database.getReference("ThongBao");
+           ref.addChildEventListener(new ChildEventListener() {
+               @Override
+               public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                   Thongbao thongbao = snapshot.getValue(Thongbao.class);
+
+                   if (thongbao != null){
+
+                       String listID = thongbao.getIDNguoiNhan();
+
+                       if (id.equals(listID)){
+
+                           list.add(thongbao);
+                           if (list != null){
+
+                               txt_SLTB.setVisibility(View.VISIBLE);
+
+                           }
+
+                       }
+
+                   }
+
+               }
+
+               @Override
+               public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+               }
+
+               @Override
+               public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+               }
+
+               @Override
+               public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+               }
+
+               @Override
+               public void onCancelled(@NonNull DatabaseError error) {
+
+               }
+           });
+
+       }
 
     }
 
@@ -128,54 +180,13 @@ public class MainActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    private void layDuLieuThongBao() {
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        ref = database.getReference("ThongBao");
-        ref.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                Thongbao thongbao = snapshot.getValue(Thongbao.class);
-
-                if (thongbao != null){
-
-                    String listID = thongbao.getIDNguoiNhan();
-
-                    if (id.equals(listID)){
-
-                        list.add(thongbao);
-                        txt_SLTB.setVisibility(View.VISIBLE);
-
-                    } else {
-                        txt_SLTB.setVisibility(View.INVISIBLE);
-                    }
-
-                }
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        Intent intent = new Intent(this, MyService.class);
+        intent.putExtra("id", id);
+        startService(intent);
 
     }
-
 }

@@ -26,6 +26,7 @@ import com.example.test_du_an_mau.Domian.User;
 import com.example.test_du_an_mau.R;
 import com.example.test_du_an_mau.Activity.UserAcivity;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,8 +45,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class fragment_them extends Fragment {
 
     TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_ThietLap,txt_ThemAdmin,
-             txt_Them_Ten, txt_TinNhan, txt_DuyetSanPham, txt_KTTaiKhoan, txt_GuiThongBao;
-    LinearLayout lnl_QuyenAdmin;
+             txt_Them_Ten, txt_TinNhan, txt_DuyetSanPham, txt_KTTaiKhoan, txt_GuiThongBao,
+            txt_DangNhap, txt_DangKy;
+    LinearLayout lnl_QuyenAdmin, lnl_ThietLap, lnl_DangNhap;
     CircleImageView img_AnhNguoiDung;
     String id;
     DatabaseReference ref;
@@ -65,8 +67,42 @@ public class fragment_them extends Fragment {
         txt_DuyetSanPham = view.findViewById(R.id.txt_DuyetSanPham);
         txt_KTTaiKhoan = view.findViewById(R.id.txt_KTTaiKhoan);
         txt_GuiThongBao = view.findViewById(R.id.txt_GuiThongBao);
+        txt_DangNhap = view.findViewById(R.id.txt_DangNhap);
+        txt_DangKy = view.findViewById(R.id.txt_DangKy);
         img_AnhNguoiDung = view.findViewById(R.id.img_AnhNguoiDung);
         lnl_QuyenAdmin = view.findViewById(R.id.lnl_QuyenAdmin);
+        lnl_ThietLap = view.findViewById(R.id.lnl_ThietLap);
+        lnl_DangNhap = view.findViewById(R.id.lnl_DangNhap);
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        if (firebaseUser != null){
+
+            lnl_ThietLap.setVisibility(View.VISIBLE);
+            lnl_DangNhap.setVisibility(View.INVISIBLE);
+
+        } else {
+
+            lnl_ThietLap.setVisibility(View.INVISIBLE);
+            lnl_DangNhap.setVisibility(View.VISIBLE);
+        }
+
+        txt_DangKy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DangKyActivity.class));
+            }
+        });
+
+        txt_DangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getActivity(), DangNhapActivity.class));
+
+            }
+        });
 
         OnclickQuanLySanPham();
         OnclickTrangCaNhan();
@@ -194,7 +230,7 @@ public class fragment_them extends Fragment {
 
                     if (idnd == 2){
                         lnl_QuyenAdmin.setVisibility(View.VISIBLE);
-                    } else {
+                    }else {
                         lnl_QuyenAdmin.setVisibility(View.INVISIBLE);
                     }
 
