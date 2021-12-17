@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.PhanHoiActivity">
+    tools:context=".Activity.DanhSachPhanHoiActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout16"
+        android:id="@+id/lnl_PhanHoi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/teal_700"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/img_back_ph"
+            android:id="@+id/img_back_dsph"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="9"
-            android:text="Phản hồi"
+            android:text="Danh sách phản hồi"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="30sp"
@@ -35,32 +35,12 @@
 
     </LinearLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edt_PhanHoi"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rscv_PhanHoi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout16">
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:gravity="top"
-            android:hint="Hãy ghi điều gì đó mà bạn muốn gửi đến quản trị viên"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/btn_GuiPhanHoi"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_margin="10dp"
-        android:text="Gửi"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lnl_PhanHoi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

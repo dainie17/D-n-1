@@ -16,9 +16,11 @@ import androidx.fragment.app.Fragment;
 import com.example.test_du_an_mau.Activity.DangKyActivity;
 import com.example.test_du_an_mau.Activity.DangKyAdminActivity;
 import com.example.test_du_an_mau.Activity.DangNhapActivity;
+import com.example.test_du_an_mau.Activity.DanhSachPhanHoiActivity;
 import com.example.test_du_an_mau.Activity.DuyetSanPhamActivity;
 import com.example.test_du_an_mau.Activity.GuiThongBaoActivity;
 import com.example.test_du_an_mau.Activity.NhanTinActivity;
+import com.example.test_du_an_mau.Activity.PhanHoiActivity;
 import com.example.test_du_an_mau.Activity.QuanLySanPhamActivity;
 import com.example.test_du_an_mau.Activity.QuanLyTaiKhoanActivity;
 import com.example.test_du_an_mau.Activity.ThietLapActivity;
@@ -46,7 +48,7 @@ public class fragment_them extends Fragment {
 
     TextView txt_SanPhamCuaToi, txt_Them_trangCaNhan, txt_ThietLap,txt_ThemAdmin,
              txt_Them_Ten, txt_TinNhan, txt_DuyetSanPham, txt_KTTaiKhoan, txt_GuiThongBao,
-            txt_DangNhap, txt_DangKy;
+            txt_DangNhap, txt_DangKy, txt_PhanHoi, txt_DanhSachPhanHoi;
     LinearLayout lnl_QuyenAdmin, lnl_ThietLap, lnl_DangNhap;
     CircleImageView img_AnhNguoiDung;
     String id;
@@ -69,6 +71,8 @@ public class fragment_them extends Fragment {
         txt_GuiThongBao = view.findViewById(R.id.txt_GuiThongBao);
         txt_DangNhap = view.findViewById(R.id.txt_DangNhap);
         txt_DangKy = view.findViewById(R.id.txt_DangKy);
+        txt_PhanHoi = view.findViewById(R.id.txt_PhanHoi);
+        txt_DanhSachPhanHoi = view.findViewById(R.id.txt_DanhSachPhanHoi);
         img_AnhNguoiDung = view.findViewById(R.id.img_AnhNguoiDung);
         lnl_QuyenAdmin = view.findViewById(R.id.lnl_QuyenAdmin);
         lnl_ThietLap = view.findViewById(R.id.lnl_ThietLap);
@@ -100,6 +104,28 @@ public class fragment_them extends Fragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(getActivity(), DangNhapActivity.class));
+
+            }
+        });
+
+        txt_DanhSachPhanHoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DanhSachPhanHoiActivity.class));
+            }
+        });
+
+        txt_PhanHoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (id==null){
+                    startActivity(new Intent(getActivity(), DangNhapActivity.class));
+                } else {
+
+                    startActivity(new Intent(getActivity(), PhanHoiActivity.class));
+
+                }
 
             }
         });
