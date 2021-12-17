@@ -142,6 +142,7 @@ public class GuiThongBaoActivity extends AppCompatActivity {
                             public void onSuccess(Void unused) {
 
                                 Toast.makeText(GuiThongBaoActivity.this, "Đã gửi thông báo !", Toast.LENGTH_SHORT).show();
+
                                 finish();
 
                             }

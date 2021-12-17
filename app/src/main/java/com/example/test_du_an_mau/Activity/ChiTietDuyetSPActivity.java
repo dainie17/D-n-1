@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.example.test_du_an_mau.Adapter.SlideShowAdapter;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
 import com.example.test_du_an_mau.Domian.Thongbao;
 import com.example.test_du_an_mau.Domian.User;
+import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,8 +43,6 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
 
     ImageView img_AnhNguoiDangDuyet, img_BackCTDuyet, img_prevDuyet, img_nextDuyet;
 
-    AutoCompleteTextView edt_IDSanPham;
-
     TextView txt_TenNguoiDungDuyet, txt_LoaiHinhSPDuyet, txt_LoaiSanPhamCTDuyet,
             txt_LoaiCTCTSPDuyet, txt_SoLuongCTDuyet, txt_DonViCTDuyet, txt_HanSuDungCTDuyet,
             txt_NoiSanXuatCTDuyet, txt_GioiHanCTDuyet, txt_MoTaCTDuyet, txt_Duyet, txt_Xoa;
@@ -57,12 +57,12 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
 
     int currentImage;
 
+    ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_duyet_spactivity);
-
-        edt_IDSanPham = this.findViewById(R.id.edt_IDSanPham);
 
         vp_SildeHinhAnhDuyet = this.findViewById(R.id.vp_SildeHinhAnhDuyet);
 
@@ -158,6 +158,8 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    dialog = Utils.showLoader(ChiTietDuyetSPActivity.this);
+
                     database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                     DatabaseReference reff = database.getReference("SanPham");
 
@@ -172,21 +174,31 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
                                     database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
                                     DatabaseReference reference = database.getReference("ThongBao");
 
-                                    for (int i = 0; i < listMaID.size(); i++){
+                                        for (int i = 0; i < listMaID.size(); i++){
 
-                                        thongbao.setIDThongBao(reference.push().getKey());
-                                        thongbao.setIDNguoiNhan(listMaID.get(i));
-                                        reference.child(thongbao.getIDThongBao()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                            @Override
-                                            public void onSuccess(Void unused) {
-                                                Toast.makeText(ChiTietDuyetSPActivity.this, "Đã duyệt !!", Toast.LENGTH_SHORT).show();
+                                            thongbao.setIDThongBao(reference.push().getKey());
+                                            thongbao.setIDNguoiNhan(listMaID.get(i));
+                                            reference.child(thongbao.getIDThongBao()).setValue(thongbao).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void unused) {
 
-                                                startActivity(new Intent(ChiTietDuyetSPActivity.this, DuyetSanPhamActivity.class));
-                                                finish();
-                                            }
-                                        });
+                                                    if(dialog!=null){
+                                                        dialog.dismiss();
+                                                    }
 
+                                                }
+                                            });
+
+                                        }
+
+                                    if(dialog!=null){
+                                        dialog.dismiss();
                                     }
+
+                                    Toast.makeText(ChiTietDuyetSPActivity.this, "Đã duyệt !!", Toast.LENGTH_SHORT).show();
+
+                                    startActivity(new Intent(ChiTietDuyetSPActivity.this, DuyetSanPhamActivity.class));
+                                    finish();
 
                                 }
                             });
@@ -195,6 +207,9 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            if(dialog!=null){
+                                dialog.dismiss();
+                            }
                             Toast.makeText(ChiTietDuyetSPActivity.this, "error"+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -206,11 +221,16 @@ public class ChiTietDuyetSPActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    dialog = Utils.showLoader(ChiTietDuyetSPActivity.this);
+
                     ref = database.getReference("DuyetSP");
 
                     ref.child(sanPhamDomian.getMaSP()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+                            if(dialog!=null){
+                                dialog.dismiss();
+                            }
                             Toast.makeText(ChiTietDuyetSPActivity.this, "Đã Xóa !!", Toast.LENGTH_SHORT).show();
 
                             startActivity(new Intent(ChiTietDuyetSPActivity.this, DuyetSanPhamActivity.class));

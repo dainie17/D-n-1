@@ -42,74 +42,78 @@ public class MyService extends Service {
 
         String id = intent.getStringExtra("id");
 
-        database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
-        myRef = database.getReference("ThongBao");
-        myRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+        if (id != null){
 
-                Thongbao thongbao = snapshot.getValue(Thongbao.class);
+            database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
+            myRef = database.getReference("ThongBao");
+            myRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                if (thongbao != null){
+                    Thongbao thongbao = snapshot.getValue(Thongbao.class);
 
-                    String listID = thongbao.getIDNguoiNhan();
+                    if (thongbao != null){
 
-                    if (id.equals(listID)){
+                        String listID = thongbao.getIDNguoiNhan();
 
-                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MyService.this);
+                        if (id.equals(listID)){
 
-                        // Đăng ký
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                            CharSequence name = "Kênh thông báo";
-                            String description = "Mô tả thông báo";
-                            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-                            NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL, name, importance);
-                            channel.setDescription(description);
-                            notificationManager.createNotificationChannel(channel);
+                            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(MyService.this);
+
+                            // Đăng ký
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                CharSequence name = "Kênh thông báo";
+                                String description = "Mô tả thông báo";
+                                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                                NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL, name, importance);
+                                channel.setDescription(description);
+                                notificationManager.createNotificationChannel(channel);
+                            }
+
+                            // Nhấn vào tb
+                            Intent intent = new Intent(MyService.this, MainActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            PendingIntent pendingIntent = PendingIntent.getActivity(MyService.this, 0, intent, 0);
+
+                            //nội dung tb
+                            NotificationCompat.Builder builder = new NotificationCompat.Builder(MyService.this, NOTIFICATION_CHANNEL)
+                                    .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
+                                    .setContentTitle(thongbao.getLoaiThongBao())
+                                    .setContentText(thongbao.getNoiDung())
+                                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                    .setContentIntent(pendingIntent)
+                                    .setAutoCancel(true);
+
+                            notificationManager.notify(33, builder.build());
+
                         }
-
-                        // Nhấn vào tb
-                        Intent intent = new Intent(MyService.this, MainActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        PendingIntent pendingIntent = PendingIntent.getActivity(MyService.this, 0, intent, 0);
-
-                        //nội dung tb
-                        NotificationCompat.Builder builder = new NotificationCompat.Builder(MyService.this, NOTIFICATION_CHANNEL)
-                                .setSmallIcon(R.drawable.ic_baseline_notifications_active_24)
-                                .setContentTitle(thongbao.getLoaiThongBao())
-                                .setContentText(thongbao.getNoiDung())
-                                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                                .setContentIntent(pendingIntent)
-                                .setAutoCancel(true);
-
-                        notificationManager.notify(33, builder.build());
 
                     }
 
                 }
 
-            }
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
 
-            }
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+                }
 
-            }
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
 
-            }
-        });
+        }
 
         return START_NOT_STICKY;
 

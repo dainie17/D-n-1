@@ -22,6 +22,7 @@ import com.example.test_du_an_mau.Adapter.HinhAnhAdapter;
 import com.example.test_du_an_mau.Domian.ChonHinh;
 import com.example.test_du_an_mau.Domian.LinkAnh;
 import com.example.test_du_an_mau.Domian.SanPhamDomian;
+import com.example.test_du_an_mau.Domian.Utils;
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,7 +46,7 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
     private List<ChonHinh> modalClassList;
     private ArrayList<String> linkAnhList;
     HinhAnhAdapter hinhAnhAdapter;
-    private ProgressDialog progressDialog;
+    ProgressDialog dialog;
 
     private StorageReference mStorageRef;
 
@@ -127,6 +128,8 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
 
             if (data.getClipData() != null) {
 
+                dialog = Utils.showLoader(ChonHinhAnhActivity.this);
+
                 int totalitem = data.getClipData().getItemCount();
 
                 for (int i = 0; i < totalitem; i++) {
@@ -155,6 +158,10 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
 
                                     btn_TiepTucThemHA.setVisibility(View.VISIBLE);
 
+                                    if(dialog!=null){
+                                        dialog.dismiss();
+                                    }
+
                                 }
                             });
 
@@ -162,6 +169,9 @@ public class ChonHinhAnhActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            if(dialog!=null){
+                                dialog.dismiss();
+                            }
                             Toast.makeText(ChonHinhAnhActivity.this, "lỗi : " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
