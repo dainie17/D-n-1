@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+
+import com.bumptech.glide.Glide;
 import com.example.test_du_an_mau.Activity.MainActivity;
 import com.example.test_du_an_mau.Domian.Thongbao;
 import com.example.test_du_an_mau.R;

@@ -57,7 +57,10 @@ public class fragment_user extends Fragment {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
-        id = firebaseUser.getUid();
+        if (firebaseUser != null){
+            id = firebaseUser.getUid();
+        }
+
 
         img_AnhNguoiDungTB = view.findViewById(R.id.img_AnhNguoiDungTB);
         TenNguoiDung();
@@ -104,6 +107,10 @@ public class fragment_user extends Fragment {
     }
 
     private void layDuLieuThongBao() {
+
+        if (id == null){
+            return;
+        }
 
         database = FirebaseDatabase.getInstance("https://asigment-a306b-default-rtdb.asia-southeast1.firebasedatabase.app/");
         ref = database.getReference("ThongBao");
