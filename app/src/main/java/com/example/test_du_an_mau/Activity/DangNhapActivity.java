@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.test_du_an_mau.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -25,10 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class DangNhapActivity extends AppCompatActivity {
-    private TextInputLayout edt_emai,edt_matkhau;
+    private TextInputLayout edt_emai, edt_matkhau;
     private TextView btn_dangnhap;
     private FirebaseAuth mAuth;
-    private ImageView btn_loginGG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,12 +94,34 @@ public class DangNhapActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Đăng nhập thành công ", Toast.LENGTH_SHORT).show();
                     Intent intent  = new Intent(DangNhapActivity.this, MainActivity.class);
                     startActivity(intent);
-                }else {
-                    Toast.makeText(getApplicationContext(), "Đăng nhập không thành công ", Toast.LENGTH_SHORT).show();
-
                 }
             }
-        });
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                if (e.toString().equals("com.google.firebase.auth.FirebaseAuthInvalidCredentialsException: The email address is badly formatted.")){
+
+                    edt_emai.setError("email sai định dạng !!");
+                    edt_emai.requestFocus();
+                    edt_matkhau.setError(null);
+
+                } else if (e.toString().equals("com.google.firebase.auth.FirebaseAuthInvalidUserException: There is no user record corresponding to this identifier. The user may have been deleted.")){
+
+                    edt_emai.setError("email không tồn tại !!");
+                    edt_emai.requestFocus();
+                    edt_matkhau.setError(null);
+
+                } else if (e.toString().equals("com.google.firebase.auth.FirebaseAuthInvalidCredentialsException: The password is invalid or the user does not have a password.")){
+
+                    edt_matkhau.setError("sai mật khẩu !!");
+                    edt_matkhau.requestFocus();
+                    edt_emai.setError(null);
+
+                }
+
+            }
+        });;
 
     }
 
