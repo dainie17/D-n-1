@@ -78,7 +78,7 @@ public class fragment_them extends Fragment {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
 
         if (firebaseUser != null){
-
+            id = firebaseUser.getUid();
             lnl_ThietLap.setVisibility(View.VISIBLE);
             lnl_DangNhap.setVisibility(View.INVISIBLE);
 
@@ -175,14 +175,15 @@ public class fragment_them extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getActivity(), NhanTinActivity.class);
-                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                id = mAuth.getUid();
                 if (id==null){
                     startActivity(new Intent(getActivity(), DangNhapActivity.class));
+                } else {
+
+                    Intent intent = new Intent(getActivity(), NhanTinActivity.class);
+                    intent.putExtra("id", id);
+                    startActivity(intent);
+
                 }
-                intent.putExtra("id", id);
-                startActivity(intent);
 
             }
         });
@@ -209,8 +210,6 @@ public class fragment_them extends Fragment {
         });
     }
     private void TenNguoiDung(){
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        id = mAuth.getUid();
 
         if (id == null){
             return;

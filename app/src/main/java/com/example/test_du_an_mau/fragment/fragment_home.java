@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.test_du_an_mau.Activity.ChiTietSanPhamActivity;
+import com.example.test_du_an_mau.Activity.DangKyActivity;
 import com.example.test_du_an_mau.Activity.DangNhapActivity;
 import com.example.test_du_an_mau.Activity.LoaiSanPhamActivity;
 import com.example.test_du_an_mau.Activity.NhanTinActivity;
@@ -188,6 +189,12 @@ public class fragment_home extends Fragment {
         img_mess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (id == null){
+
+                    startActivity(new Intent(getActivity(), DangNhapActivity.class));
+
+                }
 
                 Intent intent = new Intent(getActivity(), NhanTinActivity.class);
 
